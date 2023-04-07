@@ -1,10 +1,11 @@
+# MSF-OCG LIME EMR Project - OpenMRS 3.x demo
 <div>
 <img src="https://www.msf.org/themes/custom/msf_theme/ogimage.jpg" width=300px>
 <img src="https://raw.githubusercontent.com/MSF-OCG/lime-project/main/MSF_LIMEProject_logo_CMJN_full.png" width=300px>
 </div>
-Configuration files for the MSF-OCG Lime Project - OpenMRS 3.x EMR demo
 
-# Configure
+
+## Configure
 
 ### Backend modules
 ```shell
@@ -19,10 +20,10 @@ Configuration files for the MSF-OCG Lime Project - OpenMRS 3.x EMR demo
 /distro/configuration
 ```
 
-# Build
+## Build
 Docker images will automatically be rebuilt and pushed to Docker Hub repository when binaries or configurations are modified. 
 
-# Deploy 
+## Deploy 
 
 ### From localhost
 ```shell
@@ -40,7 +41,7 @@ curl https://raw.githubusercontent.com/openmrs/openmrs-distro-referenceapplicati
 http://msf-ocg-openmrs3-dev.westeurope.cloudapp.azure.com 
 # All done!
 ```
-# Update 
+## Update 
 
 Latest images can be pulled on instances using the Docker command:
 ```shell
