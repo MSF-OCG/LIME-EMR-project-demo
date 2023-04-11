@@ -41,9 +41,18 @@ curl https://raw.githubusercontent.com/openmrs/openmrs-distro-referenceapplicati
 http://msf-ocg-openmrs3-dev.westeurope.cloudapp.azure.com 
 # All done!
 ```
-## Update 
+
+## Maintain
+
+### Backup
+
+### Deitentify
+
+### Update 
 
 Latest images can be pulled on instances using the Docker command:
 ```shell
 docker-compose pull && docker-compose up -d
 ```
+
+
