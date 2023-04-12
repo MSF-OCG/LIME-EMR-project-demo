@@ -4,3 +4,19 @@
 .sidebar-toggle span {
     background-color: #c2111e;
 }
+
+.markdown-section a {
+    color: #c2111e;  
+}
+
+.github-corner svg {
+    fill: #c2111e; 
+}
+
+.progress{
+    background-color: #c2111e;
+}
+
+.search .search-keyword, .search a:hover {
+    color: #c2111e;
+}

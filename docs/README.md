@@ -48,7 +48,8 @@ Docker images will automatically be rebuilt and pushed to Docker Hub repository 
 
 ### Actions
 
-Build, push, tag
+#### Build Docker images
+#### Update documentation
 
 ### Branches
 
