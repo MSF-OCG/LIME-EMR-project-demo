@@ -6,5 +6,5 @@
 </div>
 
 
-#### Detailled documentation of the LIME project
+> #### technical documentation of the project
 [https://msf-ocg.github.io/LIME-EMR-project-demo](https://msf-ocg.github.io/LIME-EMR-project-demo) 

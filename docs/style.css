@@ -1,22 +1,5 @@
-.sidebar ul li.active>a {
-    color: #c2111e;
-}
-.sidebar-toggle span {
-    background-color: #c2111e;
-}
-
-.markdown-section a {
-    color: #c2111e;  
-}
-
-.github-corner svg {
-    fill: #c2111e; 
-}
-
-.progress{
-    background-color: #c2111e;
-}
-
-.search .search-keyword, .search a:hover {
-    color: #c2111e;
-}
+:root {
+    --theme-color: #c2111e;
+    --content-max-width : 80%;
+    --base-font-size: 14px;
+  }
