@@ -53,7 +53,7 @@ Build, push, tag
 ### Branches
 
 <div>
-<img src="/_media/development-workflow.png" width=80%>
+<img src="//raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/main/docs/_media/development-workflow.png" width=80%>
 </div>
 
 ### Environments 
