@@ -25,7 +25,7 @@ RUN mvn clean $MVN_ARGS_SETTINGS
 
 ### Run Stage
 # Replace 'nightly' with the exact version of openmrs-core built for production (if available)
-FROM openmrs/openmrs-core:nightly
+FROM openmrs/openmrs-core:latest
 
 # Do not copy the war if using the correct openmrs-core image version
 COPY --from=dev /openmrs/distribution/openmrs_core/openmrs.war /openmrs/distribution/openmrs_core/
