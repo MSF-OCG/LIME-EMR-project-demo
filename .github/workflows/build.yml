@@ -1,4 +1,4 @@
-name: Docker build
+name: Build and publish the container image on ghcr.io
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
     branches:
       - "*"
     types: [opened, synchronize]
-    
+
   release:
     types:
       - created
@@ -38,7 +38,6 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: |
-            tags: ${{ github.repository_owner }}/openmrs3-backend:dev
+          tags: ghcr.io/${{ github.repository }}:${{ env.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
