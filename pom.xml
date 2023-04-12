@@ -182,7 +182,7 @@
     <repository>
       <id>openmrs-repo-releases</id>
       <name>OpenMRS Releases Repo</name>
-      <url>https://openmrs.jfrog.io/artifactory/releases</url>
+      <url>https://mavenrepo.openmrs.org/releases</url>
     </repository>
     <snapshotRepository>
       <id>openmrs-repo-snapshots</id>
