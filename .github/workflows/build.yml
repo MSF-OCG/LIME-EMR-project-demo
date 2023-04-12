@@ -7,10 +7,11 @@ on:
     branches:
       - "*"
 
-    pull_request:
+  pull_request:
     branches:
       - "*"
     types: [opened, synchronize]
+    
   release:
     types:
       - created
