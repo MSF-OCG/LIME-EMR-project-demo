@@ -47,7 +47,7 @@ jobs:
 
     needs: dev
 
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/staging' }}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/qa' }}
 
     steps:
       - name: Set up QEMU
@@ -67,6 +67,6 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-backend:staging
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-backend:qa
           cache-from: type=gha 
           cache-to: type=gha,mode=max

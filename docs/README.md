@@ -6,8 +6,8 @@
 
 ## Prerequisites
 1. Setup Docker on the localhost and hosting instances
-2. Get the latest docker-conpose.yml 
-3. Run Docker Compose
+2. Get the latest docker-compose.yml 
+3. Pull the latest images and run the app with Docker Compose (docker-compose pull && docker-compose up -d)
 
 ## File structure
 ```shell
