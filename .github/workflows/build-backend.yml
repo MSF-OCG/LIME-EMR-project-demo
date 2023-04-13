@@ -1,15 +1,27 @@
-name: Docker Build and Push to Docker Hub
+name: OpenMRS backend image build and push to Docker Hub
 
 on:
   push:
     tags:
       - "*"
+    paths:
+      - "Dockerfile"
+      - "pom.xml"
+      - "/distro/distro.properties"
+      - "/distro/pom.xml"
+      - ".github/workflows/build-backend.yml"
     branches:
       - "*"
 
   pull_request:
     branches:
       - "*"
+    paths:
+      - "Dockerfile"
+      - "pom.xml"
+      - "/distro/distro.properties"
+      - "/distro/pom.xml"
+      - ".github/workflows/build-backend.yml"
     types: [opened, synchronize]
   release:
     types:
@@ -22,13 +34,16 @@ jobs:
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
@@ -37,6 +52,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-backend:dev
           cache-from: type=gha 
           cache-to: type=gha,mode=max
+
   staging:
     runs-on: ubuntu-latest
 
@@ -47,13 +63,16 @@ jobs:
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Build and push
         uses: docker/build-push-action@v4
         with:

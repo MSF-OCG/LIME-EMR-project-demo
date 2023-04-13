@@ -257,7 +257,7 @@ Content is organized in OpenConceptLab (OCL), in the [LIME Demo collection](http
 
 
 # Build
-Docker images will automatically be rebuilt and pushed to Docker Hub repository when binaries or configurations are modified. 
+Docker images will automatically be rebuilt and pushed to [Docker Hub of MSF OCG](https://hub.docker.com/r/msfocg) when binaries or configurations are modified. 
 
 ## Actions
 
