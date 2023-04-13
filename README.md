@@ -5,12 +5,13 @@
 <img src="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/main/docs/logo.png" width=300px>
 </div>
 
-## A Generic Light EMR based on 
+## A Generic Light Modular EMR based on 
 
 <div>
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/OpenMRS_logo_2008.svg/1280px-OpenMRS_logo_2008.svg.png" height=60px>
-<img src="https://dhis2.org/wp-content/uploads/dhis2-logo-rgb-positive.svg" height=60px>
-<img src="https://avatars.githubusercontent.com/u/3497578?s=200&v=4" height=60px>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://docs.openconceptlab.org/en/latest/_images/ocl-big-logo.png" height=60px>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://dhis2.org/wp-content/uploads/dhis2-logo-rgb-positive.svg" height=60px>
+
 
 </div>
 
