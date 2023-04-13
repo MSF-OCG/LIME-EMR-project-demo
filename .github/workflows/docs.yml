@@ -9,10 +9,10 @@ on:
     - 'docs/**'
 
 jobs:
-  update_documentation:
+  documentation:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: tool3/docsify-action@master
+    - uses: actions/checkout@v3
+    - uses: tool3/docsify-action@v1.0.3
       with:
         github_token: ${{ secrets._GITHUB_TOKEN }}
