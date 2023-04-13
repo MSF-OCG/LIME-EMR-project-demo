@@ -15,4 +15,4 @@ jobs:
     - uses: actions/checkout@master
     - uses: tool3/docsify-action@master
       with:
-        github_token: ${{ secrets._GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
