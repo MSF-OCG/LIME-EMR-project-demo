@@ -5,7 +5,7 @@ FROM openmrs/openmrs-core:dev as dev
 WORKDIR /openmrs_distro
 
 ARG MVN_ARGS_SETTINGS="-s /usr/share/maven/ref/settings-docker.xml -U"
-ARG MVN_ARGS="install -e"
+ARG MVN_ARGS="install"
 
 # Copy build files
 COPY pom.xml ./
