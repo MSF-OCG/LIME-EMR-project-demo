@@ -1,0 +1,18 @@
+name: Update documentation
+
+on:
+  push:
+    paths:
+    - 'docs/**'
+  pull_request:
+    paths: 
+    - 'docs/**'
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: tool3/docsify-action@master
+      with:
+        github_token: ${{ secrets._GITHUB_TOKEN }}
