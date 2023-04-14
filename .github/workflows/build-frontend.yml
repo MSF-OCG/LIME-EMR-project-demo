@@ -43,7 +43,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}:frontend"
           file: /frontend/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
