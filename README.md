@@ -11,8 +11,6 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/OpenMRS_logo_2008.svg/1280px-OpenMRS_logo_2008.svg.png" height=60px>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://docs.openconceptlab.org/en/latest/_images/ocl-big-logo.png" height=60px>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://dhis2.org/wp-content/uploads/dhis2-logo-rgb-positive.svg" height=60px>
-
-
 </div>
 
 
