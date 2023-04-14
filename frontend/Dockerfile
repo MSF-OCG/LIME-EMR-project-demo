@@ -6,7 +6,7 @@ ARG APP_SHELL_VERSION=next
 RUN mkdir -p /app
 WORKDIR /app
 
-COPY spa-build-config.json .
+COPY /frontend/spa-build-config.json .
 
 ARG CACHE_BUST
 RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} build --build-config spa-build-config.json --target ./spa
@@ -25,7 +25,7 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY startup.sh /usr/local/bin/startup.sh
 RUN chmod +x /usr/local/bin/startup.sh
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY /frontend/nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=dev /app/spa /usr/share/nginx/html
 
