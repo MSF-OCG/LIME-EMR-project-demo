@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-        run: |
+        uses: | 
+          actions/checkout@v3
           git config --global user.email ${{ github.event.pusher.email }}
           git config --global user.name ${{ github.event.pusher.name }}
       - name: Deploy to GitHub Pages
