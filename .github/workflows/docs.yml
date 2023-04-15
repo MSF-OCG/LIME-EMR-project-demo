@@ -14,12 +14,14 @@ jobs:
   update_documentation:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Docsify
+        run: npm install -g docsify-cli
       - name: Build Docsify site
+        run: docsify build ./docs
+      - name: Deploy to GitHub Pages
         uses: tool3/docsify-action@v1.0.3
-        
-      - name: Publish docs
-        uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets._GITHUB_TOKEN }}
-          publish_dir: ./docs
+          token: ${{ secrets._GITHUB_TOKEN }}
+          folder: ./docs
