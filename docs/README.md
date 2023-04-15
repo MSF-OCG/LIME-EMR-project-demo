@@ -1,6 +1,6 @@
 # Introduction
 
-> Note: This documentation describes how the OpenMRS 3.x demo for the MSF OCG LIME project is running. It follows standard practices from OpenMRS and its community, and goes through the lifecycle of the product. The integration with other dependencies such as [OpenConceptLab (OCL)](https://openconceptlab.org/) and [DHIS2](https://dhis2.org/) is also documented here. Any feedback and pull requests are welcomed to continuously improved this demo!
+> Note: This documentation describes how the OpenMRS 3.x demo for the MSF OCG LIME project is running. It follows standard practices from OpenMRS and its community, and goes through the lifecycle of the product. The integration with other dependencies such as [OpenConceptLab (OCL)](https://openconceptlab.org/) and [DHIS2](https://dhis2.org/) is also documented here. Any feedback and pull requests are welcomed to continuously improved this demo! -
 
 # Getting started
 
