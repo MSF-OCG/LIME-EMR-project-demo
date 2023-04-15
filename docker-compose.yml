@@ -10,19 +10,21 @@ services:
       - "80:80"
 
   frontend:
-    image: openmrs/openmrs-reference-application-3-frontend:${TAG:-nightly}
+    image: msfocg/openmrs3-frontend:dev
     environment:
       SPA_PATH: /openmrs/spa
       API_URL: /openmrs
-      SPA_CONFIG_URLS:
+      SPA_CONFIG_URLS: /openmrs/spa/custom-config.json
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/"]
       timeout: 5s
     depends_on:
       - backend
+    volumes:
+      - ./frontend/custom-config.json:/usr/share/nginx/html/custom-config.json
 
   backend:
-    image: michaelbontyes/openmrs3-backend:dev
+    image: msfocg/openmrs3-backend:dev
     depends_on:
       - db
     environment:
@@ -38,6 +40,7 @@ services:
       timeout: 5s
     volumes:
       - openmrs-data:/openmrs/data
+      - ./distro/configuration:/openmrs/distribution/openmrs_config
 
   # MariaDB
   db:
