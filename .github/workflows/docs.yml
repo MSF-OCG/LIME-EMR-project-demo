@@ -15,10 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: | 
-          actions/checkout@v3
-          git config --global user.email ${{ github.event.pusher.email }}
-          git config --global user.name ${{ github.event.pusher.name }}
+        uses: actions/checkout@v3
       - name: Deploy to GitHub Pages
         uses: tool3/docsify-action@v1.0.3
         with:
