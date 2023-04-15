@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build Docsify site
-        uses: tool3/docsify-action@v1.1.0
+        uses: tool3/docsify-action@v1.0.3
         with:
           args: docs
       - name: Publish docs
