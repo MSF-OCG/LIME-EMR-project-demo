@@ -1,4 +1,4 @@
-name: Update documentation
+name: Update documentation on GitHub Pages
 
 on:
   push:
@@ -13,8 +13,19 @@ on:
 jobs:
   update_documentation:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
-    - uses: tool3/docsify-action@v1.0.3
-      with:
-        github_token: ${{ secrets._GITHUB_TOKEN }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Docsify
+        run: npm run docs:build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets._GITHUB_TOKEN }}
+          publish_dir: ./docs/

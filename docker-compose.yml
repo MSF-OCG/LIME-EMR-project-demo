@@ -10,7 +10,7 @@ services:
       - "80:80"
 
   frontend:
-    image: openmrs/openmrs-reference-application-3-frontend:${TAG:-nightly}
+    image: msfocg/openmrs3-frontend:dev
     environment:
       SPA_PATH: /openmrs/spa
       API_URL: /openmrs
