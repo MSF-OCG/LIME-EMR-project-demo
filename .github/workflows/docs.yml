@@ -2,10 +2,12 @@ name: Update documentation on GitHub Pages
 
 on:
   push:
+    branches: ["main"]
     paths:
     - 'docs/**'
     - ".github/workflows/docs.yml"
   pull_request:
+    branches: ["main"]
     paths: 
     - 'docs/**'
     - ".github/workflows/docs.yml"
