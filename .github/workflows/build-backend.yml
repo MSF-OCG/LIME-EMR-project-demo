@@ -26,8 +26,6 @@ jobs:
   build-dev:
     runs-on: ubuntu-latest
 
-    if: github.ref == 'refs/heads/dev' || github.ref == 'refs/remotes/origin/dev' 
-
     environment: 
       name: dev
       url: 'https://lime-dev.ocg.msf.org/'
