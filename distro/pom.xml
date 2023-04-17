@@ -25,6 +25,7 @@
          we do so here so that we can utilise Maven to track updates, etc. -->
     <fhir2.version>1.9.0</fhir2.version>
     <openmrs.version>2.6.0</openmrs.version>
+    <datafilter.version>2.1.1</datafilter.version>
     <initializer.version>2.5.0-SNAPSHOT</initializer.version>
     <webservices.rest.version>2.39.0</webservices.rest.version>
     <addresshierarchy.version>2.15.1</addresshierarchy.version>
@@ -58,6 +59,12 @@
     </dependency>
 
     <!-- Module dependencies -->
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>datafilter-omod</artifactId>
+      <version>${datafilter.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>org.openmrs.module</groupId>
       <artifactId>initializer-omod</artifactId>
