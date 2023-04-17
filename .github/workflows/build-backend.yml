@@ -16,12 +16,6 @@ on:
   pull_request:
     branches:
       - "*"
-    paths:
-      - "Dockerfile"
-      - "pom.xml"
-      - "/distro/distro.properties"
-      - "/distro/pom.xml"
-      - ".github/workflows/build-backend.yml"
     types: [opened, synchronize]
   release:
     types:
@@ -31,8 +25,6 @@ on:
 jobs:
   build-dev:
     runs-on: ubuntu-latest
-
-    if: contains(github.ref, 'dev')
 
     environment: 
       name: dev
@@ -64,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
 
     needs: [build-dev]
-    if: github.event_name == 'pull_request'
+    if: github.ref == 'refs/heads/qa' || github.ref == 'refs/remotes/origin/qa' 
 
     environment: 
       name: qa
