@@ -56,6 +56,7 @@ jobs:
     runs-on: ubuntu-latest
 
     needs: [build-dev]
+    
     if: github.ref == 'refs/heads/qa' || github.ref == 'refs/remotes/origin/qa' 
 
     environment: 
