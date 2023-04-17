@@ -65,7 +65,7 @@ jobs:
 
     needs: BuildDev
 
-    if: ${{ github.event_name == 'pull_request' && endsWith(github.ref, 'qa')  }}
+    if: ${{ github.event_name == 'pull_request' && endsWith(github.ref, '/qa')  }}
 
     environment: 
       name: qa
