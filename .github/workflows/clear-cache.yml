@@ -26,5 +26,6 @@ jobs:
                 repo: context.repo.repo,
                 cache_id: cache.id,
               })
+              console.log(cache.id + "removed")
             }
             console.log("Clear completed")
