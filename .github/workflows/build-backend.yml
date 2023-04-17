@@ -26,10 +26,17 @@ on:
   release:
     types:
       - created
+  workflow_dispatch:
 
 jobs:
-  dev:
+  build-dev:
     runs-on: ubuntu-latest
+
+    if: contains(github.ref, 'dev')
+
+    environment: 
+      name: dev
+      url: 'https://lime-dev.ocg.msf.org/'
 
     steps:
       - name: Set up QEMU
@@ -53,12 +60,15 @@ jobs:
           cache-from: type=gha 
           cache-to: type=gha,mode=max
 
-  staging:
+  build-qa:
     runs-on: ubuntu-latest
 
-    needs: dev
+    needs: [build-dev]
+    if: github.event_name == 'pull_request'
 
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/qa' }}
+    environment: 
+      name: qa
+      url: 'https://lime-qa.ocg.msf.org/'
 
     steps:
       - name: Set up QEMU
