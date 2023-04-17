@@ -11,4 +11,7 @@ jobs:
       - name: Clear caches
         uses: easimon/wipe-cache@main
         with:
+          github-token:
+            required: false
+            default: ${{ secrets._GITHUB_TOKEN }}
           dry-run: 'true'
