@@ -29,7 +29,7 @@ on:
 
 jobs:
   dev:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Set up QEMU
