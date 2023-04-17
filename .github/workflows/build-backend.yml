@@ -29,7 +29,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  BuildDev:
+  build-dev:
     runs-on: ubuntu-latest
 
     if: endsWith(github.ref, 'dev')
@@ -60,12 +60,10 @@ jobs:
           cache-from: type=gha 
           cache-to: type=gha,mode=max
 
-  BuildStaging:
+  build-qa:
     runs-on: ubuntu-latest
 
-    needs: BuildDev
-
-    if: ${{ github.event_name == 'pull_request' && endsWith(github.ref, '/qa')  }}
+    needs: [build-dev]
 
     environment: 
       name: qa
