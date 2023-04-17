@@ -1,0 +1,14 @@
+name: Clear all Github actions caches on sundays
+on:
+  workflow_dispatch:
+
+jobs:
+  clear-cache:
+    name: Delete all caches
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clear caches
+        uses: easimon/wipe-cache@main
+        with:
+          dry-run: 'true'
