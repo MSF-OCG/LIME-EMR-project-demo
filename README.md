@@ -1,3 +1,7 @@
+[![OpenMRS backend image build and push to Docker Hub](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-backend.yml/badge.svg)](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-backend.yml)
+[![OpenMRS frontend image build and push to Docker Hub](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-frontend.yml/badge.svg)](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-frontend.yml)
+
+
 # MSF-OCG LIME EMR Project - OpenMRS 3.x demo
 
 <div>
@@ -13,12 +17,6 @@
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://docs.openconceptlab.org/en/latest/_images/ocl-big-logo.png" height=60px>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://dhis2.org/wp-content/uploads/dhis2-logo-rgb-positive.svg" height=60px>
 </div>
-
-
-## Statuses
-
-[![OpenMRS backend image build and push to Docker Hub](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-backend.yml/badge.svg)](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-backend.yml)
-[![OpenMRS frontend image build and push to Docker Hub](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-frontend.yml/badge.svg)](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-frontend.yml)
 
 
 ## Ambitions

@@ -15,9 +15,11 @@ jobs:
         with:
           script: |
             console.log("About to clear")
+            var number = 0
             const caches = await github.rest.actions.getActionsCacheList({
               owner: context.repo.owner,
               repo: context.repo.repo,
+              per_page: 100
             })
             for (const cache of caches.data.actions_caches) {
               console.log(cache)
@@ -26,6 +28,7 @@ jobs:
                 repo: context.repo.repo,
                 cache_id: cache.id,
               })
-              console.log(cache.id + "removed")
+              number =+ 1
+              console.log(cache.id + " removed")
             }
             console.log("Clear completed")
