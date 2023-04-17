@@ -26,6 +26,7 @@ on:
   release:
     types:
       - created
+  workflow_dispatch:
 
 jobs:
   BuildDev:
@@ -38,7 +39,6 @@ jobs:
       url: 'https://lime-dev.ocg.msf.org/'
 
     steps:
-      - name: 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
