@@ -5,6 +5,7 @@
 <img src="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/main/docs/logo.png" width=300px>
 </div>
 
+
 ## A Generic Light Modular EMR based on 
 
 <div>
@@ -12,6 +13,12 @@
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://docs.openconceptlab.org/en/latest/_images/ocl-big-logo.png" height=60px>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://dhis2.org/wp-content/uploads/dhis2-logo-rgb-positive.svg" height=60px>
 </div>
+
+
+## Statuses
+
+[![OpenMRS backend image build and push to Docker Hub](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-backend.yml/badge.svg)](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-backend.yml)
+[![OpenMRS frontend image build and push to Docker Hub](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-frontend.yml/badge.svg)](https://github.com/MSF-OCG/LIME-EMR-project-demo/actions/workflows/build-frontend.yml)
 
 
 ## Ambitions
