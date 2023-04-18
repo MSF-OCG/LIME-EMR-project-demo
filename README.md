@@ -19,7 +19,7 @@
 </div>
 
 
-## Ambitions
+## Ambitions and success criteria
 
 - Integrated – with OpenMRS ecosystem and community roadmap 
 - Innovative – leveraging modern technology and approaches 
