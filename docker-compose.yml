@@ -22,6 +22,7 @@ services:
       - backend
     volumes:
       - ./frontend/custom-config.json:/usr/share/nginx/html/custom-config.json
+      - ./frontend/logo.png:/usr/share/nginx/html/logo.png
 
   backend:
     image: msfocg/openmrs3-backend:dev

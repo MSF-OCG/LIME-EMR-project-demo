@@ -36,7 +36,7 @@ services:
       - "80:80"
 
   frontend:
-    image: openmrs/openmrs-reference-application-3-frontend:${TAG:-nightly}
+    image: msfocg/openmrs3-frontend:dev
     environment:
       SPA_PATH: /openmrs/spa
       API_URL: /openmrs
@@ -50,7 +50,7 @@ services:
       - ./frontend/custom-config.json:/usr/share/nginx/html/custom-config.json
 
   backend:
-    image: michaelbontyes/openmrs3-backend:dev
+    image: msfocg/openmrs3-backend:dev
     depends_on:
       - db
     environment:
