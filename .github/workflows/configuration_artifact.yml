@@ -26,8 +26,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: configuration-artifact
-          path: ./distro/configuration/
+  - name: Tar files
+    run: tar -cvf configuration_artifact.tar /distro/configuration
+
+  - name: Upload Artifact
+    uses: actions/upload-artifact@v3
+    with:
+      name: configuration-artifact
+      path: configuration_artifact.tar
