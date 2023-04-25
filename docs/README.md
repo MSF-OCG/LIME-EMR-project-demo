@@ -11,7 +11,7 @@
 
 ## File structure
 ```shell
-│ docker-compose.yml # file to run Docker images for the App (docker-compose up -d)
+│ ~/srv/docker-compose.yml # file to run Docker images for the App (docker-compose up -d)
 ├── distro/ # main folder for OpenMRS backend
 │   ├── distro.properties # file to configure OpenMRS version and modules (OMODs)
 │   └── configuration/ # folder with metadata loaded with Initializer
@@ -21,7 +21,7 @@
 ```
 ## Docker Compose
 
-> /docker-compose.yml
+> ~/srv/docker-compose.yml
 
 ```yml
 version: "3.7"
