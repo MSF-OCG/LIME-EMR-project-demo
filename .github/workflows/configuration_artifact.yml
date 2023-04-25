@@ -26,11 +26,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-  - name: Tar files
-    run: tar -cvf configuration_artifact.tar /distro/configuration
+      - name: Tar files
+        run: tar -cvf configuration_artifact.tar /distro/configuration
 
-  - name: Upload Artifact
-    uses: actions/upload-artifact@v3
-    with:
-      name: configuration-artifact
-      path: configuration_artifact.tar
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: configuration-artifact
+          path: configuration_artifact.tar
