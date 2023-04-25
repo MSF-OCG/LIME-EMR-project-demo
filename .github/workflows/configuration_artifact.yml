@@ -1,0 +1,33 @@
+name: Upload Configuration Artifact
+
+on:
+  push:
+    tags:
+      - "*"
+    paths:
+      - "/distro/configuration/**"
+    branches:
+      - "*"
+
+  pull_request:
+    branches:
+      - "*"
+    types: [opened, synchronize]
+  release:
+    types:
+      - created
+  workflow_dispatch:
+
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: configuration-artifact
+          path: ./distro/configuration/
