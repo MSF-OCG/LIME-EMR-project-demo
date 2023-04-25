@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Tar files
-        run: tar -cvf configuration_artifact.tar /distro/configuration
+        run: tar -cvf configuration_artifact.tar ./distro/configuration
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
