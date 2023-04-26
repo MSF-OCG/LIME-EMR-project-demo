@@ -187,58 +187,72 @@ omod.serialization.xstream.type=omod
 
 > /frontend/custom-config.json
 
+### Examples
+
+#### Modify the registration content
 ```json
-{
-    "@openmrs/esm-patient-registration-app": {
-      "fieldDefinitions": [
-        {
-          "id": "referredby",
-          "name": "Referred by",
-          "type": "person attribute",
-          "uuid": "4dd56a75-14ab-4148-8700-1f4f704dc5b0",
-          "answerConceptSetUuid": "6682d17f-0777-45e4-a39b-93f77eb3531c",
-          "validation": {
-            "matches": ""
-          }
-        }
-      ],
-      "sectionDefinitions": [
-        {
-          "id": "additionalDetails",
-          "name": "Additional Details",
-          "fields": [
-            "referredby"
-          ]
-        }
-      ],
-      "sections": [
-        "demographics",
-        "relationships",
-        "contact",
-        "additionalDetails"
-      ],
-      "fieldConfigurations": {
-        "gender": [
-          {
-            "id": "male",
-            "value": "Male",
-            "label": "Male"
-          },
-          {
-            "id": "female",
-            "value": "Female",
-            "label": "Female"
-          },
-          {
-            "id": "other",
-            "value": "Other",
-            "label": "Other"
-          }
-        ]
+"@openmrs/esm-patient-registration-app": {
+  "fieldDefinitions": [
+    {
+      "id": "referredby",
+      "name": "Referred by",
+      "type": "person attribute",
+      "uuid": "4dd56a75-14ab-4148-8700-1f4f704dc5b0",
+      "answerConceptSetUuid": "6682d17f-0777-45e4-a39b-93f77eb3531c",
+      "validation": {
+        "matches": ""
       }
     }
+  ],
+  "sectionDefinitions": [
+    {
+      "id": "additionalDetails",
+      "name": "Additional Details",
+      "fields": [
+        "referredby"
+      ]
+    }
+  ],
+  "sections": [
+    "demographics",
+    "relationships",
+    "contact",
+    "additionalDetails"
+  ],
+  "fieldConfigurations": {
+    "gender": [
+      {
+        "id": "male",
+        "value": "Male",
+        "label": "Male"
+      },
+      {
+        "id": "female",
+        "value": "Female",
+        "label": "Female"
+      },
+      {
+        "id": "other",
+        "value": "Other",
+        "label": "Other"
+      }
+    ]
   }
+}
 ```
+
+#### Modify the vital signs form
+```json
+"@openmrs/esm-patient-vitals-app": {
+  "vitals": {
+    "useFormEngine": true,
+    "formName": "Surgical Operation",
+    "formUuid": "96637f12-3c04-311f-b477-3fa6a866e895",
+    "encounterTypeUuid": "67a71486-1a54-468f-ac3e-7091a9a79584"
+  }
+}
+```
+
 
 ## Metadata
 
@@ -254,6 +268,17 @@ docker restart lime-emr-project-demo-backend
 
 Content is organized in OpenConceptLab (OCL), in the [LIME Demo collection](https://app.openconceptlab.org/#/orgs/MSFOCG/collections/lime-demo/ ) and manually exported as ZIP files, then added to the configuration:
 > /distro/configuration/OCL
+
+In CSV templats
+1. Define project-specific metadata
+In OpenConceptLab (OCL)
+2. Identify concepts that can be reused in a) CIEL source b) MSF sources
+3. Create new concepts if needed in MSF OCG source
+4. Create collections of concepts needed for the implementation (per program, per form, and generic ones)
+5. Release the collection and export it as a ZIP file
+In distribution configuration
+1. Add the ZIP file in /distro/configuration/ampathforms/___.zip
+2. Restart OpenMRS to verify that the new concepts are well loaded in the OpenMRS dictionnary 
 
 
 # Build
