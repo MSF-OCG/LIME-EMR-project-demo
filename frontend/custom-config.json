@@ -1,4 +1,14 @@
 {
+    "@openmrs/esm-login-app": {
+        "logo": {
+          "src": "logo.png"
+        }
+      },
+      "@openmrs/esm-primary-navigation-app": {
+        "logo": {
+          "src": "logo.png"
+        }
+      },
     "@openmrs/esm-styleguide": {
       "Brand color #1": "#D7211E",
       "Brand color #2": "#414141",

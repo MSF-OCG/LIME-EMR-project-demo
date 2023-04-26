@@ -22,7 +22,9 @@ services:
       - backend
     volumes:
       - ./frontend/custom-config.json:/usr/share/nginx/html/custom-config.json
-      - ./frontend/logo.png:/usr/share/nginx/html/logo.png
+      - ./frontend/assets/logo.png:/usr/share/nginx/html/logo.png
+      - ./frontend/assets/favicon.ico:/usr/share/nginx/html/favicon.ico
+      - ./frontend/assets/favicon-32x32.webp:/usr/share/nginx/html/favicon-32x32.webp
 
   backend:
     image: msfocg/openmrs3-backend:dev
