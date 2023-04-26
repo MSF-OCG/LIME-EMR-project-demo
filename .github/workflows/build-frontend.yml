@@ -1,27 +1,7 @@
 name: OpenMRS frontend image build and push to Docker Hub
 
 on:
-  push:
-    tags:
-      - "*"
-    paths:
-      - "/frontend/Dockerfile"
-      - "/frontend/spa-build-config.json"
-      - ".github/workflows/build-frontend.yml"
-    branches:
-      - "*"
-
-  pull_request:
-    branches:
-      - "*"
-    paths:
-      - "/frontend/Dockerfile"
-      - "/frontend/spa-build-config.json"
-      - ".github/workflows/build-frontend.yml"
-    types: [opened, synchronize]
-  release:
-    types:
-      - created
+  workflow_dispatch:
 
 jobs:
   dev:
