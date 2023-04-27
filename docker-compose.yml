@@ -23,6 +23,7 @@ services:
     volumes:
       - ./frontend/custom-config.json:/usr/share/nginx/html/custom-config.json
       - ./frontend/assets/logo.png:/usr/share/nginx/html/logo.png
+      - ./frontend/assets/header-logo.png:/usr/share/nginx/html/header-logo.png
       - ./frontend/assets/favicon.ico:/usr/share/nginx/html/favicon.ico
       - ./frontend/assets/favicon-32x32.webp:/usr/share/nginx/html/favicon-32x32.webp
 
