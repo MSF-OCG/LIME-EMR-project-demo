@@ -6,6 +6,12 @@ on:
 jobs:
   dev:
     runs-on: ubuntu-latest
+    
+    environment: 
+      name: dev
+      url: |
+        'https://lime-dev.ocg.msf.org'
+        'https://hub.docker.com/repository/docker/msfocg/openmrs3-frontend'
 
     steps:
       - name: Set up QEMU
