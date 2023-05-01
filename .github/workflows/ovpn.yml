@@ -23,7 +23,7 @@ jobs:
           echo "${{ secrets.OVPN_REMOTE_TCP }}" > remote_tcp.txt
 
       - name: Connect VPN
-        run: sudo openvpn --config ".github/ovpn/client.ovpn" --log "vpn.log" --daemon
+        run: sudo openvpn --config ".github/workflows/ovpn/client.ovpn" --log "vpn.log" --daemon
 
       - name: Kill VPN connection
         if: always()
