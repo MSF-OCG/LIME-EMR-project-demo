@@ -13,6 +13,15 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y openvpn openvpn-systemd-resolved
+          
+      - name: Setup VPN config
+        run: |
+          echo "${{ secrets.OVPN_CA }}" > ca.crt
+          echo "${{ secrets.OVPN_CERT }}" > user.crt
+          echo "${{ secrets.OVPN_TLS_CYPHER }}" > tls_cipher.txt
+          echo "${{ secrets.OVPN_REMOTE_UDP }}" > remote_udp.txt
+          echo "${{ secrets.OVPN_REMOTE_TCP }}" > remote_tcp.txt
+          
       - name: Connect to VPN
         uses: "kota65535/github-openvpn-connect-action@v2"
         with:
