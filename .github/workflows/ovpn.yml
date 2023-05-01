@@ -26,10 +26,6 @@ jobs:
           username: ${{ secrets.OVPN_USERNAME }}
           password: ${{ secrets.OVPN_PASSWORD }}
           client_key: ${{ secrets.OVPN_USER_KEY }}
-          
-      - name: Wait for a VPN connection
-        timeout-minutes: 1
-        run: until ping -c1 lime-dev.ocg.msf.org; do sleep 2; done
 
       - name: multiple command
         uses: appleboy/ssh-action@v0.1.10
