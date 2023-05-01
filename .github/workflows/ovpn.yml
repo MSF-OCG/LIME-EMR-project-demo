@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: Install OpenVPN
         run: |
-          sudo apt-get update
-          sudo apt-get --assume-yes --no-install-recommends install openvpn          
+          apt-get update
+          apt-get --assume-yes --no-install-recommends install openvpn          
 
       - name: Setup VPN config
         run: |
@@ -23,17 +23,9 @@ jobs:
           echo "${{ secrets.OVPN_REMOTE_TCP }}" > remote_tcp.txt
 
       - name: Connect VPN
-        run: sudo openvpn --config ".github/workflows/ovpn/client.ovpn" --log "vpn.log" --daemon --help
+        run: openvpn --config ".github/workflows/ovpn/client.ovpn" --daemon
 
       - name: Kill VPN connection
         if: always()
         run: |
-          sudo chmod 777 vpn.log
-          sudo killall openvpn          
-
-      - name: Upload VPN logs
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: VPN logs
-          path: vpn.log
+          sudo killall openvpn
