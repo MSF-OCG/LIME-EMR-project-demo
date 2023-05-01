@@ -18,9 +18,6 @@ jobs:
         run: |
           echo "${{ secrets.OVPN_CA }}" > ca.crt
           echo "${{ secrets.OVPN_CERT }}" > user.crt
-          echo "${{ secrets.OVPN_TLS_CYPHER }}" > tls_cipher.txt
-          echo "${{ secrets.OVPN_REMOTE_UDP }}" > remote_udp.txt
-          echo "${{ secrets.OVPN_REMOTE_TCP }}" > remote_tcp.txt
           
       - name: Connect to VPN
         uses: "kota65535/github-openvpn-connect-action@v2"
@@ -29,3 +26,23 @@ jobs:
           username: ${{ secrets.OVPN_USERNAME }}
           password: ${{ secrets.OVPN_PASSWORD }}
           client_key: ${{ secrets.OVPN_USER_KEY }}
+          
+      - name: Wait for a VPN connection
+        timeout-minutes: 1
+        run: until ping -c1 lime-dev.ocg.msf.org; do sleep 2; done
+
+      - name: multiple command
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.DEV_HOSTNAME }}
+          username: ${{ secrets.OVPN_USERNAME }}
+          password: ${{ secrets.OVPN_PASSWORD }}
+          port: ${{ secrets.DEV_PORT }}
+          script: |
+            whoami
+            ls -al
+
+      - name: Kill VPN connection
+        if: always()
+        run: |
+          sudo killall openvpn          
