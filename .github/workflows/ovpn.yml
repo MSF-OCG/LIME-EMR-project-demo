@@ -7,25 +7,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Install OpenVPN
         run: |
-          sudo apt-get update
-          sudo apt-get --assume-yes --no-install-recommends install openvpn          
-
-      - name: Setup VPN config
-        run: |
-          echo "${{ secrets.OVPN_CA }}" > ca.crt
-          echo "${{ secrets.OVPN_CERT }}" > user.crt
-          echo "${{ secrets.OVPN_USER_KEY }}" > user.key
-          echo "${{ secrets.OVPN_USERNAME_PASSWORD }}" > secret.txt
-          echo "${{ secrets.OVPN_TLS_CYPHER }}" > tls_cipher.txt
-          echo "${{ secrets.OVPN_REMOTE_UDP }}" > remote_udp.txt
-          echo "${{ secrets.OVPN_REMOTE_TCP }}" > remote_tcp.txt
-
-      - name: Connect VPN
-        run: sudo openvpn --config ".github/workflows/ovpn/client.conf" --daemon
-
-      - name: Kill VPN connection
-        if: always()
-        run: |
-          sudo killall openvpn
+          sudo apt update
+          sudo apt install -y openvpn openvpn-systemd-resolved
+      - name: Connect to VPN
+        uses: "kota65535/github-openvpn-connect-action@v2"
+        with:
+          config_file: ./github/workflows/ovpn/client.ovpn
+          username: ${{ secrets.OVPN_USERNAME }}
+          password: ${{ secrets.OVPN_PASSWORD }}
+          client_key: ${{ secrets.OVPN_USER_KEY }}
