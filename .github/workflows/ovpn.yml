@@ -1,0 +1,39 @@
+name: OpenVPN
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install OpenVPN
+        run: |
+          sudo apt-get update
+          sudo apt-get --assume-yes --no-install-recommends install openvpn          
+
+      - name: Setup VPN config
+        run: |
+          echo "${{ secrets.OVPN_CA }}" > ca.crt
+          echo "${{ secrets.OVPN_CERT }}" > user.crt
+          echo "${{ secrets.OVPN_USER_KEY }}" > user.key
+          echo "${{ secrets.OVPN_USERNAME_PASSWORD }}" > secret.txt
+          echo "${{ secrets.OVPN_TLS_CYPHER }}" > tls_cipher.txt
+          echo "${{ secrets.OVPN_REMOTE_UDP }}" > remote_udp.txt
+          echo "${{ secrets.OVPN_REMOTE_TCP }}" > remote_tcp.txt
+
+      - name: Connect VPN
+        run: sudo openvpn --config ".github/ovpn/client.ovpn" --log "vpn.log" --daemon
+
+      - name: Kill VPN connection
+        if: always()
+        run: |
+          sudo chmod 777 vpn.log
+          sudo killall openvpn          
+
+      - name: Upload VPN logs
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: VPN logs
+          path: vpn.log
