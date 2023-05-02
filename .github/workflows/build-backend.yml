@@ -9,7 +9,9 @@ jobs:
 
     environment: 
       name: dev
-      url: 'https://lime-dev.ocg.msf.org/'
+      url: |
+        'https://lime-dev.ocg.msf.org'
+        'https://hub.docker.com/repository/docker/msfocg/openmrs3-backend'
 
     steps:
       - name: Set up QEMU
