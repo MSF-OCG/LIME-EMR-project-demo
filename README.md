@@ -10,7 +10,7 @@
 </div>
 
 
-## A Generic Light Modular EMR based on 
+## A Generic Light Modular EMR using 
 
 <div>
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/OpenMRS_logo_2008.svg/1280px-OpenMRS_logo_2008.svg.png" height=60px>
@@ -19,7 +19,7 @@
 </div>
 
 
-## Ambitions
+## Ambitions and success criteria
 
 - Integrated – with OpenMRS ecosystem and community roadmap 
 - Innovative – leveraging modern technology and approaches 
