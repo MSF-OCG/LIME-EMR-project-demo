@@ -11,7 +11,6 @@
   <name>OpenMRS distro</name>
   <packaging>pom</packaging>
 
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -27,14 +26,14 @@
     <fhir2.version>1.9.0</fhir2.version>
     <openmrs.version>2.6.0</openmrs.version>
     <datafilter.version>2.1.1</datafilter.version>
-    <initializer.version>2.5.0-SNAPSHOT</initializer.version>
+    <initializer.version>2.5.1</initializer.version>
     <webservices.rest.version>2.39.0</webservices.rest.version>
     <addresshierarchy.version>2.15.1</addresshierarchy.version>
     <idgen.version>4.10.0-SNAPSHOT</idgen.version>
-    <legacyui.version>1.14.0</legacyui.version>
+    <legacyui.version>1.15.0</legacyui.version>
     <metadatamapping.version>1.6.0</metadatamapping.version>
     <metadatasharing.version>1.9.0</metadatasharing.version>
-    <openconceptlab.version>2.0.0</openconceptlab.version>
+    <openconceptlab.version>2.1.0-SNAPSHOT</openconceptlab.version>
     <!-- this is request for the OCL UI -->
     <owa.version>1.14.0</owa.version>
     <attachments.version>3.0.0</attachments.version>
