@@ -6,6 +6,10 @@ on:
 jobs:
   dev:
     runs-on: ubuntu-latest
+    
+    environment: 
+      name: dev
+      url: 'https://lime-dev.ocg.msf.org'
 
     steps:
       - name: Set up QEMU
