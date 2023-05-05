@@ -10,3 +10,5 @@ RUN git checkout -b 'dev'
 RUN git config core.sparsecheckout true
 RUN echo distro/ >> .git/info/sparse-checkout
 RUN git pull origin dev
+
+ENTRYPOINT ["tail", "-f", "/dev/null"] 
