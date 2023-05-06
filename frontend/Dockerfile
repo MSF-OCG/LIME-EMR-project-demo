@@ -29,7 +29,7 @@ COPY /frontend/nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=dev /app/spa /usr/share/nginx/html
 
-COPY /distro/frontend/spa-build-config.json /usr/share/nginx/html/
+COPY /distro/custom-config.json /usr/share/nginx/html/
 COPY /distro/assets/logo.png /usr/share/nginx/html/
 COPY /distro/assets/header-logo.png /usr/share/nginx/html/
 COPY /distro/assets/favicon.ico /usr/share/nginx/html/
