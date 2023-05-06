@@ -29,4 +29,10 @@ COPY /frontend/nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=dev /app/spa /usr/share/nginx/html
 
+COPY /distro/frontend/spa-build-config.json /usr/share/nginx/html/
+COPY /distro/assets/logo.png /usr/share/nginx/html/
+COPY /distro/assets/header-logo.png /usr/share/nginx/html/
+COPY /distro/assets/favicon.ico /usr/share/nginx/html/
+COPY /distro/assets/favicon-32x32.webp /usr/share/nginx/html/
+
 CMD ["/usr/local/bin/startup.sh"]
