@@ -354,3 +354,22 @@ Latest images can be pulled on instances using the Docker command:
 ```shell
 docker-compose pull && docker-compose up -d
 ```
+
+# Development tooing
+
+## Local database 
+### Connect DBeaver to the Docker MariaDB container
+1. Update the openmrs user to be usable from the host machine
+```shell
+## Login in the MariaDB container
+docker exec -it lime-emr-project-demo-db-1 sh
+## Connect to MySQL as root
+mysql -u root -p 
+## Update the host allowance of the openmrs user 
+update mysql.user set host='%' where user='openmrs'
+```
+2. In MariaDB
+  a. Set the server host as "localhost", the port as "3306", the database as "openmrs" and the database authentication username as "openmrs" 
+  b. In the driver properties, set the "allowPublicKeyRetrieval" to "true"
+3. Test the connection to confirm that it is successful
+4. Configure the Proxy SSH/Proxy to do the same on a remote server
