@@ -355,7 +355,7 @@ Latest images can be pulled on instances using the Docker command:
 docker-compose pull && docker-compose up -d
 ```
 
-# Development tooing
+# Development tooling
 
 ## Local database 
 ### Connect DBeaver to the Docker MariaDB container
