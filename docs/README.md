@@ -280,6 +280,12 @@ In distribution configuration
 1. Add the ZIP file in /distro/configuration/ampathforms/___.zip
 2. Restart OpenMRS to verify that the new concepts are well loaded in the OpenMRS dictionnary 
 
+### OpenConceptLab (OCL)
+
+UUID formula for Excel:
+```shell
+=LOWER(CONCATENATE(DEC2HEX(RANDBETWEEN(0,POWER(16,8)),8),"-",DEC2HEX(RANDBETWEEN(0,POWER(16,4)),4),"-","4",DEC2HEX(RANDBETWEEN(0,POWER(16,3)),3),"-",DEC2HEX(RANDBETWEEN(8,11)),DEC2HEX(RANDBETWEEN(0,POWER(16,3)),3),"-",DEC2HEX(RANDBETWEEN(0,POWER(16,8)),8),DEC2HEX(RANDBETWEEN(0,POWER(16,4)),4)))
+```
 
 # Build
 Docker images will automatically be rebuilt and pushed to [Docker Hub of MSF OCG](https://hub.docker.com/r/msfocg) when binaries or configurations are modified. 
