@@ -10,14 +10,20 @@
 3. Pull the latest images and run the app with Docker Compose (docker-compose pull && docker-compose up -d)
 
 ## File structure
+
+volu
+
 ```shell
-│ ~/srv/docker-compose.yml # file to run Docker images for the App (docker-compose up -d)
-├── distro/ # main folder for OpenMRS backend
-│   ├── distro.properties # file to configure OpenMRS version and modules (OMODs)
-│   └── configuration/ # folder with metadata loaded with Initializer
-└── frontend / # main folder for OpenMRS frontend
-    ├── spa-build-config.json # file to configure OpenMRS 3.x frontend properties and modules
-    └── custom-config.json # file to configure frontend customizations (visiblity, order, logo, etc.)
+├ ~/home/docker-compose.yml # file to run Docker images for the App (docker-compose up -d)
+│  ├─ distro/ # main folder for OpenMRS backend
+│  │  ├── distro.properties # file to configure OpenMRS version and modules (OMODs)
+│  │  └── configuration/ # folder with metadata loaded with Initializer
+│  └─ frontend / # main folder for OpenMRS frontend
+│     ├── spa-build-config.json # file to configure OpenMRS 3.x frontend properties and modules
+│     └── custom-config.json # file to configure frontend customizations (visiblity, order, logo, etc.)
+├ ~/var/lime/ # directory for app files
+├ ~/var/log/ # directory for logs
+└ ~/var/lib/docker/volumes/ # directory where Docker will store volumes for data persistence
 ```
 ## Docker Compose
 
@@ -306,7 +312,7 @@ Dev, QA/UAT, Preprod, prod
 ## On localhost
 ```shell
 # SSH Azure instance via jumphost
-ssh username@msf-ocg-openmrs3-dev.westeurope.cloudapp.azure.com -p 22222
+ssh username@____.cloudapp.azure.com -p ____
 # switch to sudo privileges
 sudo su
 # Start OpenMRS
@@ -316,7 +322,7 @@ docker ps
 # IF docker-compose file is missing, download configuration, then start OpenMRS
 curl https://raw.githubusercontent.com/openmrs/openmrs-distro-referenceapplication/main/docker-compose.yml > docker-compose.yml 
 # Verify that the web app is available
-http://msf-ocg-openmrs3-dev.westeurope.cloudapp.azure.com 
+https://___.cloudapp.azure.com 
 # All done!
 ```
 
@@ -324,7 +330,7 @@ http://msf-ocg-openmrs3-dev.westeurope.cloudapp.azure.com
 
 Ansible script to build
 
-## On FiWi 
+## On premises 
 
 # Maintain
 
