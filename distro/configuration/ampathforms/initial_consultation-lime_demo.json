@@ -1,0 +1,50 @@
+{
+    "name": "Initial consultation",
+    "pages": [
+      {
+        "label": "Initial consultation",
+        "sections": [
+          {
+            "label": "Main",
+            "isExpanded": "true",
+            "questions": [
+              {},
+              {
+                "label": "Final diagnosis",
+                "type": "obs",
+                "required": false,
+                "id": "final-diagnosis",
+                "questionOptions": {
+                  "rendering": "select",
+                  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0160",
+                  "conceptMappings": [],
+                  "answers": [
+                    {
+                      "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0001",
+                      "label": "Acute abdomen"
+                    },
+                    {
+                      "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0002",
+                      "label": "Acute asthma"
+                    },
+                    {
+                      "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0003",
+                      "label": "Acute chest syndrome"
+                    }
+                  ]
+                },
+                "validators": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1",
+    "published": true,
+    "retired": false,
+    "encounter": "Consultation",
+    "processor": "EncounterFormProcessor",
+    "uuid": "xxxx",
+    "referencedForms": []
+  }
