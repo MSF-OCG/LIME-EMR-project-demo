@@ -1,14 +1,18 @@
 {
     "name": "Initial consultation",
+    "description": "Form",
+    "version": "0.1",
+    "published": true,
+    "retired": false,
+    "encounter": "Consultation",
     "pages": [
       {
-        "label": "Initial consultation",
+        "label": "Main page",
         "sections": [
           {
-            "label": "Main",
+            "label": "Main section",
             "isExpanded": "true",
             "questions": [
-              {},
               {
                 "label": "Final diagnosis",
                 "type": "obs",
@@ -40,10 +44,6 @@
         ]
       }
     ],
-    "version": "1",
-    "published": true,
-    "retired": false,
-    "encounter": "Consultation",
     "processor": "EncounterFormProcessor",
     "uuid": "xxxx",
     "referencedForms": []
