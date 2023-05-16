@@ -20,6 +20,12 @@ services:
       timeout: 5s
     depends_on:
       - backend
+    volumes:
+      - ./distro/custom-config.json:/usr/share/nginx/html/custom-config.json
+      - ./distro/assets/logo.png:/usr/share/nginx/html/logo.png
+      - ./distro/assets/header-logo.png:/usr/share/nginx/html/header-logo.png
+      - ./distro/assets/favicon.ico:/usr/share/nginx/html/favicon.ico
+      - ./distro/assets/favicon-32x32.webp:/usr/share/nginx/html/favicon-32x32.webp
 
   backend:
     image: msfocg/openmrs3-backend:dev
