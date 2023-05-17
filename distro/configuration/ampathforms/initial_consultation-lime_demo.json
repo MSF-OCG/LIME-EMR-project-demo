@@ -1,16 +1,11 @@
 {
     "name": "Initial consultation",
-    "description": "Form",
-    "version": "0.1",
-    "published": true,
-    "retired": false,
-    "encounter": "Consultation",
     "pages": [
       {
-        "label": "Main page",
+        "label": "Page",
         "sections": [
           {
-            "label": "Main section",
+            "label": "Section",
             "isExpanded": "true",
             "questions": [
               {
@@ -45,6 +40,9 @@
       }
     ],
     "processor": "EncounterFormProcessor",
-    "uuid": "xxxx",
-    "referencedForms": []
+    "encounterType": "dd528487-82a5-4082-9c72-ed246bd49591",
+    "referencedForms": [],
+    "uuid": "80e28bbf-f6b9-40de-bcad-86303e4cd738",
+    "version": "0.4",
+    "description": "Initial consultation"
   }
