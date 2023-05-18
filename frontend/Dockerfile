@@ -6,7 +6,7 @@ ARG APP_SHELL_VERSION=next
 RUN mkdir -p /app
 WORKDIR /app
 
-COPY spa-build-config.json .
+COPY /frontend/spa-build-config.json .
 
 ARG CACHE_BUST
 RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} build --build-config spa-build-config.json --target ./spa
@@ -29,10 +29,10 @@ COPY /frontend/nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=dev /app/spa /usr/share/nginx/html
 
-COPY custom-config.json /usr/share/nginx/html/
-COPY assets/logo.png /usr/share/nginx/html/
-COPY assets/header-logo.png /usr/share/nginx/html/
-COPY assets/favicon.ico /usr/share/nginx/html/
-COPY assets/favicon-32x32.webp /usr/share/nginx/html/
+COPY /frontend/custom-config.json /usr/share/nginx/html/
+COPY /frontend/assets/logo.png /usr/share/nginx/html/
+COPY /frontend/assets/header-logo.png /usr/share/nginx/html/
+COPY /frontend/assets/favicon.ico /usr/share/nginx/html/
+COPY /frontend/assets/favicon-32x32.webp /usr/share/nginx/html/
 
 CMD ["/usr/local/bin/startup.sh"]
