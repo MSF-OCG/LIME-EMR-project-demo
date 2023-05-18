@@ -175,3 +175,8 @@ Concept,MSFOCG,OpenMRS,,AA0173,da33d74e-33b3-495a-9d7c-aa00a-aa0173,Clinical ass
 Concept,MSFOCG,OpenMRS,,AA0174,da33d74e-33b3-495a-9d7c-aa00a-aa0174,Skin,FULLY_SPECIFIED,,,,,,Misc,Text,,,,SMSTCARD4OE,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0175,da33d74e-33b3-495a-9d7c-aa00a-aa0175,Lungs,FULLY_SPECIFIED,,,,,,Misc,Text,,,,SMSTCARD4OE,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0176,da33d74e-33b3-495a-9d7c-aa00a-aa0176,Cardiovascular system,FULLY_SPECIFIED,,,,,,Misc,Text,,,,SMSTCARD4OE,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,OpenMRS,,AA0177,da33d74e-33b3-495a-9d7c-aa00a-aa0177,Entry triage color code,FULLY_SPECIFIED,,,,,,Misc,Text,,,,dhis2,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,OpenMRS,,AA0178,da33d74e-33b3-495a-9d7c-aa00a-aa0178,DOA,FULLY_SPECIFIED,,,,,,Misc,Text,,,,dhis2,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,OpenMRS,,AA0179,da33d74e-33b3-495a-9d7c-aa00a-aa0179,Red,FULLY_SPECIFIED,,,,,,Misc,Text,,,,dhis2,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,OpenMRS,,AA0180,da33d74e-33b3-495a-9d7c-aa00a-aa0180,Yellow,FULLY_SPECIFIED,,,,,,Misc,Text,,,,dhis2,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,OpenMRS,,AA0181,da33d74e-33b3-495a-9d7c-aa00a-aa0181,Green,FULLY_SPECIFIED,,,,,,Misc,Text,,,,dhis2,,,,,,,,,,,,,,,,,,,,,,

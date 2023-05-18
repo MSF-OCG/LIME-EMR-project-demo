@@ -1,3 +1,4 @@
 Uuid,Void/Retire,Same as mappings,Fully specified name:en,Short name:en,Fully specified name:es,Short name:es,Description:en,Description:es,Data class,Data type,Complex data handler,Answers,Members,Allow decimals,Units,Normal low,Normal high,Absolute low,Absolute high,_version:1,_order:1100
 da33d74e-33b3-495a-9d7c-aa00a-aa0160,,,Final Diagnosis,,,,,,Misc,Coded,,Acute abdomen;Acute asthma;Acute chest syndrome;Acute diarrhea (bloody);Acute diarrhea (non-bloody),,,,,,,,,
 da33d74e-33b3-495a-9d7c-aa00a-aa0159,,,Possible Diagnosis,,,,,,Misc,Coded,,Acute abdomen;Acute asthma;Acute chest syndrome;Acute diarrhea (bloody);Acute diarrhea (non-bloody),,,,,,,,,
+da33d74e-33b3-495a-9d7c-aa00a-aa0177,,,Entry triage color code,,,,,,Misc,Coded,,DOA;Red;Yellow;Green,,,,,,,,,

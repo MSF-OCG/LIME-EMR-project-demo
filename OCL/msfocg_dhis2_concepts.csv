@@ -158,3 +158,8 @@ Concept,MSFOCG,DHIS2DataElements,,v8Tor2vd6rC,dbdde1b0-e701-47e9-9b30-19aa36c8e1
 Concept,MSFOCG,DHIS2DataElements,,lzv7q1aAiX8,5018d3b2-3d7d-4b34-8d32-ca7d03b698ef,Whooping cough (suspected),FULLY_SPECIFIED,,,,,,Indicator,Text,,,,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,DHIS2DataElements,,ZrLNprCyHwF,2fa4ed82-8fc7-4d0d-87e8-fd51f8aaa255,Yellow fever,FULLY_SPECIFIED,,,,,,Indicator,Text,,,,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,DHIS2DataElements,,ZTSBtZKc8Ff,2fa4ed82-8fc7-4d0d-87e8-fd51f8aaa256,Final main diagnosis,FULLY_SPECIFIED,,,,,,Indicator,Text,,,,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,DHIS2DataElements,,vqGFXhDM1XG,2fa4ed82-8fc7-4d0d-87e8-fd51f8aaa257,Entry triage color code,FULLY_SPECIFIED,,,,,,Indicator,Text,,,,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,DHIS2DataElements,,vQyb2n9ZbNS,2fa4ed82-8fc7-4d0d-87e8-fd51f8aaa258,DOA,FULLY_SPECIFIED,,,,,,Indicator,Text,,,,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,DHIS2DataElements,,gyW85pubPCN,2fa4ed82-8fc7-4d0d-87e8-fd51f8aaa259,Red,FULLY_SPECIFIED,,,,,,Indicator,Text,,,,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,DHIS2DataElements,,ubXSTebFSJo,2fa4ed82-8fc7-4d0d-87e8-fd51f8aaa260,Yellow,FULLY_SPECIFIED,,,,,,Indicator,Text,,,,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,DHIS2DataElements,,pEJJvfY04PX,2fa4ed82-8fc7-4d0d-87e8-fd51f8aaa261,Green,FULLY_SPECIFIED,,,,,,Indicator,Text,,,,,,,,,,,,,,,,,,,,,,,,,

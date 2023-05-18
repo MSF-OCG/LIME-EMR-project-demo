@@ -11,8 +11,6 @@
 
 ## File structure
 
-volu
-
 ```shell
 ├ ~/home/docker-compose.yml # file to run Docker images for the App (docker-compose up -d)
 │  ├─ distro/ # main folder for OpenMRS backend
@@ -306,6 +304,11 @@ Docker images will automatically be rebuilt and pushed to [Docker Hub of MSF OCG
 ## Environments 
 
 Dev, QA/UAT, Preprod, prod
+
+| Environment | Dockerfile | Docker compose | Comment |
+|---|---|---|---|
+| Local | Modified to load custom frontend assets (logo, config json, etc.) | docker-compose.local.yml | Loading distro/configuration from the Docker host (local machine) when restarting the Docker backend, frontend must be rebuilt if modified (assets, spa modules, etc) |
+| Dev/Staging/Prod | Modified to load custom frontend assets (logo, config json, etc.) | docker-compose.yml | Loading frontend and backend Docker images built in Github actions and pushed to Docker Hub |
 
 # Deploy 
 
