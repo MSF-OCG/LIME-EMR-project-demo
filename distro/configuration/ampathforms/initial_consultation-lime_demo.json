@@ -1,74 +1,67 @@
 {
-    "pages": [
-      {
-        "label": "Page",
-        "sections": [
-          {
-            "label": "Section",
-            "isExpanded": "true",
-            "questions": [
-              {
-                "label": "Final diagnosis",
-                "type": "obs",
-                "required": false,
-                "id": "diagnosis",
-                "questionOptions": {
-                  "rendering": "select",
-                  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0160",
-                  "conceptMappings": [],
-                  "answers": [
-                    {
-                      "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0001",
-                      "label": "Acute abdomen"
-                    },
-                    {
-                      "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0002",
-                      "label": "Acute asthma"
-                    }
-                  ]
-                },
-                "validators": []
-              },
-              {
-                "label": "Triage color code",
-                "type": "obs",
-                "required": false,
-                "id": "triage",
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0177",
-                  "conceptMappings": [],
-                  "answers": [
-                    {
-                      "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0178",
-                      "label": "DOA"
-                    },
-                    {
-                      "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0181",
-                      "label": "Green"
-                    },
-                    {
-                      "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0180",
-                      "label": "Yellow"
-                    },
-                    {
-                      "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0179",
-                      "label": "Red"
-                    }
-                  ]
-                },
-                "validators": []
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "processor": "EncounterFormProcessor",
-    "encounterType": "dd528487-82a5-4082-9c72-ed246bd49591",
-    "referencedForms": [],
-    "uuid": "",
-    "name": "Initial Consultation",
-    "version": "0.2",
-    "description": "0.1"
-  }
+	"pages": [{
+		"label": "Page",
+		"sections": [{
+			"label": "Section",
+			"isExpanded": "true",
+			"questions": [{
+					"label": "Final diagnosis",
+					"type": "obs",
+					"required": false,
+					"id": "diagnosis",
+					"questionOptions": {
+						"rendering": "select",
+						"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0160",
+						"conceptMappings": [],
+						"answers": [{
+								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0001",
+								"label": "Acute abdomen"
+							},
+							{
+								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0002",
+								"label": "Acute asthma"
+							}
+						]
+					},
+					"validators": []
+				},
+				{
+					"label": "Triage color code",
+					"type": "obs",
+					"required": false,
+					"id": "triage",
+					"questionOptions": {
+						"rendering": "radio",
+						"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0177",
+						"conceptMappings": [],
+						"answers": [{
+								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0178",
+								"label": "DOA"
+							},
+							{
+								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0181",
+								"label": "Green"
+							},
+							{
+								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0180",
+								"label": "Yellow"
+							},
+							{
+								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0179",
+								"label": "Red"
+							}
+						]
+					},
+					"validators": []
+				}
+			]
+		}]
+	}],
+	"processor": "EncounterFormProcessor",
+	"encounterType": "dd528487-82a5-4082-9c72-ed246bd49591",
+	"referencedForms": [],
+	"uuid": "",
+	"name": "Initial Consultation",
+	"version": "0.2",
+	"description": "0.1"
+}
