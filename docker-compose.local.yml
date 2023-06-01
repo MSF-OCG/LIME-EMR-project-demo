@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
   gateway:
+    profiles: ["openmrs3"]
     image: openmrs/openmrs-reference-application-3-gateway:${TAG:-nightly}
     depends_on:
       - frontend
@@ -10,6 +11,7 @@ services:
       - "80:80"
 
   frontend:
+    profiles: ["openmrs3"]
     image: msfocg/openmrs3-frontend:dev
     environment:
       SPA_PATH: /openmrs/spa
@@ -22,6 +24,7 @@ services:
       - backend
 
   backend:
+    profiles: ["openmrs3", "openmrs"]
     image: msfocg/openmrs3-backend:dev
     depends_on:
       - db
@@ -31,8 +34,8 @@ services:
       OMRS_CONFIG_CREATE_TABLES: "true"
       OMRS_CONFIG_CONNECTION_SERVER: db
       OMRS_CONFIG_CONNECTION_DATABASE: openmrs
-      OMRS_CONFIG_CONNECTION_USERNAME: ${OPENMRS_DB_USER:-openmrs}
-      OMRS_CONFIG_CONNECTION_PASSWORD: ${OPENMRS_DB_PASSWORD:-openmrs}
+      OMRS_CONFIG_CONNECTION_USERNAME: openmrstest
+      OMRS_CONFIG_CONNECTION_PASSWORD: test
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/openmrs"]
       timeout: 5s
@@ -42,6 +45,7 @@ services:
 
   # MariaDB
   db:
+    profiles: ["openmrs3", "openmrs"]
     image: mariadb:10.8.2
     command: "mysqld --character-set-server=utf8 --collation-server=utf8_general_ci"
     healthcheck:
@@ -50,10 +54,10 @@ services:
       timeout: 1s
       retries: 5
     environment:
+      MYSQL_ROOT_PASSWORD: openmrstest
       MYSQL_DATABASE: openmrs
-      MYSQL_USER: ${OMRS_DB_USER:-openmrs}
-      MYSQL_PASSWORD: ${OMRS_DB_PASSWORD:-openmrs}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
+      MYSQL_USER: test
+      MYSQL_PASSWORD: openmrstest
     ports: 
       - 3307:3306
     volumes:
