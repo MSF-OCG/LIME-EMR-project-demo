@@ -2,3 +2,6 @@ Uuid,Void/Retire,Same as mappings,Fully specified name:en,Short name:en,Fully sp
 da33d74e-33b3-495a-9d7c-aa00a-aa0160,,,Final Diagnosis,,,,,,Misc,Coded,,Acute abdomen;Acute asthma;Acute chest syndrome;Acute diarrhea (bloody);Acute diarrhea (non-bloody),,,,,,,,,
 da33d74e-33b3-495a-9d7c-aa00a-aa0159,,,Possible Diagnosis,,,,,,Misc,Coded,,Acute abdomen;Acute asthma;Acute chest syndrome;Acute diarrhea (bloody);Acute diarrhea (non-bloody),,,,,,,,,
 da33d74e-33b3-495a-9d7c-aa00a-aa0177,,,Entry triage color code,,,,,,Misc,Coded,,DOA;Red;Yellow;Green,,,,,,,,,
+da33d74e-33b3-495a-9d7c-aa00a-aa0161,,,Current problems,,,,,,Misc,Coded,,Hypertension;Palpitations;Dyspnea;Asthma;Tuberculosis;Diabetes Mellitus;Angina;Peptic Ulcer;Jaundice;Epilepsy;Hepatitis;COPD;High Cholesterol ,,,,,,,,,
+da33d74e-33b3-495a-9d7c-aa00a-aa0163,,,Patient coming from,,,,,,Misc,Coded,,Emergency room (ER);Health facility;NGO;Operation theatre (OT);Intensive care unit (ICU);Maternity,,,,,,,,,
+da33d74e-33b3-495a-9d7c-aa00a-aa0182,,,Case history ,,,,,,Misc,Coded,,Fever;Headache;Vomit;Convulsions;Dyspnea;Cough;Sputum;Purulent;Diarrhoea;Dysuria;Itching,,,,,,,,,
