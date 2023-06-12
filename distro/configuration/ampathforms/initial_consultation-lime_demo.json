@@ -1,67 +1,336 @@
 {
-	"pages": [{
-		"label": "Page",
-		"sections": [{
-			"label": "Section",
+	"name": "Initial consultation",
+	"description": "Form",
+	"version": "0.1",
+	"published": true,
+	"retired": false,
+	"encounter": "Consultation",
+	"pages": [
+	  {
+		"label": "Main page",
+		"sections": [
+		  {
+			"label": "Main section",
 			"isExpanded": "true",
-			"questions": [{
-					"label": "Final diagnosis",
-					"type": "obs",
-					"required": false,
-					"id": "diagnosis",
-					"questionOptions": {
-						"rendering": "select",
-						"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0160",
-						"conceptMappings": [],
-						"answers": [{
-								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0001",
-								"label": "Acute abdomen"
-							},
-							{
-								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0002",
-								"label": "Acute asthma"
-							}
-						]
+			"questions": [
+			  {
+				"label": "Date",
+				"type": "obs",
+				"required": false,
+				"id": "date",
+				"questionOptions": {
+				  "rendering": "date",
+				  "concept": "162869AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+				  "conceptMappings": [
+					{
+					  "relationship": "NARROWER-THAN",
+					  "type": "SNOMED CT",
+					  "value": "364713004"
 					},
-					"validators": []
+					{
+					  "relationship": "SAME-AS",
+					  "type": "CIEL",
+					  "value": "162869"
+					}
+				  ],
+				  "answers": []
 				},
-				{
-					"label": "Triage color code",
-					"type": "obs",
-					"required": false,
-					"id": "triage",
-					"questionOptions": {
-						"rendering": "radio",
-						"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0177",
-						"conceptMappings": [],
-						"answers": [{
-								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0178",
-								"label": "DOA"
-							},
-							{
-								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0181",
-								"label": "Green"
-							},
-							{
-								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0180",
-								"label": "Yellow"
-							},
-							{
-								"concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0179",
-								"label": "Red"
-							}
-						]
+				"validators": []
+			  },
+			  {
+				"label": "Possible diagnosis",
+				"type": "obs",
+				"required": false,
+				"id": "possible-diagnosis",
+				"questionOptions": {
+				  "rendering": "select",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0159",
+				  "conceptMappings": [],
+				  "answers": [
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0001",
+					  "label": "Acute abdomen"
 					},
-					"validators": []
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0002",
+					  "label": "Acute asthma"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0003",
+					  "label": "Acute chest syndrome"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0004",
+					  "label": "Acute diarrhea (bloody)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0005",
+					  "label": "Acute diarrhea (non-bloody)"
+					}
+				  ]
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Final diagnosis",
+				"type": "obs",
+				"required": false,
+				"id": "final-diagnosis",
+				"questionOptions": {
+				  "rendering": "select",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0160",
+				  "conceptMappings": [],
+				  "answers": [
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0001",
+					  "label": "Acute abdomen"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0002",
+					  "label": "Acute asthma"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0003",
+					  "label": "Acute chest syndrome"
+					}
+				  ]
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Patient coming from",
+				"type": "obs",
+				"required": false,
+				"id": "patient-coming-from",
+				"questionOptions": {
+				  "rendering": "select",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0163",
+				  "conceptMappings": [],
+				  "answers": [
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0167",
+					  "label": "NGO"
+					}
+				  ]
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Chief complaint",
+				"type": "obs",
+				"required": false,
+				"id": "chief-complaint",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0171",
+				  "conceptMappings": [],
+				  "answers": []
 				}
+			  },
+			  {
+				"label": "Past medical history",
+				"type": "obs",
+				"required": false,
+				"id": "past-medical-history",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0172",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Current problems",
+				"type": "obs",
+				"required": false,
+				"id": "Current-problems",
+				"questionOptions": {
+				  "rendering": "select",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0161",
+				  "conceptMappings": [
+					{
+					  "relationship": "SAME-AS",
+					  "type": "CIEL",
+					  "value": "1633"
+					}
+				  ],
+				  "answers": []
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Current problems - Other",
+				"type": "obs",
+				"required": false,
+				"id": "Current-problems-Other",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0162",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  }
 			]
-		}]
-	}],
+		  },
+		  {
+			"label": "First Clinical Exam/Clinical assessment ",
+			"isExpanded": "true",
+			"questions": [
+			  {
+				"label": "Skin",
+				"type": "obs",
+				"required": false,
+				"id": "skin",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0174",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Lungs",
+				"type": "obs",
+				"required": false,
+				"id": "lungs",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0175",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Cardiovascular system",
+				"type": "obs",
+				"required": false,
+				"id": "cardio",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0176",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  },
+			  {
+				"label": "G.UR.syst",
+				"type": "obs",
+				"required": false,
+				"id": "g-ur",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0183",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Neuro",
+				"type": "obs",
+				"required": false,
+				"id": "neuro",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0184",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Osteo articular syst",
+				"type": "obs",
+				"required": false,
+				"id": "osteo",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0185",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Drums/ Throat",
+				"type": "obs",
+				"required": false,
+				"id": "drums",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0186",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Lymphatic system",
+				"type": "obs",
+				"required": false,
+				"id": "lymphatic",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0187",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Other medical problems",
+				"type": "obs",
+				"required": false,
+				"id": "other-med",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0188",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  }
+			]
+		  },
+		  {
+			"label": "End",
+			"isExpanded": "true",
+			"questions": [
+			  {
+				"label": "Comments",
+				"type": "obs",
+				"required": false,
+				"id": "comment",
+				"questionOptions": {
+				  "rendering": "textarea",
+				  "concept": "161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+				  "conceptMappings": [
+					{
+					  "relationship": "BROADER-THAN",
+					  "type": "LOINC",
+					  "value": "48767-8"
+					},
+					{
+					  "relationship": "SAME-AS",
+					  "type": "CIEL",
+					  "value": "161011"
+					}
+				  ],
+				  "answers": []
+				},
+				"validators": []
+			  }
+			]
+		  }
+		]
+	  }
+	],
 	"processor": "EncounterFormProcessor",
-	"encounterType": "dd528487-82a5-4082-9c72-ed246bd49591",
-	"referencedForms": [],
-	"uuid": "",
-	"name": "Initial Consultation",
-	"version": "0.2",
-	"description": "0.1"
-}
+	"uuid": "xxxx",
+	"referencedForms": []
+  }

@@ -9,6 +9,9 @@
 2. Get the latest docker-compose.yml 
 3. Pull the latest images and run the app with Docker Compose (docker-compose pull && docker-compose up -d)
 
+## Tools 
+- Diagram and pathway design tool: https://bpmn.io/ 
+
 ## File structure
 
 ```shell
