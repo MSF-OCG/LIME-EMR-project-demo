@@ -14,7 +14,7 @@
 			"isExpanded": "true",
 			"questions": [
 			  {
-				"label": "Date",
+				"label": "Date of consultation",
 				"type": "obs",
 				"required": false,
 				"id": "date",
