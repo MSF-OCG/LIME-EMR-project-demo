@@ -66,6 +66,618 @@
 					{
 					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0005",
 					  "label": "Acute diarrhea (non-bloody)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0006",
+					  "label": "Acute febrile illness (=<7 days)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0007",
+					  "label": "Acute flaccid paralysis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0008",
+					  "label": "Acute jaundice syndrome"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0009",
+					  "label": "Allergy/Anaphylaxis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0010",
+					  "label": "Apnoea of prematurity"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0011",
+					  "label": "Bacterial meningitis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0012",
+					  "label": "Birth injury"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0013",
+					  "label": "Bronchiolitis/obstructive bronchitis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0014",
+					  "label": "Bronchospasm"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0015",
+					  "label": "Burns"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0016",
+					  "label": "Cardiogenic shock"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0017",
+					  "label": "Cardiovascular disease"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0018",
+					  "label": "Cerebral palsy/Neuro disability"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0019",
+					  "label": "Chikungunya confirmed"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0020",
+					  "label": "Chikungunya suspected"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0021",
+					  "label": "Cholera (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0022",
+					  "label": "Cholera confirmed"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0023",
+					  "label": "Complicated ear infection"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0024",
+					  "label": "Complications of SCD"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0025",
+					  "label": "Congenital  pathology"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0026",
+					  "label": "Congenital herpes virus infection"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0027",
+					  "label": "Congenital malaria"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0028",
+					  "label": "Congenital or acquired cardiac pathology"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0029",
+					  "label": "Congenital syphilis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0030",
+					  "label": "Congestive Heart Failure"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0031",
+					  "label": "COPD"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0032",
+					  "label": "Covid-19 confirmed"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0033",
+					  "label": "Covid-19 probable"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0034",
+					  "label": "Cutaneous leishmaniasis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0035",
+					  "label": "Dengue (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0036",
+					  "label": "Dengue confirmed"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0037",
+					  "label": "Dental problem"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0038",
+					  "label": "Diabetes and complications"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0039",
+					  "label": "Diabetes type 2 and complications"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0040",
+					  "label": "Diabetes Type I and complications"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0041",
+					  "label": "Diarrhea (persistent)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0042",
+					  "label": "Diphtheria"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0043",
+					  "label": "Dog bite"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0044",
+					  "label": "Epilepsy/Seizures"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0045",
+					  "label": "Extra Pulmonary Tuberculosis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0046",
+					  "label": "Eye diseases (including trachoma)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0047",
+					  "label": "Febrile convulsions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0048",
+					  "label": "Gastric ulcer"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0049",
+					  "label": "Gastritis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0050",
+					  "label": "Gynaecological cases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0051",
+					  "label": "Healthy Patient for Medical certificate"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0052",
+					  "label": "Hepatitis A"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0053",
+					  "label": "Hepatitis B"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0054",
+					  "label": "Hepatitis Delta"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0055",
+					  "label": "Hepatitis E"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0056",
+					  "label": "HIV infection (confirmed)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0057",
+					  "label": "HIV infection (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0058",
+					  "label": "Human African Trypanosomiasis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0059",
+					  "label": "Hyperglycemia"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0060",
+					  "label": "Hyperreactive splenomegaly due to malaria"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0061",
+					  "label": "Hypertension"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0062",
+					  "label": "Hypertensive crisis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0063",
+					  "label": "Hypoglycemia"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0064",
+					  "label": "Hypovolemic shock"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0065",
+					  "label": "Infectious diseases not otherwise classified"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0066",
+					  "label": "Intestinal parasitic infections"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0067",
+					  "label": "Lower respiratory tract infection"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0068",
+					  "label": "Measles (complicated)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0069",
+					  "label": "Measles (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0070",
+					  "label": "Measles (uncomplicated)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0071",
+					  "label": "Meningeal TB"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0072",
+					  "label": "Meningitis (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0073",
+					  "label": "Meningitis unspecified"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0074",
+					  "label": "Mental and psychiatric conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0075",
+					  "label": "Moderate acute malnutrition"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0076",
+					  "label": "Musculoskeletal conditions (infectious origin)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0077",
+					  "label": "Musculoskeletal conditions (non-infectious)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0078",
+					  "label": "Necrotizing & bullous skin infections"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0079",
+					  "label": "Neglected tropical diseases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0080",
+					  "label": "Neonatal conjunctivitis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0081",
+					  "label": "Neonatal convulsions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0082",
+					  "label": "Neonatal infectious diseases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0083",
+					  "label": "Neonatal jaundice"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0084",
+					  "label": "Neonatal meconial aspiration"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0085",
+					  "label": "Neonatal Necrotizing Enterocolitis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0086",
+					  "label": "Neonatal non infectious conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0087",
+					  "label": "Neonatal pneumonia"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0088",
+					  "label": "Neonatal pneumothorax"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0089",
+					  "label": "Neonatal tuberculosis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0090",
+					  "label": "Nephrotic Syndrome & Acute Glomerulonephritis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0091",
+					  "label": "Newborn to an HIV+ mother"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0092",
+					  "label": "Non cardiac congenital  pathology"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0093",
+					  "label": "Non urgent surgical conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0094",
+					  "label": "Non violence-related injuries"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0095",
+					  "label": "Observation"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0096",
+					  "label": "Obstetric cases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0097",
+					  "label": "Oral and digestive severe candidiasis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0098",
+					  "label": "Other bites and stings"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0099",
+					  "label": "Other gastrointestinal diseases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0100",
+					  "label": "Other neglected tropical diseases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0101",
+					  "label": "Other neonatal conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0102",
+					  "label": "Other neurological conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0103",
+					  "label": "Other non communicable diseases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0104",
+					  "label": "Other skin and soft tissue conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0105",
+					  "label": "Other symptoms and abnor. clinical / lab findings"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0106",
+					  "label": "Others"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0107",
+					  "label": "Perinatal asphyxia and complications"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0108",
+					  "label": "Persistent fever ( >7 days)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0109",
+					  "label": "Poliomyelitis confirmed"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0110",
+					  "label": "Post surgical infection"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0111",
+					  "label": "Prematurity and/or low birth weight"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0112",
+					  "label": "Pulmonary tuberculosis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0113",
+					  "label": "Pulmonary tuberculosis (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0114",
+					  "label": "Rabies"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0115",
+					  "label": "Rheumatic heart disease"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0116",
+					  "label": "Risk of sepsis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0117",
+					  "label": "Septic shock"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0118",
+					  "label": "Severe acute malnutrition"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0119",
+					  "label": "Severe Acute Malnutrition (Kwashiorkor)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0120",
+					  "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0121",
+					  "label": "Severe Acute Malnutrition (Marasmus)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0122",
+					  "label": "Severe anaemia"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0123",
+					  "label": "Severe dehydration"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0124",
+					  "label": "Severe malaria"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0125",
+					  "label": "Sexual violence / rape"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0126",
+					  "label": "Sexually transmitted disease (STI)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0127",
+					  "label": "Shigellosis/Salmonellosis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0128",
+					  "label": "Shock unspecified"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0129",
+					  "label": "Sickle Cell Anaemia"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0130",
+					  "label": "Sickle cell disease"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0131",
+					  "label": "Simple malaria"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0132",
+					  "label": "Skin and soft tissue conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0133",
+					  "label": "Skin lesions due to kwashiorkor"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0134",
+					  "label": "Snake bites"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0135",
+					  "label": "Stroke / CVA"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0136",
+					  "label": "Substance abuse / dependency"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0137",
+					  "label": "Suspected or confirmed malignancy"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0138",
+					  "label": "Tetanus"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0139",
+					  "label": "Toxicity / poisoning"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0140",
+					  "label": "Transient tachypnoea of the newborn"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0141",
+					  "label": "Typhoid fever"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0142",
+					  "label": "Upper respiratory tract infection"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0143",
+					  "label": "Upper UTI"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0144",
+					  "label": "Urgent surgical conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0145",
+					  "label": "Urolithiasis / Renal colic"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0146",
+					  "label": "UTI and renal tract acute pathology"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0147",
+					  "label": "Varicella"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0148",
+					  "label": "Violence-related injuries"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0149",
+					  "label": "Viral haemorrhagic fevers"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0150",
+					  "label": "Visceral leishmaniasis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0151",
+					  "label": "Vit A deficiency"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0152",
+					  "label": "Vit B complex deficiency"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0153",
+					  "label": "Vit C deficiency (scurvy)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0154",
+					  "label": "Vit D deficiency (rickets)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0155",
+					  "label": "Vitamin deficiencies (A, B, C, D, PP)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0156",
+					  "label": "Whooping cough"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0157",
+					  "label": "Whooping cough (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0158",
+					  "label": "Yellow fever"
 					}
 				  ]
 				},
@@ -92,6 +704,626 @@
 					{
 					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0003",
 					  "label": "Acute chest syndrome"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0004",
+					  "label": "Acute diarrhea (bloody)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0005",
+					  "label": "Acute diarrhea (non-bloody)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0006",
+					  "label": "Acute febrile illness (=<7 days)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0007",
+					  "label": "Acute flaccid paralysis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0008",
+					  "label": "Acute jaundice syndrome"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0009",
+					  "label": "Allergy/Anaphylaxis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0010",
+					  "label": "Apnoea of prematurity"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0011",
+					  "label": "Bacterial meningitis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0012",
+					  "label": "Birth injury"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0013",
+					  "label": "Bronchiolitis/obstructive bronchitis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0014",
+					  "label": "Bronchospasm"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0015",
+					  "label": "Burns"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0016",
+					  "label": "Cardiogenic shock"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0017",
+					  "label": "Cardiovascular disease"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0018",
+					  "label": "Cerebral palsy/Neuro disability"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0019",
+					  "label": "Chikungunya confirmed"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0020",
+					  "label": "Chikungunya suspected"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0021",
+					  "label": "Cholera (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0022",
+					  "label": "Cholera confirmed"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0023",
+					  "label": "Complicated ear infection"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0024",
+					  "label": "Complications of SCD"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0025",
+					  "label": "Congenital  pathology"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0026",
+					  "label": "Congenital herpes virus infection"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0027",
+					  "label": "Congenital malaria"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0028",
+					  "label": "Congenital or acquired cardiac pathology"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0029",
+					  "label": "Congenital syphilis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0030",
+					  "label": "Congestive Heart Failure"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0031",
+					  "label": "COPD"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0032",
+					  "label": "Covid-19 confirmed"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0033",
+					  "label": "Covid-19 probable"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0034",
+					  "label": "Cutaneous leishmaniasis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0035",
+					  "label": "Dengue (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0036",
+					  "label": "Dengue confirmed"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0037",
+					  "label": "Dental problem"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0038",
+					  "label": "Diabetes and complications"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0039",
+					  "label": "Diabetes type 2 and complications"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0040",
+					  "label": "Diabetes Type I and complications"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0041",
+					  "label": "Diarrhea (persistent)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0042",
+					  "label": "Diphtheria"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0043",
+					  "label": "Dog bite"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0044",
+					  "label": "Epilepsy/Seizures"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0045",
+					  "label": "Extra Pulmonary Tuberculosis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0046",
+					  "label": "Eye diseases (including trachoma)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0047",
+					  "label": "Febrile convulsions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0048",
+					  "label": "Gastric ulcer"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0049",
+					  "label": "Gastritis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0050",
+					  "label": "Gynaecological cases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0051",
+					  "label": "Healthy Patient for Medical certificate"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0052",
+					  "label": "Hepatitis A"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0053",
+					  "label": "Hepatitis B"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0054",
+					  "label": "Hepatitis Delta"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0055",
+					  "label": "Hepatitis E"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0056",
+					  "label": "HIV infection (confirmed)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0057",
+					  "label": "HIV infection (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0058",
+					  "label": "Human African Trypanosomiasis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0059",
+					  "label": "Hyperglycemia"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0060",
+					  "label": "Hyperreactive splenomegaly due to malaria"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0061",
+					  "label": "Hypertension"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0062",
+					  "label": "Hypertensive crisis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0063",
+					  "label": "Hypoglycemia"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0064",
+					  "label": "Hypovolemic shock"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0065",
+					  "label": "Infectious diseases not otherwise classified"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0066",
+					  "label": "Intestinal parasitic infections"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0067",
+					  "label": "Lower respiratory tract infection"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0068",
+					  "label": "Measles (complicated)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0069",
+					  "label": "Measles (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0070",
+					  "label": "Measles (uncomplicated)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0071",
+					  "label": "Meningeal TB"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0072",
+					  "label": "Meningitis (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0073",
+					  "label": "Meningitis unspecified"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0074",
+					  "label": "Mental and psychiatric conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0075",
+					  "label": "Moderate acute malnutrition"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0076",
+					  "label": "Musculoskeletal conditions (infectious origin)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0077",
+					  "label": "Musculoskeletal conditions (non-infectious)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0078",
+					  "label": "Necrotizing & bullous skin infections"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0079",
+					  "label": "Neglected tropical diseases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0080",
+					  "label": "Neonatal conjunctivitis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0081",
+					  "label": "Neonatal convulsions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0082",
+					  "label": "Neonatal infectious diseases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0083",
+					  "label": "Neonatal jaundice"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0084",
+					  "label": "Neonatal meconial aspiration"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0085",
+					  "label": "Neonatal Necrotizing Enterocolitis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0086",
+					  "label": "Neonatal non infectious conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0087",
+					  "label": "Neonatal pneumonia"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0088",
+					  "label": "Neonatal pneumothorax"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0089",
+					  "label": "Neonatal tuberculosis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0090",
+					  "label": "Nephrotic Syndrome & Acute Glomerulonephritis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0091",
+					  "label": "Newborn to an HIV+ mother"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0092",
+					  "label": "Non cardiac congenital  pathology"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0093",
+					  "label": "Non urgent surgical conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0094",
+					  "label": "Non violence-related injuries"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0095",
+					  "label": "Observation"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0096",
+					  "label": "Obstetric cases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0097",
+					  "label": "Oral and digestive severe candidiasis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0098",
+					  "label": "Other bites and stings"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0099",
+					  "label": "Other gastrointestinal diseases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0100",
+					  "label": "Other neglected tropical diseases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0101",
+					  "label": "Other neonatal conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0102",
+					  "label": "Other neurological conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0103",
+					  "label": "Other non communicable diseases"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0104",
+					  "label": "Other skin and soft tissue conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0105",
+					  "label": "Other symptoms and abnor. clinical / lab findings"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0106",
+					  "label": "Others"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0107",
+					  "label": "Perinatal asphyxia and complications"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0108",
+					  "label": "Persistent fever ( >7 days)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0109",
+					  "label": "Poliomyelitis confirmed"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0110",
+					  "label": "Post surgical infection"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0111",
+					  "label": "Prematurity and/or low birth weight"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0112",
+					  "label": "Pulmonary tuberculosis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0113",
+					  "label": "Pulmonary tuberculosis (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0114",
+					  "label": "Rabies"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0115",
+					  "label": "Rheumatic heart disease"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0116",
+					  "label": "Risk of sepsis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0117",
+					  "label": "Septic shock"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0118",
+					  "label": "Severe acute malnutrition"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0119",
+					  "label": "Severe Acute Malnutrition (Kwashiorkor)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0120",
+					  "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0121",
+					  "label": "Severe Acute Malnutrition (Marasmus)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0122",
+					  "label": "Severe anaemia"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0123",
+					  "label": "Severe dehydration"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0124",
+					  "label": "Severe malaria"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0125",
+					  "label": "Sexual violence / rape"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0126",
+					  "label": "Sexually transmitted disease (STI)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0127",
+					  "label": "Shigellosis/Salmonellosis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0128",
+					  "label": "Shock unspecified"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0129",
+					  "label": "Sickle Cell Anaemia"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0130",
+					  "label": "Sickle cell disease"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0131",
+					  "label": "Simple malaria"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0132",
+					  "label": "Skin and soft tissue conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0133",
+					  "label": "Skin lesions due to kwashiorkor"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0134",
+					  "label": "Snake bites"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0135",
+					  "label": "Stroke / CVA"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0136",
+					  "label": "Substance abuse / dependency"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0137",
+					  "label": "Suspected or confirmed malignancy"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0138",
+					  "label": "Tetanus"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0139",
+					  "label": "Toxicity / poisoning"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0140",
+					  "label": "Transient tachypnoea of the newborn"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0141",
+					  "label": "Typhoid fever"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0142",
+					  "label": "Upper respiratory tract infection"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0143",
+					  "label": "Upper UTI"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0144",
+					  "label": "Urgent surgical conditions"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0145",
+					  "label": "Urolithiasis / Renal colic"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0146",
+					  "label": "UTI and renal tract acute pathology"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0147",
+					  "label": "Varicella"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0148",
+					  "label": "Violence-related injuries"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0149",
+					  "label": "Viral haemorrhagic fevers"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0150",
+					  "label": "Visceral leishmaniasis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0151",
+					  "label": "Vit A deficiency"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0152",
+					  "label": "Vit B complex deficiency"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0153",
+					  "label": "Vit C deficiency (scurvy)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0154",
+					  "label": "Vit D deficiency (rickets)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0155",
+					  "label": "Vitamin deficiencies (A, B, C, D, PP)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0156",
+					  "label": "Whooping cough"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0157",
+					  "label": "Whooping cough (suspected)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0158",
+					  "label": "Yellow fever"
 					}
 				  ]
 				},
@@ -108,12 +1340,56 @@
 				  "conceptMappings": [],
 				  "answers": [
 					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0164",
+					  "label": "Home"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0165",
+					  "label": "Emergency room (ER)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0166",
+					  "label": "Health facility"
+					},
+					{
 					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0167",
 					  "label": "NGO"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0168",
+					  "label": "Operation theatre (OT)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0169",
+					  "label": "Intensive care unit (ICU)"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0170",
+					  "label": "Maternity"
+					},
+					{
+					  "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+					  "label": "Other"
 					}
 				  ]
 				},
 				"validators": []
+			  },
+			  {
+				"label": "Patient coming from - Other",
+				"type": "obs",
+				"required": false,
+				"id": "Patient-coming-from-Other",
+				"questionOptions": {
+				  "rendering": "text",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0162",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": [],
+				"hide": {
+				  "hideWhenExpression": "patient-coming-from !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+				}
 			  },
 			  {
 				"label": "Chief complaint",
@@ -155,7 +1431,68 @@
 					  "value": "1633"
 					}
 				  ],
-				  "answers": []
+				  "answers": [
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0190",
+					  "label": "Hypertension"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0191",
+					  "label": "Palpitations"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0192",
+					  "label": "Dyspnea"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0193",
+					  "label": "Asthma"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0194",
+					  "label": "Tuberculosis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0195",
+					  "label": "Diabetes Mellitus"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0196",
+					  "label": "Angina"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0197",
+					  "label": "Peptic Ulcer"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0198",
+					  "label": "Jaundice"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0199",
+					  "label": "Epilepsy"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0200",
+					  "label": "Hepatitis"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0201",
+					  "label": "COPD"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0202",
+					  "label": "High Cholesterol"
+					},
+					{
+					  "concept": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+					  "label": "None"
+					},
+					{
+					  "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+					  "label": "Other"
+					}
+				  ]
 				},
 				"validators": []
 			  },
@@ -170,7 +1507,10 @@
 				  "conceptMappings": [],
 				  "answers": []
 				},
-				"validators": []
+				"validators": [],
+				"hide": {
+				  "hideWhenExpression": "Current-problems !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+				}
 			  }
 			]
 		  },
