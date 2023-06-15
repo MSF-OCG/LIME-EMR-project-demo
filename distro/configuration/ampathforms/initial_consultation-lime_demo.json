@@ -20,20 +20,39 @@
 				"id": "date",
 				"questionOptions": {
 				  "rendering": "date",
-				  "concept": "162869AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-				  "conceptMappings": [
+				  "concept": "81a50873-81c8-4c2e-8892-b2cd635b704c",
+				  "conceptMappings": [],
+				  "answers": []
+				},
+				"validators": []
+			  },
+			  {
+				"label": "Triage color code",
+				"type": "obs",
+				"required": false,
+				"id": "triage",
+				"questionOptions": {
+				  "rendering": "radio",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0177",
+				  "conceptMappings": [],
+				  "answers": [
 					{
-					  "relationship": "NARROWER-THAN",
-					  "type": "SNOMED CT",
-					  "value": "364713004"
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0178",
+					  "label": "DOA"
 					},
 					{
-					  "relationship": "SAME-AS",
-					  "type": "CIEL",
-					  "value": "162869"
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0181",
+					  "label": "Green"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0180",
+					  "label": "Yellow"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0179",
+					  "label": "Red"
 					}
-				  ],
-				  "answers": []
+				  ]
 				},
 				"validators": []
 			  },
@@ -1409,7 +1428,7 @@
 				"required": false,
 				"id": "past-medical-history",
 				"questionOptions": {
-				  "rendering": "text",
+				  "rendering": "textarea",
 				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0172",
 				  "conceptMappings": [],
 				  "answers": []
@@ -1433,55 +1452,55 @@
 				  ],
 				  "answers": [
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0190",
+					  "concept": "117399AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 					  "label": "Hypertension"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0191",
+					  "concept": "130987AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 					  "label": "Palpitations"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0192",
+					  "concept": "122496AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 					  "label": "Dyspnea"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0193",
+					  "concept": "121375AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 					  "label": "Asthma"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0194",
+					  "concept": "112141AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 					  "label": "Tuberculosis"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0195",
+					  "concept": "119481AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 					  "label": "Diabetes Mellitus"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0196",
+					  "concept": "121610AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 					  "label": "Angina"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0197",
+					  "concept": "114262AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 					  "label": "Peptic Ulcer"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0198",
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0008",
 					  "label": "Jaundice"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0199",
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0044",
 					  "label": "Epilepsy"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0200",
+					  "concept": "111479AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 					  "label": "Hepatitis"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0201",
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0031",
 					  "label": "COPD"
 					},
 					{
-					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0202",
+					  "concept": "117460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 					  "label": "High Cholesterol"
 					},
 					{
@@ -1511,6 +1530,80 @@
 				"hide": {
 				  "hideWhenExpression": "Current-problems !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
 				}
+			  },
+			  {
+				"label": "Case history",
+				"type": "obs",
+				"required": false,
+				"id": "case-history",
+				"questionOptions": {
+				  "rendering": "select",
+				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0182",
+				  "conceptMappings": [],
+				  "answers": [
+					{
+					  "concept": "140238AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+					  "label": "Fever"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0204",
+					  "label": "Shivers"
+					},
+					{
+					  "concept": "139084AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+					  "label": "Headache"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0206",
+					  "label": "Vomit"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0207",
+					  "label": "Convulsions"
+					},
+					{
+					  "concept": "122496AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+					  "label": "Dyspnea"
+					},
+					{
+					  "concept": "143264AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+					  "label": "Cough"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0210",
+					  "label": "Sputum"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0211",
+					  "label": "Sputum with blood"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0212",
+					  "label": "Purulent"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0213",
+					  "label": "Diarrhoea"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0214",
+					  "label": "Diarrhoea with blood"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0215",
+					  "label": "Dysuria"
+					},
+					{
+					  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0216",
+					  "label": "Dysuria with blood"
+					},
+					{
+					  "concept": "136455AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+					  "label": "Itching"
+					}
+				  ]
+				},
+				"validators": []
 			  }
 			]
 		  },
@@ -1524,7 +1617,7 @@
 				"required": false,
 				"id": "skin",
 				"questionOptions": {
-				  "rendering": "text",
+				  "rendering": "textarea",
 				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0174",
 				  "conceptMappings": [],
 				  "answers": []
@@ -1537,7 +1630,7 @@
 				"required": false,
 				"id": "lungs",
 				"questionOptions": {
-				  "rendering": "text",
+				  "rendering": "textarea",
 				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0175",
 				  "conceptMappings": [],
 				  "answers": []
@@ -1550,7 +1643,7 @@
 				"required": false,
 				"id": "cardio",
 				"questionOptions": {
-				  "rendering": "text",
+				  "rendering": "textarea",
 				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0176",
 				  "conceptMappings": [],
 				  "answers": []
@@ -1563,7 +1656,7 @@
 				"required": false,
 				"id": "g-ur",
 				"questionOptions": {
-				  "rendering": "text",
+				  "rendering": "textarea",
 				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0183",
 				  "conceptMappings": [],
 				  "answers": []
@@ -1576,34 +1669,34 @@
 				"required": false,
 				"id": "neuro",
 				"questionOptions": {
-				  "rendering": "text",
-				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0184",
+				  "rendering": "textarea",
+				  "concept": "ac0975ce-6a00-438b-8133-57aab268e106",
 				  "conceptMappings": [],
 				  "answers": []
 				},
 				"validators": []
 			  },
 			  {
-				"label": "Osteo articular syst",
+				"label": "Osteo articular system",
 				"type": "obs",
 				"required": false,
 				"id": "osteo",
 				"questionOptions": {
-				  "rendering": "text",
-				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0185",
+				  "rendering": "textarea",
+				  "concept": "c956b688-ff2e-4629-a89a-5d0c7f645481",
 				  "conceptMappings": [],
 				  "answers": []
 				},
 				"validators": []
 			  },
 			  {
-				"label": "Drums/ Throat",
+				"label": "Drums / Throat",
 				"type": "obs",
 				"required": false,
 				"id": "drums",
 				"questionOptions": {
-				  "rendering": "text",
-				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0186",
+				  "rendering": "textarea",
+				  "concept": "5a2efe86-538c-4a00-bde0-a4b9c4470fae",
 				  "conceptMappings": [],
 				  "answers": []
 				},
@@ -1615,8 +1708,8 @@
 				"required": false,
 				"id": "lymphatic",
 				"questionOptions": {
-				  "rendering": "text",
-				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0187",
+				  "rendering": "textarea",
+				  "concept": "3a942c7f-2efc-4c99-a383-219b59a942fd",
 				  "conceptMappings": [],
 				  "answers": []
 				},
@@ -1628,7 +1721,7 @@
 				"required": false,
 				"id": "other-med",
 				"questionOptions": {
-				  "rendering": "text",
+				  "rendering": "textarea",
 				  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0188",
 				  "conceptMappings": [],
 				  "answers": []
