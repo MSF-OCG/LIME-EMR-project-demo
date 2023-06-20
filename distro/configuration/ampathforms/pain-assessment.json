@@ -2,10 +2,10 @@
     "name": "Pain assessment",
     "pages": [
       {
-        "label": "Main",
+        "label": "",
         "sections": [
           {
-            "label": "Main",
+            "label": "",
             "isExpanded": "true",
             "questions": [
               {
