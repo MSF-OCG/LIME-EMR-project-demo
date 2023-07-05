@@ -30,10 +30,10 @@ jobs:
       - name: multiple command
         uses: appleboy/ssh-action@v0.1.10
         with:
-          host: ${{ secrets.SSH_RELAY }}
-          username: ${{ secrets.SSH_RELAY_USER }}
-          password: ${{ secrets.SSH_RELAY_PWD }}
-          port: ${{ secrets.SSH_RELAY_PORT }}
+          host: ${{ secrets.AZURE_HOST }}
+          username: ${{ secrets.AZURE_USER }}
+          password: ${{ secrets.AZURE_PWD }}
+          port: ${{ secrets.AZURE_PORT }}
           script: |
             whoami
             ls -al
