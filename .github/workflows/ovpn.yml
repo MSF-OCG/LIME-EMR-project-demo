@@ -33,6 +33,7 @@ jobs:
           host: ${{ secrets.AZURE_HOST }}
           username: ${{ secrets.AZURE_USER }}
           password: ${{ secrets.AZURE_PWD }}
+          key: ${{ secrets.AZURE_KEY }}
           port: ${{ secrets.AZURE_PORT }}
           script: |
             whoami
