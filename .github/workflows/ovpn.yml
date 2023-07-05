@@ -30,10 +30,10 @@ jobs:
       - name: multiple command
         uses: appleboy/ssh-action@v0.1.10
         with:
-          host: ${{ secrets.DEV_HOSTNAME }}
-          username: ${{ secrets.OVPN_USERNAME }}
-          password: ${{ secrets.OVPN_PASSWORD }}
-          port: ${{ secrets.DEV_PORT }}
+          host: ${{ secrets.SSH_RELAY }}
+          username: ${{ secrets.SSH_RELAY_USER }}
+          password: ${{ secrets.SSH_RELAY_PWD }}
+          port: ${{ secrets.SSH_RELAY_PORT }}
           script: |
             whoami
             ls -al
