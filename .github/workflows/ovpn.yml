@@ -27,7 +27,16 @@ jobs:
           password: ${{ secrets.OVPN_PASSWORD }}
           client_key: ${{ secrets.OVPN_USER_KEY }}
 
-
+      - name: multiple command
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SSH_RELAY }}
+          username: ${{ secrets.SSH_RELAY_USER }}
+          password: ${{ secrets.SSH_RELAY_PWD }}
+          port: ${{ secrets.SSH_RELAY_PORT }}
+          script: |
+            whoami
+            ls -al
 
       - name: Kill VPN connection
         if: always()
