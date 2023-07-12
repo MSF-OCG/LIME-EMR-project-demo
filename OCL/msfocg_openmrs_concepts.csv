@@ -224,7 +224,7 @@ Concept,MSFOCG,OpenMRS,,AA0222,da33d74e-33b3-495a-9d7c-aa00a-aa0222,Site of main
 Concept,MSFOCG,OpenMRS,,AA0223,da33d74e-33b3-495a-9d7c-aa00a-aa0223,"Site of pain, other",FULLY_SPECIFIED,,,,,,Misc,Text,,,,OCP-PA-FORM,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0224,da33d74e-33b3-495a-9d7c-aa00a-aa0224,"Current pain score, initial",FULLY_SPECIFIED,,,,,,Question,Numeric,,,,OCP-PA-FORM,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0225,da33d74e-33b3-495a-9d7c-aa00a-aa0225,"Maximum pain score, initial",FULLY_SPECIFIED,,,,,,Question,Numeric,,,,OCP-PA-FORM,,,,,,,,,,,,,,,,,,,,,,
-Concept,MSFOCG,OpenMRS,,AA0226,da33d74e-33b3-495a-9d7c-aa00a-aa0226,"Minimum pain score, initial",FULLY_SPECIFIED,,,,,,Question,Numeric,,,,OCP-PA-FORM,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,OpenMRS,,AA0226,da33d74e-33b3-495a-9d7c-aa00a-aa0226,"Minimum pain score, initial",FULLY_SPECIFIED,,,,,,Question,Numeric,"Minimum pain score experienced by the patient, using a numerical validated pain scale",,,OCP-PA-FORM,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0227,da33d74e-33b3-495a-9d7c-aa00a-aa0227,"Pain scale, Initial",FULLY_SPECIFIED,,,,,,Misc,Coded,,,,OCP-PA-FORM,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0228,da33d74e-33b3-495a-9d7c-aa00a-aa0228,Presumed cause,FULLY_SPECIFIED,,,,,,Misc,Text,,,,OCP-PA-FORM,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0229,da33d74e-33b3-495a-9d7c-aa00a-aa0229,Pain course,FULLY_SPECIFIED,,,,,,Misc,Coded,,,,OCP-PA-FORM,,,,,,,,,,,,,,,,,,,,,,

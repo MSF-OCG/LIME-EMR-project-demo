@@ -553,3 +553,7 @@ Mapping,MSFOCG,OpenMRS,,MAP-AA0551,,,,,,,,,,,,,,,,,Internal,Q-AND-A,,,MSFOCG,Ope
 Mapping,MSFOCG,OpenMRS,,MAP-AA0552,,,,,,,,,,,,,,,,,Internal,Q-AND-A,,,MSFOCG,OpenMRS,AA0182,MSFOCG,OpenMRS,AA0215,,,,,,,,,
 Mapping,MSFOCG,OpenMRS,,MAP-AA0553,,,,,,,,,,,,,,,,,Internal,Q-AND-A,,,MSFOCG,OpenMRS,AA0182,MSFOCG,OpenMRS,AA0216,,,,,,,,,
 Mapping,MSFOCG,OpenMRS,,MAP-AA0554,,,,,,,,,,,,,,,,,Internal,Q-AND-A,,,MSFOCG,OpenMRS,AA0182,MSFOCG,OpenMRS,AA0217,,,,,,,,,
+Mapping,MSFOCG,OpenMRS,,MAP-AA0555,,,,,,,,,,,,,,,,,Internal,SAME-AS,,,MSFOCG,OpenMRS,AA0225,MSFOCP,MSFOCP,754,,,,,,,,,
+Mapping,MSFOCG,OpenMRS,,MAP-AA0556,,,,,,,,,,,,,,,,,Internal,SAME-AS,,,MSFOCG,OpenMRS,AA0226,MSFOCP,MSFOCP,755,,,,,,,,,
+Mapping,MSFOCG,OpenMRS,,MAP-AA0557,,,,,,,,,,,,,,,,,Internal,SAME-AS,,,MSFOCG,OpenMRS,AA0226,CIEL,CIEL,166854,,,,,,,,,
+Mapping,MSFOCG,OpenMRS,,MAP-AA0558,,,,,,,,,,,,,,,,,Internal,NARROWER-THAN,,,MSFOCG,OpenMRS,AA0226,IHTSDO,SNOMED-CT,225908003,,,,,,,,,
