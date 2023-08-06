@@ -7,6 +7,7 @@
 <div>
 <img src="https://www.msf.org/themes/custom/msf_theme/ogimage.jpg" width=300px>
 <img src="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/main/docs/logo.png" width=300px>
+<img src="https://uc6babd89990136c63a0394d4f16.previews.dropboxusercontent.com/p/thumb/AB8fjuKoFIC-4Wsx38PbMfXOJiX263MX8JSikMkTl9FnMw-eV7JFXpVD0zxP3SwsQ28impXIZOTPtCNF_JxNINNspE5sITHMWt178PoFVmYizFHZ2NcA29R8AH254D9amj7GUfYRqn5opwpHGwXtMD0nOKE-pnb17f_vYevqAmRc46hLPA8yDDTn9Rgb5A_AhmLFfCFN5IADDLCPdGBGNcAZel1Lm0s8agbUkqtk10PZo_mEEHvWukf2lSDby9nYr675YPOAOMTvnUT5vZbriOJeBOfTfXrP6XEFgtn-9e-xxv8VtMs_9gZJHuTfj0vLNz69waI3UpUBC5tTC3IveIILBCE87cRBo2CCaDka15AjpXxfibhYfSaQsUb-6_lYqCQ/p.png" width=300px>
 </div>
 
 ## A Generic Light Modular EMR using 
