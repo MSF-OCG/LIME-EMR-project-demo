@@ -358,7 +358,14 @@ Type of maintenance activities
 
 ## Backup
 
-Instructions to backup the database on a daily or weekly basis, encrypt it, and transfer to another location
+### Overview
+
+<div>
+<img src="./_media/backup-diagram.png" width=50%>
+</div>
+
+
+#### Instructions to backup the database on a daily or weekly basis, encrypt it, and transfer to another location:
 
 ### Prerequisites
 
