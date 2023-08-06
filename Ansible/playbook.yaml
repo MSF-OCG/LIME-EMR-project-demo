@@ -1,6 +1,7 @@
 ---
 - name: Deploy Docker Compose on Ubuntu 22.04
-  hosts: '{{ target_host }}'
+  hosts: localhost
+  connection: local 
   become: yes
   tasks:
     - name: Ensure old versions of Docker are removed
@@ -49,14 +50,14 @@
 
     - name: Clone configuration files from GitHub
       git:
-        repo: '{{ repository_url }}'
-        dest: '{{ main_dir }}'
-        version: '{{ branch }}'
+        repo: 'https://github.com/MSF-OCG/LIME-EMR-project-demo.git'
+        dest: '/home/lime/'
+        version: dev
 
     - name: Run Docker Compose
       command:
         cmd: docker-compose --profile openmrs3 up -d
-        chdir: '{{ main_dir }}'
+        chdir: /home/lime/ 
 
     - name: Wait for a few seconds for containers to start
       wait_for:
