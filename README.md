@@ -25,6 +25,8 @@
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://blog.hl7.org/hubfs/HL7_FHIR_logo.png" height=60px>
 </div>
 
+## Technical documentation of the project
+[https://msf-ocg.github.io/LIME-EMR-project-demo](https://msf-ocg.github.io/LIME-EMR-project-demo) 
 
 ## Ambitions and success criteria
 
@@ -45,6 +47,3 @@
 - Interoperable – to support Health Information Exchange (HIE) and standards such as HL7 FHIR 
 - Collaborative – share information, insights, strategies and deliverables within the community 
 - Achievable – taking in account the overall roadmap and challenges of implementers
-
-## Technical documentation of the project
-[https://msf-ocg.github.io/LIME-EMR-project-demo](https://msf-ocg.github.io/LIME-EMR-project-demo) 
