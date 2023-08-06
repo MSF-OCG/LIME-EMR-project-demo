@@ -74,7 +74,7 @@ services:
       - 3307:3306
     volumes:
       - db-data:/var/lib/mysql
-      - ./config/mysql.cnf:/etc/mysql/conf.d/custom.cnf  # mysql config preconfigured to allow binlog/debezium
+      - ./FHIR/mysql.cnf:/etc/mysql/conf.d/custom.cnf  # mysql config preconfigured to allow binlog/debezium
 
   # FHIR store
   fhir:
@@ -97,7 +97,7 @@ services:
     healthcheck:
       test: "exit 0"
     volumes:
-      - ./config/dbz_event_to_fhir_config.json:/deployments/dbz_event_to_fhir_config.json
+      - ./FHIR/dbz_event_to_fhir_config.json:/deployments/dbz_event_to_fhir_config.json
     environment:
       - OPENMRS_URL=http://localhost/openmrs
       - OPENMRS_USERNAME=admin
