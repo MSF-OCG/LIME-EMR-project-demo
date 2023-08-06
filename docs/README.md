@@ -351,6 +351,11 @@ Type of maintenance activities
 
 ## Backup
 
+Simple database backup using mysqdump:
+```shell
+docker exec openmrs-db mysqldump -u DB_USER -popenmrs DB_PASSWORD > database/mysql_dump.sql
+```
+
 ### Deitentify
 
 ## Restore
