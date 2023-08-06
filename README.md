@@ -9,7 +9,6 @@
 <img src="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/main/docs/logo.png" width=300px>
 </div>
 
-
 ## A Generic Light Modular EMR using 
 
 <div>

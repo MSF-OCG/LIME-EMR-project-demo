@@ -8,6 +8,7 @@ services:
       - backend
     ports:
       - "80:80"
+    restart: always
 
   frontend:
     image: msfocg/openmrs3-frontend:dev
@@ -20,12 +21,7 @@ services:
       timeout: 5s
     depends_on:
       - backend
-    volumes:
-      - ./frontend/custom-config.json:/usr/share/nginx/html/custom-config.json
-      - ./frontend/assets/logo.png:/usr/share/nginx/html/logo.png
-      - ./frontend/assets/header-logo.png:/usr/share/nginx/html/header-logo.png
-      - ./frontend/assets/favicon.ico:/usr/share/nginx/html/favicon.ico
-      - ./frontend/assets/favicon-32x32.webp:/usr/share/nginx/html/favicon-32x32.webp
+    restart: always
 
   backend:
     image: msfocg/openmrs3-backend:dev
@@ -44,7 +40,7 @@ services:
       timeout: 5s
     volumes:
       - openmrs-data:/openmrs/data
-      - ./distro/configuration:/openmrs/distribution/openmrs_config
+    restart: always
 
   # MariaDB
   db:
@@ -60,8 +56,11 @@ services:
       MYSQL_USER: ${OMRS_DB_USER:-openmrs}
       MYSQL_PASSWORD: ${OMRS_DB_PASSWORD:-openmrs}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
+    ports: 
+      - 3307:3306
     volumes:
       - db-data:/var/lib/mysql
+    restart: always
 
 volumes:
   openmrs-data: ~

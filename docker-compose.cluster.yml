@@ -1,0 +1,84 @@
+version: "3.9"
+
+services:
+  gateway:
+    image: openmrs/openmrs-reference-application-3-gateway:${TAG:-nightly}
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+  frontend:
+    image: msfocg/openmrs3-frontend:dev
+    environment:
+      SPA_PATH: /openmrs/spa
+      API_URL: /openmrs
+      SPA_CONFIG_URLS: /openmrs/spa/custom-config.json
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+
+  backend:
+    image: msfocg/openmrs3-backend:dev
+    environment:
+      OMRS_CONFIG_MODULE_WEB_ADMIN: "true"
+      OMRS_CONFIG_AUTO_UPDATE_DATABASE: "true"
+      OMRS_CONFIG_CREATE_TABLES: "true"
+      OMRS_CONFIG_CONNECTION_SERVER: db
+      OMRS_CONFIG_CONNECTION_DATABASE: openmrs
+      OMRS_CONFIG_CONNECTION_USERNAME: ${OPENMRS_DB_USER:-openmrs}
+      OMRS_CONFIG_CONNECTION_PASSWORD: ${OPENMRS_DB_PASSWORD:-openmrs}
+    networks:
+      - backend
+    depends_on:
+      - db
+    deploy:
+      replicas: 2
+      placement:
+        constraints: [node.role == manager]
+    volumes:
+      - openmrs-data:/openmrs/data
+
+  # MariaDB
+  db:
+    image: mariadb:10.8.2
+    command: "mysqld --character-set-server=utf8 --collation-server=utf8_general_ci"
+    environment:
+      MYSQL_DATABASE: openmrs
+      MYSQL_USER: ${OMRS_DB_USER:-openmrs}
+      MYSQL_PASSWORD: ${OMRS_DB_PASSWORD:-openmrs}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
+    networks:
+      - backend
+    # deploy:
+    #   replicas: 1
+    #   restart_policy:
+    #     delay: 10s
+    #     max_attempts: 10
+    #     window: 60s
+    volumes:
+      - db-data:/var/lib/mysql
+
+  visualizer:
+    image: dockersamples/visualizer:latest
+    ports:
+      - "8090:8080"
+    # volumes:
+    #   - docker-sock:/var/run/docker.sock
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  openmrs-data:
+  db-data:
