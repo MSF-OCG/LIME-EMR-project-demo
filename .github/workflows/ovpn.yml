@@ -27,14 +27,15 @@ jobs:
           password: ${{ secrets.OVPN_PASSWORD }}
           client_key: ${{ secrets.OVPN_USER_KEY }}
 
-      - name: Set up SSH key
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
-          chmod 600 private_key.pem
-
-      - name: Connect and execute commands
-        run: |
-          ssh -o StrictHostKeyChecking=no -i private_key.pem root@GCH555VLIME001D.ocg.msf.org "dir"
+      - name: Execute remote SSH commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEV_HOST }}
+          username: ${{ secrets.DEV_HOSTNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            echo "Hello, World!"
+            echo "Another command"
 
       - name: Kill VPN connection
         if: always()
