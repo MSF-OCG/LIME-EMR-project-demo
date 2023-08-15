@@ -33,19 +33,25 @@
             name: git
             state: present
 
-    - name: Check if dest_folder is empty
-      find:
-        paths: "{{ dest_folder }}"
-        file_type: any
-      register: folder_contents
+    - name: Check if the repository is already cloned
+      stat:
+        path: "{{ dest_folder }}.git"
+      register: git_repo_check
 
-    - name: Clone repository if dest_folder is empty
+    - name: Clone the dev branch from GitHub if not already cloned
       git:
         repo: "{{ app_repository }}"
         dest: "{{ dest_folder }}"
+        version: dev
         clone: yes
         update: no
-      when: folder_contents.matched == 0
+      when: not git_repo_check.stat.exists
+      register: git_clone_result
+
+    - name: Display git clone result
+      debug:
+        var: git_clone_result
+      when: git_clone_result is changed
     
     - name: Grant write access to a file/directory
       file:
@@ -53,14 +59,18 @@
         mode: '0775'  
         recurse: yes 
 
-    - name: Pull latest commits if dest_folder is not empty
+    - name: Pull the latest dev branch from GitHub
       git:
         repo: "{{ app_repository }}"
         dest: "{{ dest_folder }}"
-        clone: no
+        version: "{{ git_branch }}"
         update: yes
         force: yes
-      when: folder_contents.matched > 0
+      register: git_pull_result
+
+    - name: Display git pull result
+      debug:
+        var: git_pull_result
 
     - name: Pull images using Docker Compose
       community.docker.docker_compose:
