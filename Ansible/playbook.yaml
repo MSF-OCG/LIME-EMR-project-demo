@@ -32,15 +32,30 @@
             name: git
             state: present
 
-    - name: Clone the Git repository
+    - name: Check if dest_folder is empty
+      find:
+        paths: "{{ dest_folder }}"
+        file_type: any
+      register: folder_contents
+
+    - name: Clone repository if dest_folder is empty
       git:
         repo: "{{ app_repository }}"
         dest: "{{ dest_folder }}"
-        version: "{{ git_branch }}"
-        force: yes
+        clone: yes
+        update: no
+      when: folder_contents.matched == 0
+
+    - name: Pull latest commits if dest_folder is not empty
+      git:
+        repo: "{{ app_repository }}"
+        dest: "{{ dest_folder }}"
+        clone: no
+        update: yes
+      when: folder_contents.matched > 0
 
     - name: Run Docker-compose
-      command: docker-compose up -d
+      command: docker-compose --profile openmrs3 up -d
       args:
         chdir: "{{ dest_folder }}"
 
