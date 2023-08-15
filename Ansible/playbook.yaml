@@ -5,6 +5,7 @@
   vars:
     app_repository: https://github.com/MSF-OCG/LIME-EMR-project-demo.git
     app_url: http://localhost
+    app_admin_url: http://localhost/openmrs/admin
   tasks:
     - name: Install prerequisites for MacOS
       when: ansible_os_family == "Darwin"
@@ -45,6 +46,12 @@
         clone: yes
         update: no
       when: folder_contents.matched == 0
+    
+    - name: Grant write access to a file/directory
+      file:
+        path: "{{ dest_folder }}"
+        mode: '0775'  
+        recurse: yes 
 
     - name: Pull latest commits if dest_folder is not empty
       git:
@@ -52,6 +59,7 @@
         dest: "{{ dest_folder }}"
         clone: no
         update: yes
+        force: yes
       when: folder_contents.matched > 0
 
     - name: Run Docker-compose
@@ -68,13 +76,19 @@
       register: docker_ps_output
       changed_when: false
 
-    - name: Verify localhost is available
+    - name: Verify if OpenMRS admin is accessible
       uri:
-        url: "{{ app_url: }}"
+        url: "{{ app_admin_url }}"
+        method: GET
         status_code: 200
-      register: localhost_response
+      register: result
 
-    - name: Fail if localhost is not available
-      fail:
-        msg: "Localhost is not available!"
-      when: localhost_response.status != 200
+    - name: Display URL check result
+      debug:
+        msg: "OpenMRS Administration is accessible!"
+      when: result.status == 200
+
+    - name: Display URL check failure
+      debug:
+        msg: "OpenMRS Administration is NOT accessible!"
+      when: result.status != 200
