@@ -76,6 +76,10 @@
       register: docker_ps_output
       changed_when: false
 
+    - name: Wait for a few seconds for containers to start
+      wait_for:
+        timeout: 60
+
     - name: Verify if OpenMRS admin is accessible
       uri:
         url: "{{ app_admin_url }}"
