@@ -38,7 +38,7 @@
         path: "{{ dest_folder }}.git"
       register: git_repo_check
 
-    - name: Clone the dev branch from GitHub if not already cloned
+    - name: Clone the branch from GitHub if not already cloned
       git:
         repo: "{{ app_repository }}"
         dest: "{{ dest_folder }}"
@@ -59,7 +59,7 @@
         mode: '0775'  
         recurse: yes 
 
-    - name: Pull the latest dev branch from GitHub
+    - name: Pull the latest branch from GitHub
       git:
         repo: "{{ app_repository }}"
         dest: "{{ dest_folder }}"
