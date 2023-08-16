@@ -72,19 +72,16 @@
       debug:
         var: git_pull_result
 
-    - name: Pull images using Docker Compose
-      community.docker.docker_compose:
-        project_src: "{{ dest_folder }}"
-        pull: yes
+    - name: Pull images using Docker Compose pull
+      command:
+        cmd: docker-compose pull
+        chdir: /home/lime/ 
       register: docker_compose_pull_result
-    
+
     - name: Run docker-compose with OpenMRS3 profile
-      community.docker.docker_compose:
-        project_src: "{{ dest_folder }}"
-        profiles:
-          - openmrs3
-        state: present
-        detached: yes
+      command:
+        cmd: docker-compose --profile openmrs3 up -d
+        chdir: /home/lime/ 
       register: docker_compose_up_result
 
     - name: Display Docker Compose up result
