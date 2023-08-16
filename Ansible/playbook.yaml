@@ -5,7 +5,7 @@
   vars:
     app_repository: https://github.com/MSF-OCG/LIME-EMR-project-demo.git
     app_url: http://localhost
-    app_admin_url: http://localhost/openmrs/admin
+    app_admin_url: http://localhost/openmrs/login.htm
   tasks:
     - name: Install prerequisites for MacOS
       when: ansible_os_family == "Darwin"
