@@ -75,13 +75,13 @@
     - name: Pull images using Docker Compose pull
       command:
         cmd: docker-compose pull
-        chdir: /home/lime/ 
+        chdir: "{{ dest_folder }}"
       register: docker_compose_pull_result
 
     - name: Run docker-compose with OpenMRS3 profile
       command:
         cmd: docker-compose --profile openmrs3 up -d
-        chdir: /home/lime/ 
+        chdir: "{{ dest_folder }}"
       register: docker_compose_up_result
 
     - name: Display Docker Compose up result
