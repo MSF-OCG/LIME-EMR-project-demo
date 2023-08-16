@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.3
 FROM --platform=$BUILDPLATFORM node:18-alpine as dev
 
-ARG APP_SHELL_VERSION=4.4.1
+ARG APP_SHELL_VERSION=next
 
 RUN mkdir -p /app
 WORKDIR /app
@@ -9,8 +9,8 @@ WORKDIR /app
 COPY /frontend/spa-build-config.json .
 
 ARG CACHE_BUST
-RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} build --build-config spa-build-config.json --target ./spa
 RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} assemble --manifest --mode config --config spa-build-config.json --target ./spa
+RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} build --build-config spa-build-config.json --target ./spa
 
 COPY /frontend/custom-config.json ./spa/custom-config.json
 COPY /frontend/assets/logo.png ./spa/logo.png
