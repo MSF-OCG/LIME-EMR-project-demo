@@ -1,5 +1,0 @@
-app_debug: true
-target_host: "localhost"
-repository_url: "https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
-branch: "dev"
-main_dir: "/home/lime/"
