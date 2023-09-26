@@ -343,6 +343,16 @@ https://___.cloudapp.azure.com
 
 Ansible script to build
 
+```shell
+# Add Ansible repository
+sudo apt-add-repository ppa:ansible/ansible
+# Refresh system package index
+sudo apt update
+# Install Ansible
+sudo apt install ansible
+# Run the recipe
+ansible-playbook -i inventories/dev.ini playbook.yaml --ask-become-pass
+```
 ## On premises 
 
 # Maintain
