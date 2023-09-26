@@ -1,0 +1,119 @@
+---
+- name: Setup Docker, Docker-compose, Git and Deploy OpenMRS 3
+  hosts: all
+  become: yes
+  vars:
+    app_repository: https://github.com/MSF-OCG/LIME-EMR-project-demo.git
+    app_url: http://localhost
+    app_admin_url: http://localhost/openmrs/login.htm
+  tasks:
+    - name: Install prerequisites for MacOS
+      when: ansible_os_family == "Darwin"
+      block:
+        - name: Install Docker-compose
+          command: brew install docker-compose
+          become: no
+        - name: Install Git
+          command: brew install git
+          become: no
+
+    - name: Install prerequisites for Ubuntu
+      when: ansible_os_family == "Debian"
+      block:
+        - name: Install Docker
+          apt:
+            name: docker.io
+            state: present
+        - name: Install Docker-compose
+          apt:
+            name: docker-compose
+            state: present
+        - name: Install Git
+          apt:
+            name: git
+            state: present
+
+    - name: Check if the repository is already cloned
+      stat:
+        path: "{{ dest_folder }}.git"
+      register: git_repo_check
+
+    - name: Clone the branch from GitHub if not already cloned
+      git:
+        repo: "{{ app_repository }}"
+        dest: "{{ dest_folder }}"
+        version: dev
+        clone: yes
+        update: no
+      when: not git_repo_check.stat.exists
+      register: git_clone_result
+
+    - name: Display git clone result
+      debug:
+        var: git_clone_result
+      when: git_clone_result is changed
+    
+    - name: Grant write access to a file/directory
+      file:
+        path: "{{ dest_folder }}"
+        mode: '0775'  
+        recurse: yes 
+
+    - name: Pull the latest branch from GitHub
+      git:
+        repo: "{{ app_repository }}"
+        dest: "{{ dest_folder }}"
+        version: "{{ git_branch }}"
+        update: yes
+        force: yes
+      register: git_pull_result
+
+    - name: Display git pull result
+      debug:
+        var: git_pull_result
+
+    - name: Pull images using Docker Compose pull
+      command:
+        cmd: docker-compose pull
+        chdir: "{{ dest_folder }}"
+      register: docker_compose_pull_result
+
+    - name: Run docker-compose with OpenMRS3 profile
+      command:
+        cmd: docker-compose --profile openmrs3 up -d
+        chdir: "{{ dest_folder }}"
+      register: docker_compose_up_result
+
+    - name: Display Docker Compose up result
+      debug:
+        var: docker_compose_up_result
+
+    - name: Wait for a few seconds for containers to start
+      wait_for:
+        timeout: 10
+
+    - name: Confirm Docker containers are running
+      command: docker ps
+      register: docker_ps_output
+      changed_when: false
+
+    - name: Wait for a few seconds for containers to start
+      wait_for:
+        timeout: 60
+
+    - name: Verify if OpenMRS admin is accessible
+      uri:
+        url: "{{ app_admin_url }}"
+        method: GET
+        status_code: 200
+      register: result
+
+    - name: Display URL check result
+      debug:
+        msg: "OpenMRS Administration is accessible!"
+      when: result.status == 200
+
+    - name: Display URL check failure
+      debug:
+        msg: "OpenMRS Administration is NOT accessible!"
+      when: result.status != 200

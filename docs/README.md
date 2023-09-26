@@ -9,19 +9,31 @@
 2. Get the latest docker-compose.yml 
 3. Pull the latest images and run the app with Docker Compose (docker-compose pull && docker-compose up -d)
 
+## Tools 
+- Diagram and pathway design tool: https://bpmn.io/ 
+
 ## File structure
+
 ```shell
-│ ~/srv/docker-compose.yml # file to run Docker images for the App (docker-compose up -d)
-├── distro/ # main folder for OpenMRS backend
-│   ├── distro.properties # file to configure OpenMRS version and modules (OMODs)
-│   └── configuration/ # folder with metadata loaded with Initializer
-└── frontend / # main folder for OpenMRS frontend
-    ├── spa-build-config.json # file to configure OpenMRS 3.x frontend properties and modules
-    └── custom-config.json # file to configure frontend customizations (visiblity, order, logo, etc.)
+├ ~/home/docker-compose.yml # file to run Docker images for the App (docker-compose up -d)
+│  ├─ distro/ # main folder for OpenMRS backend
+│  │  ├── distro.properties # file to configure OpenMRS version and modules (OMODs)
+│  │  └── configuration/ # folder with metadata loaded with Initializer
+│  └─ frontend / # main folder for OpenMRS frontend
+│     ├── spa-build-config.json # file to configure OpenMRS 3.x frontend properties and modules
+│     └── custom-config.json # file to configure frontend customizations (visiblity, order, logo, etc.)
+├ ~/var/lime/ # directory for app files
+├ ~/var/log/ # directory for logs
+└ ~/var/lib/docker/volumes/ # directory where Docker will store volumes for data persistence
 ```
 ## Docker Compose
 
 > ~/srv/docker-compose.yml
+
+Docker diagram
+<div>
+<img src="./_media/docker-compose.png" width=80%>
+</div>
 
 ```yml
 version: "3.7"
@@ -90,6 +102,8 @@ volumes:
   db-data: ~
 
 ```
+
+
 
 # Configure
 
@@ -294,19 +308,24 @@ Docker images will automatically be rebuilt and pushed to [Docker Hub of MSF OCG
 ## Branches
 
 <div>
-<img src="//raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/main/docs/_media/development-workflow.png" width=80%>
+<img src="./_media/development-workflow.png" width=80%>
 </div>
 
 ## Environments 
 
 Dev, QA/UAT, Preprod, prod
 
+| Environment | Dockerfile | Docker compose | Comment |
+|---|---|---|---|
+| Local | Modified to load custom frontend assets (logo, config json, etc.) | docker-compose.local.yml | Loading distro/configuration from the Docker host (local machine) when restarting the Docker backend, frontend must be rebuilt if modified (assets, spa modules, etc) |
+| Dev/Staging/Prod | Modified to load custom frontend assets (logo, config json, etc.) | docker-compose.yml | Loading frontend and backend Docker images built in Github actions and pushed to Docker Hub |
+
 # Deploy 
 
 ## On localhost
 ```shell
 # SSH Azure instance via jumphost
-ssh username@msf-ocg-openmrs3-dev.westeurope.cloudapp.azure.com -p 22222
+ssh username@____.cloudapp.azure.com -p ____
 # switch to sudo privileges
 sudo su
 # Start OpenMRS
@@ -316,7 +335,7 @@ docker ps
 # IF docker-compose file is missing, download configuration, then start OpenMRS
 curl https://raw.githubusercontent.com/openmrs/openmrs-distro-referenceapplication/main/docker-compose.yml > docker-compose.yml 
 # Verify that the web app is available
-http://msf-ocg-openmrs3-dev.westeurope.cloudapp.azure.com 
+https://___.cloudapp.azure.com 
 # All done!
 ```
 
@@ -324,7 +343,17 @@ http://msf-ocg-openmrs3-dev.westeurope.cloudapp.azure.com
 
 Ansible script to build
 
-## On FiWi 
+```shell
+# Add Ansible repository
+sudo apt-add-repository ppa:ansible/ansible
+# Refresh system package index
+sudo apt update
+# Install Ansible
+sudo apt install ansible
+# Run the recipe
+ansible-playbook -i inventories/dev.ini playbook.yaml --ask-become-pass
+```
+## On premises 
 
 # Maintain
 
@@ -339,7 +368,97 @@ Type of maintenance activities
 
 ## Backup
 
-### Deitentify
+### Overview
+
+<div>
+<img src="./_media/backup-diagram.png" width=50%>
+</div>
+
+
+#### Instructions to backup the database on a daily or weekly basis, encrypt it, and transfer to another location:
+
+### Prerequisites
+
+#### Step 1: Install GPG on the backup server
+
+You can install GPG on your backup server using your distribution's package manager. For example, on Ubuntu or Debian, you can use the following command:
+```shell
+sudo apt-get update
+sudo apt-get install gnupg
+```
+
+#### Step 2: Generate a GPG key pair
+
+You can generate a GPG key pair using the following command:
+
+```shell
+gpg --gen-key
+```
+
+This will launch a series of prompts to configure your key pair. Follow the prompts to create your key pair.
+
+#### Step 3: Export the public key
+
+Once you have generated your key pair, you need to export the public key and share it with the users who will be encrypting backups for you.
+
+You can export the public key using the following command:
+
+```shell
+gpg --export -a "Your Name" > public_key.asc
+```
+Replace "Your Name" with the name you used when generating your key pair.
+
+#### Step 4: Encrypt backups using GPG
+
+To encrypt a backup using GPG, you can use the following command:
+
+```shell
+gpg --encrypt --recipient "Your Name" backup_file.tar.gz
+```
+Replace "Your Name" with the name associated with your GPG key pair, and replace "backup_file.tar.gz" with the name of your backup file.
+
+### Consolidated script 
+
+```shell
+#!/bin/bash
+
+# Set the date format
+now=$(date +"%Y_%m_%d")
+
+# Perform daily incremental backup of the database
+docker exec openmrs-db /usr/bin/mysqldump --max_allowed_packet=51012M -u '****' --password='******' openmrs --skip-lock-tables --single-transaction --skip-triggers | gzip -v > /openmrs/backup/lime_dc_db_daily_$now.sql.gz
+
+# Perform weekly incremental backup of the database
+if [ $(date +%u) -eq 7 ]; then
+  docker exec openmrs-db /usr/bin/mysqldump --max_allowed_packet=51012M -u '****' --password='******' openmrs --skip-lock-tables --single-transaction --skip-triggers | gzip -v > /openmrs/backup/lime_dc_db_weekly_$now.sql.gz
+fi
+
+# Encrypt backup file using GPG
+gpg --encrypt --recipient "Your Name" /ptracker/backup/ptracker_dc_db.sql.gz
+
+# Perform incremental backup of the storage and files
+rsync -a --delete /lime/storage/ backup@172.24.xx.xx:/openmrs/backup/lime_dc_storage/
+
+# Perform incremental backup of the OpenMRS files
+rsync -a --delete /lime/openmrs/ backup@172.24.xx.xx:/openmrs/backup/lime_dc_files/
+
+# Create a log message with timestamp
+echo "$(date): Daily and weekly incremental backup of OpenMRS database and incremental backup of storage and files has been performed."
+```
+This script performs a MySQL dump of an OpenMRS database, compresses the output and transfers it to a backup server. It also adds a time stamp message to a log file.
+
+### Line-by-line explanation of the script
+
+```now=$(date +"%Y_%m_%d")```: This line creates a variable now that captures the current date in the format of year, month, and day.
+
+```shell docker exec ptracker-openmrs-db /usr/bin/mysqldump --max_allowed_packet=51012M -u '****' --password='******' openmrs --skip-lock-tables | gzip -v > /lime/backup/lime_dc_db.sql.gz```: This line uses Docker to execute a MySQL dump command with specific parameters. It dumps the database named openmrs to the standard output and pipes it to gzip, which compresses the output. The compressed output is then redirected to a backup file named ptracker_dc_db.sql.gz in the /ptracker/backup/ directory.
+
+```scp -i '/openmrs/backup/backup_key' /openmrs/backup/lime_dc_db.sql.gz backup@172.24.xx.xx:/openmrs/backup/lime_dc_db_$now.sql.gz```: This line uses scp to securely copy the backup file to a backup server. It uses the key stored in /lime/backup/backup_key to authenticate the transfer. The file is transferred to the user backup at IP address 172.24.xx.xx, and it is renamed to include the timestamp variable $now in the file name.
+
+```echo $now Backup of openmrs db has run```: This line appends a message to a log file that confirms that the backup has been run. The message includes the timestamp variable $now.
+
+
+## Deitentify
 
 ## Restore
 
