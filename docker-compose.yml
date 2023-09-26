@@ -1,8 +1,9 @@
-version: "3.7"
+version: "3.8"
 
 services:
+  # Networking
   gateway:
-    profiles: ["openmrs3", "fhir"]
+    profiles: ["openmrs3"]
     container_name: openmrs-gateway
     image: openmrs/openmrs-reference-application-3-gateway:${TAG:-nightly}
     depends_on:
@@ -11,8 +12,9 @@ services:
     ports:
       - "80:80"
 
+  # OpenMRS 3 Frontend
   frontend:
-    profiles: ["openmrs3", "fhir"]
+    profiles: ["openmrs3"]
     container_name: openmrs-frontend
     image: msfocg/openmrs3-frontend:dev
     environment:
@@ -25,8 +27,9 @@ services:
     depends_on:
       - backend
 
+  # OpenMRS Core Backend
   backend:
-    profiles: ["openmrs3", "openmrs", "fhir"]
+    profiles: ["openmrs3", "openmrs"]
     container_name: openmrs-backend
     image: msfocg/openmrs3-backend:dev
     depends_on:
@@ -50,7 +53,7 @@ services:
 
   # MariaDB
   db:
-    profiles: ["openmrs3", "openmrs", "fhir"]
+    profiles: ["openmrs3", "openmrs"]
     container_name: openmrs-db
     image: mariadb:10.8.2
     command: "mysqld --character-set-server=utf8 --collation-server=utf8_general_ci"
@@ -76,9 +79,10 @@ services:
       - db-data:/var/lib/mysql
       - ./FHIR/mysql.cnf:/etc/mysql/conf.d/custom.cnf  # mysql config preconfigured to allow binlog/debezium
 
+
   # FHIR store
   fhir:
-    profiles: ["openmrs3", "openmrs", "fhir"]
+    profiles: ["fhir"]
     container_name: external-fhir-api
     image: hapiproject/hapi:latest
     ports:
@@ -89,8 +93,9 @@ services:
       - hapi.fhir.allow_placeholder_references=true
       - hapi.fhir.allow_external_references=true
 
+  # FHIR data streaming
   streaming-binlog: 
-    profiles: ["openmrs3", "openmrs", "fhir"]
+    profiles: ["fhir"]
     image: openmrsinfra/openmrs-fhir-analytics:plir-binlog
     container_name: plir-streaming-pipeline
     network_mode: host
@@ -112,6 +117,51 @@ services:
       - JDBC_DRIVER_CLASS=com.mysql.cj.jdbc.Driver
       - FHIR_DEBEZIUM_CONFIG_PATH=/deployments/dbz_event_to_fhir_config.json   
 
+  # Zabbix
+  zabbix-server:
+    profiles: ["zabbix"]
+    image: zabbix/zabbix-server-mysql
+    container_name: zabbix-server
+    ports:
+      - "10051:10051"
+    environment:
+      DB_SERVER_HOST: "mysql-server"
+      MYSQL_USER: "zabbix"
+      MYSQL_PASSWORD: "zabbix"
+      MYSQL_DATABASE: "zabbix"
+    depends_on:
+      - zabbix-db
+
+  zabbix-web:
+    profiles: ["zabbix"]
+    image: zabbix/zabbix-web-nginx-mysql
+    container_name: zabbix-web
+    ports:
+      - "8082:8080"
+      - "8443:8443"
+    environment:
+      DB_SERVER_HOST: "mysql-server"
+      MYSQL_USER: "zabbix"
+      MYSQL_PASSWORD: "zabbix"
+      MYSQL_DATABASE: "zabbix"
+      ZBX_SERVER_HOST: "zabbix-server"
+      PHP_TZ: "Europe/London"
+    depends_on:
+      - zabbix-server
+
+  zabbix-db:
+    profiles: ["zabbix"]
+    image: mysql:8.0
+    container_name: zabbix-db
+    volumes:
+      - zabbix-db-storage:/var/lib/mysql
+    environment:
+      MYSQL_USER: "zabbix"
+      MYSQL_PASSWORD: "zabbix"
+      MYSQL_DATABASE: "zabbix"
+      MYSQL_ROOT_PASSWORD: "root_password"  
+
 volumes:
   openmrs-data: ~
   db-data: ~
+  zabbix-db-storage: ~

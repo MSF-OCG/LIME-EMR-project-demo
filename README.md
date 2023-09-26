@@ -7,7 +7,7 @@
 <div>
 <img src="https://www.msf.org/themes/custom/msf_theme/ogimage.jpg" width=260px>
 <img src="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/main/docs/logo.png" width=260px>
-<img src="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/dev/docs/_media/Madiro.png" width=260px>
+<img src="docs/_media/Madiro.png" width=260px>
 </div>
 
 ## A Generic Light Modular EMR using 
