@@ -8,7 +8,7 @@
     app_admin_url: http://localhost/openmrs/login.htm
   tasks:
     - name: Install prerequisites for MacOS
-      when: ansible_os_family == "Debian"
+      when: ansible_os_family == "Darwin"
       block:
         - name: Install Docker-compose
           command: brew install docker-compose
