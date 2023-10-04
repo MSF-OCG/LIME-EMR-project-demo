@@ -1,0 +1,201 @@
+{
+  "name": "Maternity form - Hospitalisation",
+  "pages": [
+    {
+      "label": "",
+      "sections": [
+        {
+          "label": "",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Referred by",
+              "type": "obs",
+              "required": false,
+              "id": "ReferredBy",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0254",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0255",
+                    "label": "TBA/CHW"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0166",
+                    "label": "Health facility"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0257",
+                    "label": "Maternity waiting home"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0258",
+                    "label": "Self-referral"
+                  },
+                  {
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "If referred by health facility",
+              "type": "obs",
+              "required": false,
+              "id": "FacilityName",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0259",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "If referred by other",
+              "type": "obs",
+              "required": false,
+              "id": "Other",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "org.openmrs.module.mdrtb",
+                    "value": "OTHER"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "5622"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED MVP",
+                    "value": "56221000105001"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "5622"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "5622"
+                  },
+                  {
+                    "relationship": "NARROWER-THAN",
+                    "type": "SNOMED CT",
+                    "value": "74964007"
+                  }
+                ],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Medical and surgical history",
+              "type": "obs",
+              "required": false,
+              "id": "MedicalAndSurgicalHistory",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0260",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Hospitalisation",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Previous Delivery Group",
+              "required": false,
+              "id": "PreviousDeliveryGroup",
+              "questionOptions": {
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0324",
+                "rendering": "repeating"
+              },
+              "questions": [
+                {
+                  "label": "Previous Delivery",
+                  "type": "obs",
+                  "required": false,
+                  "id": "PreviousDelivery",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0273",
+                    "conceptMappings": [],
+                    "answers": []
+                  },
+                  "validators": [],
+                  "hide": {}
+                },
+                {
+                  "label": "Previous Delivery Year",
+                  "type": "obs",
+                  "required": false,
+                  "id": "PreviousDeliveryYear",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0274",
+                    "conceptMappings": [],
+                    "answers": []
+                  },
+                  "validators": []
+                },
+                {
+                  "label": "Previous Delivery Status",
+                  "type": "obs",
+                  "required": false,
+                  "id": "Previous Delivery Status",
+                  "questionOptions": {
+                    "rendering": "radio",
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0275",
+                    "conceptMappings": [],
+                    "answers": [
+                      {
+                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0278",
+                        "label": "Alive"
+                      },
+                      {
+                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0276",
+                        "label": "Abortion"
+                      },
+                      {
+                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0279",
+                        "label": "Death"
+                      },
+                      {
+                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0277",
+                        "label": "Stillborn"
+                      }
+                    ]
+                  },
+                  "validators": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "processor": "EncounterFormProcessor",
+  "encounterType": "dd528487-82a5-4082-9c72-ed246bd49591",
+  "referencedForms": [],
+  "uuid": "6332f7ed-2991-4798-946f-01da8bfc0fea",
+  "description": "Maternity form",
+  "version": "0.2"
+}
