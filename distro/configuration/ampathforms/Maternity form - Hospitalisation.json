@@ -5,7 +5,7 @@
       "label": "",
       "sections": [
         {
-          "label": "",
+          "label": "Maternity hospitalisation",
           "isExpanded": "true",
           "questions": [
             {
@@ -53,7 +53,10 @@
                 "conceptMappings": [],
                 "answers": []
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "ReferredBy !== 'da33d74e-33b3-495a-9d7c-aa00a-aa0166'"
+              }
             },
             {
               "label": "If referred by other",
@@ -97,7 +100,10 @@
                 ],
                 "answers": []
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "ReferredBy !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
             },
             {
               "label": "Medical and surgical history",
@@ -115,9 +121,123 @@
           ]
         },
         {
-          "label": "Hospitalisation",
+          "label": "Obstetric history",
           "isExpanded": "true",
           "questions": [
+            {
+              "label": "Gravida",
+              "type": "obs",
+              "required": false,
+              "id": "Gravida",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0261",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Para",
+              "type": "obs",
+              "required": false,
+              "id": "Para",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0262",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Abortions",
+              "type": "obs",
+              "required": false,
+              "id": "Abortions",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0263",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Came to ANC",
+              "type": "obs",
+              "required": false,
+              "id": "CameToANC",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0264",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes",
+                    "conceptMappings": []
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No",
+                    "conceptMappings": []
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Number of visits",
+              "type": "obs",
+              "required": false,
+              "id": "NumberOfVisits",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0265",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Tetanus vaccination",
+              "type": "obs",
+              "required": false,
+              "id": "TetanusVaccination",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0266",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0267",
+                    "label": "Not vaccinated"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0268",
+                    "label": "TT1"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0269",
+                    "label": "TT2"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0270",
+                    "label": "TT3"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0271",
+                    "label": "TT4"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0272",
+                    "label": "TT_5"
+                  }
+                ]
+              },
+              "validators": []
+            },
             {
               "type": "obsGroup",
               "label": "Previous Delivery Group",
@@ -188,6 +308,587 @@
               ]
             }
           ]
+        },
+        {
+          "label": "Examination on admission",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Last menstrual period",
+              "type": "obs",
+              "required": false,
+              "id": "LastMenstrualPeriod",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0280",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Expected date of delivery",
+              "type": "obs",
+              "required": false,
+              "id": "ExpectedDateOfDelivery",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0281",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Estimated gestation (weeks)",
+              "type": "obs",
+              "required": false,
+              "id": "EstimatedGestation",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0282",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Weight",
+              "type": "obs",
+              "required": false,
+              "id": "Weight",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "5089"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "PIH",
+                    "value": "5089"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "AMPATH",
+                    "value": "5089"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "SNOMED CT",
+                    "value": "27113001"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "org.openmrs.module.mdrtb",
+                    "value": "WEIGHT"
+                  },
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "LOINC",
+                    "value": "3141-9"
+                  }
+                ],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Temperature (°C)",
+              "type": "obs",
+              "required": false,
+              "id": "Temperature",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5088AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "conceptMappings": [
+                  {
+                    "relationship": "SAME-AS",
+                    "type": "CIEL",
+                    "value": "5088"
+                  }
+                ],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Fundal height (cm)",
+              "type": "obs",
+              "required": false,
+              "id": "FundalHeight",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0283",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Lie/presentation",
+              "type": "obs",
+              "required": false,
+              "id": "LiePresentation",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0284",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Conjunctiva",
+              "type": "obs",
+              "required": false,
+              "id": "Conjunctiva",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0285",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Normal"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0287",
+                    "label": "Pale"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Proteinuria",
+              "type": "obs",
+              "required": false,
+              "id": "Proteinuria",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0288",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0289",
+                    "label": "Proteinuria negative"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0290",
+                    "label": "Proteinuria +"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0291",
+                    "label": "Proteinuria ++"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0292",
+                    "label": "Proteinuria +++"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Foetal heart rate",
+              "type": "obs",
+              "required": false,
+              "id": "FoetalHeartRate",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0293",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Foetal movements",
+              "type": "obs",
+              "required": false,
+              "id": "FoetalMovements",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0294",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes",
+                    "conceptMappings": []
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No",
+                    "conceptMappings": []
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Hemoglobin",
+              "type": "obs",
+              "required": false,
+              "id": "Hemoglobin",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0295",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Blood group",
+              "type": "obs",
+              "required": false,
+              "id": "BloodGroup",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0296",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Syphilis test",
+              "type": "obs",
+              "required": false,
+              "id": "SyphilisTest",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0297",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Other test",
+              "type": "obs",
+              "required": false,
+              "id": "OtherTest",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0298",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Vaginal examination",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Cervix effacement",
+              "type": "obs",
+              "required": false,
+              "id": "CervixEffacement",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0299",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Cervix consistency",
+              "type": "obs",
+              "required": false,
+              "id": "CervixConsistency",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0300",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Dilatation (cm)",
+              "type": "obs",
+              "required": false,
+              "id": "Dilatation",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0301",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Presenting part",
+              "type": "obs",
+              "required": false,
+              "id": "PresentingPart",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0302",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Engagement",
+              "type": "obs",
+              "required": false,
+              "id": "Engagement",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0303",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Bleeding per vagina",
+              "type": "obs",
+              "required": false,
+              "id": "BleedingPerVagina",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0304",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Membranes",
+              "type": "obs",
+              "required": false,
+              "id": "Membranes",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0305",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0306",
+                    "label": "Intact"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0307",
+                    "label": "Ruptured"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Membranes rupture",
+              "type": "obs",
+              "required": false,
+              "id": "MembranesRupture",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0308",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "Membranes !== 'da33d74e-33b3-495a-9d7c-aa00a-aa0307'"
+              }
+            },
+            {
+              "label": "Genital mutilation",
+              "type": "obs",
+              "required": false,
+              "id": "GenitalMutilation",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0309",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes",
+                    "conceptMappings": []
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No",
+                    "conceptMappings": []
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Type of genital mutilation",
+              "type": "obs",
+              "required": false,
+              "id": "Type of genital mutilation",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0310",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0311",
+                    "label": "Genital mutilation type I"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0312",
+                    "label": "Genital mutilation type II"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0313",
+                    "label": "Genital mutilation type III"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Fistula",
+              "type": "obs",
+              "required": false,
+              "id": "Fistula",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0314",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes",
+                    "conceptMappings": []
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No",
+                    "conceptMappings": []
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Vesicovaginal fistula",
+              "type": "obs",
+              "required": false,
+              "id": "VesicovaginalFistula",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0315",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes",
+                    "conceptMappings": []
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No",
+                    "conceptMappings": []
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "Fistula !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Rectovaginal fistula",
+              "type": "obs",
+              "required": false,
+              "id": "RectovaginalFistula",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0316",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes",
+                    "conceptMappings": []
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No",
+                    "conceptMappings": []
+                  }
+                ]
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "Fistula !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Liquor",
+              "type": "obs",
+              "required": false,
+              "id": "Liquor",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0317",
+                "conceptMappings": [],
+                "answers": [
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0318",
+                    "label": "Clear"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0319",
+                    "label": "Meconium stained"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0320",
+                    "label": "Foul smelling"
+                  },
+                  {
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0321",
+                    "label": "Blood stained"
+                  }
+                ]
+              },
+              "validators": []
+            },
+            {
+              "label": "Uterine contractions since",
+              "type": "obs",
+              "required": false,
+              "id": "UterineContractionsSince",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0322",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Uterine contractions frequency / 10 min",
+              "type": "obs",
+              "required": false,
+              "id": "UterineContractionsFrequency",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0323",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            }
+          ]
         }
       ]
     }
@@ -197,5 +898,5 @@
   "referencedForms": [],
   "uuid": "6332f7ed-2991-4798-946f-01da8bfc0fea",
   "description": "Maternity form",
-  "version": "0.2"
+  "version": "0.4"
 }
