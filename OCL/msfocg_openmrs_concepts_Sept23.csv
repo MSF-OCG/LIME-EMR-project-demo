@@ -297,7 +297,7 @@ Concept,MSFOCG,OpenMRS,,AA0295,da33d74e-33b3-495a-9d7c-aa00a-aa0295,Hemoglobin,F
 Concept,MSFOCG,OpenMRS,,AA0296,da33d74e-33b3-495a-9d7c-aa00a-aa0296,Blood group,FULLY_SPECIFIED,,,,,,,,,Misc,Text,,,,Iraq-Maternity-Form,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0297,da33d74e-33b3-495a-9d7c-aa00a-aa0297,Syphilis test,FULLY_SPECIFIED,,,,,,,,,Misc,Text,,,,Iraq-Maternity-Form,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0298,da33d74e-33b3-495a-9d7c-aa00a-aa0298,Other test,FULLY_SPECIFIED,,,,,,,,,Misc,Text,,,,Iraq-Maternity-Form,,,,,,,,,,,,,,,,,,,,,,
-Concept,MSFOCG,OpenMRS,,AA0299,da33d74e-33b3-495a-9d7c-aa00a-aa0299,Cervix effacement,FULLY_SPECIFIED,,,,,,,,,Misc,Text,,,,Iraq-Maternity-Form,,,,,,,,,,,,,,,,,,,,,,
+Concept,MSFOCG,OpenMRS,,AA0299,da33d74e-33b3-495a-9d7c-aa00a-aa0299,Cervix effacement,FULLY_SPECIFIED,,العنق - الإمحاء,FULLY_SPECIFIED,ar,,,,,Misc,Text,,,,Iraq-Maternity-Form,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0300,da33d74e-33b3-495a-9d7c-aa00a-aa0300,Cervix consistency,FULLY_SPECIFIED,,,,,,,,,Misc,Text,,,,Iraq-Maternity-Form,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0301,da33d74e-33b3-495a-9d7c-aa00a-aa0301,Dilatation (cm),FULLY_SPECIFIED,,,,,,,,,Misc,Numeric,,,,Iraq-Maternity-Form,,,,,,,,,,,,,,,,,,,,,,
 Concept,MSFOCG,OpenMRS,,AA0302,da33d74e-33b3-495a-9d7c-aa00a-aa0302,Presenting part,FULLY_SPECIFIED,,,,,,,,,Misc,Text,,,,Iraq-Maternity-Form,,,,,,,,,,,,,,,,,,,,,,
