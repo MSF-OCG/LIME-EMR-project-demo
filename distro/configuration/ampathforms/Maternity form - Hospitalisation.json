@@ -9,7 +9,6 @@
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Referred by",
               "type": "obs",
               "required": false,
               "id": "ReferredBy",
@@ -19,31 +18,25 @@
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0255",
-                    "label": "TBA/CHW"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0255"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0166",
-                    "label": "Health facility"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0166"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0257",
-                    "label": "Maternity waiting home"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0257"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0258",
-                    "label": "Self-referral"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0258"
                   },
                   {
-                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Other"
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                   }
                 ]
               },
               "validators": []
             },
             {
-              "label": "If referred by health facility",
               "type": "obs",
               "required": false,
               "id": "FacilityName",
@@ -59,7 +52,6 @@
               }
             },
             {
-              "label": "If referred by other",
               "type": "obs",
               "required": false,
               "id": "Other",
@@ -106,7 +98,6 @@
               }
             },
             {
-              "label": "Medical and surgical history",
               "type": "obs",
               "required": false,
               "id": "MedicalAndSurgicalHistory",
@@ -121,11 +112,9 @@
           ]
         },
         {
-          "label": "Obstetric history",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Gravida",
               "type": "obs",
               "required": false,
               "id": "Gravida",
@@ -138,7 +127,6 @@
               "validators": []
             },
             {
-              "label": "Para",
               "type": "obs",
               "required": false,
               "id": "Para",
@@ -151,7 +139,6 @@
               "validators": []
             },
             {
-              "label": "Abortions",
               "type": "obs",
               "required": false,
               "id": "Abortions",
@@ -164,7 +151,6 @@
               "validators": []
             },
             {
-              "label": "Came to ANC",
               "type": "obs",
               "required": false,
               "id": "CameToANC",
@@ -175,12 +161,10 @@
                 "answers": [
                   {
                     "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes",
                     "conceptMappings": []
                   },
                   {
                     "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No",
                     "conceptMappings": []
                   }
                 ]
@@ -188,7 +172,6 @@
               "validators": []
             },
             {
-              "label": "Number of visits",
               "type": "obs",
               "required": false,
               "id": "NumberOfVisits",
@@ -201,7 +184,6 @@
               "validators": []
             },
             {
-              "label": "Tetanus vaccination",
               "type": "obs",
               "required": false,
               "id": "TetanusVaccination",
@@ -211,28 +193,22 @@
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0267",
-                    "label": "Not vaccinated"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0267"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0268",
-                    "label": "TT1"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0268"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0269",
-                    "label": "TT2"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0269"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0270",
-                    "label": "TT3"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0270"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0271",
-                    "label": "TT4"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0271"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0272",
-                    "label": "TT_5"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0272"
                   }
                 ]
               },
@@ -240,7 +216,6 @@
             },
             {
               "type": "obsGroup",
-              "label": "Previous Delivery Group",
               "required": false,
               "id": "PreviousDeliveryGroup",
               "questionOptions": {
@@ -249,7 +224,6 @@
               },
               "questions": [
                 {
-                  "label": "Previous Delivery",
                   "type": "obs",
                   "required": false,
                   "id": "PreviousDelivery",
@@ -263,7 +237,6 @@
                   "hide": {}
                 },
                 {
-                  "label": "Previous Delivery Year",
                   "type": "obs",
                   "required": false,
                   "id": "PreviousDeliveryYear",
@@ -276,7 +249,6 @@
                   "validators": []
                 },
                 {
-                  "label": "Previous Delivery Status",
                   "type": "obs",
                   "required": false,
                   "id": "Previous Delivery Status",
@@ -286,20 +258,16 @@
                     "conceptMappings": [],
                     "answers": [
                       {
-                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0278",
-                        "label": "Alive"
+                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0278"
                       },
                       {
-                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0276",
-                        "label": "Abortion"
+                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0276"
                       },
                       {
-                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0279",
-                        "label": "Death"
+                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0279"
                       },
                       {
-                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0277",
-                        "label": "Stillborn"
+                        "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0277"
                       }
                     ]
                   },
@@ -310,11 +278,9 @@
           ]
         },
         {
-          "label": "Examination on admission",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Last menstrual period",
               "type": "obs",
               "required": false,
               "id": "LastMenstrualPeriod",
@@ -327,7 +293,6 @@
               "validators": []
             },
             {
-              "label": "Expected date of delivery",
               "type": "obs",
               "required": false,
               "id": "ExpectedDateOfDelivery",
@@ -340,7 +305,6 @@
               "validators": []
             },
             {
-              "label": "Estimated gestation (weeks)",
               "type": "obs",
               "required": false,
               "id": "EstimatedGestation",
@@ -353,7 +317,6 @@
               "validators": []
             },
             {
-              "label": "Weight",
               "type": "obs",
               "required": false,
               "id": "Weight",
@@ -397,7 +360,6 @@
               "validators": []
             },
             {
-              "label": "Temperature (°C)",
               "type": "obs",
               "required": false,
               "id": "Temperature",
@@ -416,7 +378,6 @@
               "validators": []
             },
             {
-              "label": "Fundal height (cm)",
               "type": "obs",
               "required": false,
               "id": "FundalHeight",
@@ -429,7 +390,6 @@
               "validators": []
             },
             {
-              "label": "Lie/presentation",
               "type": "obs",
               "required": false,
               "id": "LiePresentation",
@@ -442,7 +402,6 @@
               "validators": []
             },
             {
-              "label": "Conjunctiva",
               "type": "obs",
               "required": false,
               "id": "Conjunctiva",
@@ -452,19 +411,16 @@
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Normal"
+                    "concept": "1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0287",
-                    "label": "Pale"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0287"
                   }
                 ]
               },
               "validators": []
             },
             {
-              "label": "Proteinuria",
               "type": "obs",
               "required": false,
               "id": "Proteinuria",
@@ -474,27 +430,22 @@
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0289",
-                    "label": "Proteinuria negative"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0289"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0290",
-                    "label": "Proteinuria +"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0290"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0291",
-                    "label": "Proteinuria ++"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0291"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0292",
-                    "label": "Proteinuria +++"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0292"
                   }
                 ]
               },
               "validators": []
             },
             {
-              "label": "Foetal heart rate",
               "type": "obs",
               "required": false,
               "id": "FoetalHeartRate",
@@ -507,7 +458,6 @@
               "validators": []
             },
             {
-              "label": "Foetal movements",
               "type": "obs",
               "required": false,
               "id": "FoetalMovements",
@@ -518,12 +468,10 @@
                 "answers": [
                   {
                     "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes",
                     "conceptMappings": []
                   },
                   {
                     "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No",
                     "conceptMappings": []
                   }
                 ]
@@ -531,7 +479,6 @@
               "validators": []
             },
             {
-              "label": "Hemoglobin",
               "type": "obs",
               "required": false,
               "id": "Hemoglobin",
@@ -544,7 +491,6 @@
               "validators": []
             },
             {
-              "label": "Blood group",
               "type": "obs",
               "required": false,
               "id": "BloodGroup",
@@ -557,7 +503,6 @@
               "validators": []
             },
             {
-              "label": "Syphilis test",
               "type": "obs",
               "required": false,
               "id": "SyphilisTest",
@@ -570,7 +515,6 @@
               "validators": []
             },
             {
-              "label": "Other test",
               "type": "obs",
               "required": false,
               "id": "OtherTest",
@@ -585,11 +529,9 @@
           ]
         },
         {
-          "label": "Vaginal examination",
           "isExpanded": "true",
           "questions": [
             {
-              "label": "Cervix effacement",
               "type": "obs",
               "required": false,
               "id": "CervixEffacement",
@@ -602,7 +544,6 @@
               "validators": []
             },
             {
-              "label": "Cervix consistency",
               "type": "obs",
               "required": false,
               "id": "CervixConsistency",
@@ -615,7 +556,6 @@
               "validators": []
             },
             {
-              "label": "Dilatation (cm)",
               "type": "obs",
               "required": false,
               "id": "Dilatation",
@@ -628,7 +568,6 @@
               "validators": []
             },
             {
-              "label": "Presenting part",
               "type": "obs",
               "required": false,
               "id": "PresentingPart",
@@ -641,7 +580,6 @@
               "validators": []
             },
             {
-              "label": "Engagement",
               "type": "obs",
               "required": false,
               "id": "Engagement",
@@ -654,7 +592,6 @@
               "validators": []
             },
             {
-              "label": "Bleeding per vagina",
               "type": "obs",
               "required": false,
               "id": "BleedingPerVagina",
@@ -667,7 +604,6 @@
               "validators": []
             },
             {
-              "label": "Membranes",
               "type": "obs",
               "required": false,
               "id": "Membranes",
@@ -677,19 +613,16 @@
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0306",
-                    "label": "Intact"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0306"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0307",
-                    "label": "Ruptured"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0307"
                   }
                 ]
               },
               "validators": []
             },
             {
-              "label": "Membranes rupture",
               "type": "obs",
               "required": false,
               "id": "MembranesRupture",
@@ -705,7 +638,6 @@
               }
             },
             {
-              "label": "Genital mutilation",
               "type": "obs",
               "required": false,
               "id": "GenitalMutilation",
@@ -716,12 +648,10 @@
                 "answers": [
                   {
                     "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes",
                     "conceptMappings": []
                   },
                   {
                     "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No",
                     "conceptMappings": []
                   }
                 ]
@@ -729,7 +659,6 @@
               "validators": []
             },
             {
-              "label": "Type of genital mutilation",
               "type": "obs",
               "required": false,
               "id": "Type of genital mutilation",
@@ -739,23 +668,19 @@
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0311",
-                    "label": "Genital mutilation type I"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0311"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0312",
-                    "label": "Genital mutilation type II"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0312"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0313",
-                    "label": "Genital mutilation type III"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0313"
                   }
                 ]
               },
               "validators": []
             },
             {
-              "label": "Fistula",
               "type": "obs",
               "required": false,
               "id": "Fistula",
@@ -766,12 +691,10 @@
                 "answers": [
                   {
                     "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes",
                     "conceptMappings": []
                   },
                   {
                     "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No",
                     "conceptMappings": []
                   }
                 ]
@@ -779,7 +702,6 @@
               "validators": []
             },
             {
-              "label": "Vesicovaginal fistula",
               "type": "obs",
               "required": false,
               "id": "VesicovaginalFistula",
@@ -790,12 +712,10 @@
                 "answers": [
                   {
                     "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes",
                     "conceptMappings": []
                   },
                   {
                     "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No",
                     "conceptMappings": []
                   }
                 ]
@@ -806,7 +726,6 @@
               }
             },
             {
-              "label": "Rectovaginal fistula",
               "type": "obs",
               "required": false,
               "id": "RectovaginalFistula",
@@ -817,12 +736,10 @@
                 "answers": [
                   {
                     "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Yes",
                     "conceptMappings": []
                   },
                   {
                     "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "No",
                     "conceptMappings": []
                   }
                 ]
@@ -833,7 +750,6 @@
               }
             },
             {
-              "label": "Liquor",
               "type": "obs",
               "required": false,
               "id": "Liquor",
@@ -843,27 +759,22 @@
                 "conceptMappings": [],
                 "answers": [
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0318",
-                    "label": "Clear"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0318"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0319",
-                    "label": "Meconium stained"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0319"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0320",
-                    "label": "Foul smelling"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0320"
                   },
                   {
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0321",
-                    "label": "Blood stained"
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0321"
                   }
                 ]
               },
               "validators": []
             },
             {
-              "label": "Uterine contractions since",
               "type": "obs",
               "required": false,
               "id": "UterineContractionsSince",
@@ -876,7 +787,6 @@
               "validators": []
             },
             {
-              "label": "Uterine contractions frequency / 10 min",
               "type": "obs",
               "required": false,
               "id": "UterineContractionsFrequency",
@@ -898,5 +808,5 @@
   "referencedForms": [],
   "uuid": "6332f7ed-2991-4798-946f-01da8bfc0fea",
   "description": "Maternity form",
-  "version": "0.4"
+  "version": "0.6"
 }
