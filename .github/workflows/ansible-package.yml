@@ -10,21 +10,18 @@ on:
       - 'Ansible/**'
 
 jobs:
-  build:
+  upload-artifact:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install zip
-      run: sudo apt-get install zip
+      - name: Tar files
+        run: tar -cvf ansible_artifact.tar ./Ansible
 
-    - name: Zip Ansible folder
-      run: zip -r Ansible.zip Ansible/
-
-    - name: Upload Ansible.zip as artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: LIME-Ansible.zip
-        path: LIME-Ansible.zip
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: configuration-artifact
+          path: configuration_artifact.tar
