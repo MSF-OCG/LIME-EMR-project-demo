@@ -20,11 +20,11 @@ jobs:
         uses: actions/checkout@v4
         
       - name: Tar files
-        run: tar -cvf ansible_artifact.tar ./Ansible
+        run: tar -czvf ansible_artifact.tar.gz ./Ansible
 
       - name: Build
         run: |
-          echo "Build Ansible artifact" > ansible_artifact.tar
+          echo "Build Ansible artifact" > ansible_artifact.tar.gz
   
       - uses: pyTooling/Actions/releaser@r0
         with:
@@ -32,4 +32,4 @@ jobs:
           tag: 'nightly'
           rm: true
           files: |
-            ansible_artifact.tar
+            ansible_artifact.tar.gz
