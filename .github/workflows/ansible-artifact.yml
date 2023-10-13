@@ -18,14 +18,14 @@ jobs:
         
       - name: Tar files
         run: tar -cvf ansible_artifact.tar ./Ansible
-        
-      - uses: actions/download-artifact@v2
-        with:
-          path: ./Ansible
 
+      - name: Build
+        run: |
+          echo "Build Ansible artifact" > ansible_artifact.tar
+  
       - uses: pyTooling/Actions/releaser@r0
         with:
-          token: ${{ secrets._GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           tag: 'nightly'
           files: |
             ansible_artifact.tar
