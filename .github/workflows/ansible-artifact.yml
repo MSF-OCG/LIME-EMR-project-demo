@@ -19,8 +19,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         
-      - name: Zip the folder
-        run: zip -r ansible_artifact.zip ./Ansible/*
+      - name: Tar files
+        run: tar -czvf ansible_artifact.tar.gz ./Ansible/*
+
+      - name: Build
+        run: |
+          echo "Build Ansible artifact" > ansible_artifact.tar.gz
   
       - uses: pyTooling/Actions/releaser@r0
         with:
@@ -28,4 +32,4 @@ jobs:
           tag: 'nightly'
           rm: true
           files: |
-            ansible_artifact.zip
+            ansible_artifact.tar.gz
