@@ -1,6 +1,7 @@
 name: Package Ansible Folder
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'Ansible/**'
