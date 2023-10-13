@@ -11,6 +11,7 @@ on:
 
 jobs:
   upload-artifact:
+      name: '📦 Release'
       runs-on: ubuntu-latest
       steps:
       - name: Checkout code
@@ -27,5 +28,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: 'nightly'
+          rm: true
           files: |
             ansible_artifact.tar
