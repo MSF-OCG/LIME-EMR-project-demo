@@ -23,5 +23,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: configuration-artifact
-          path: configuration_artifact.tar
+          name: ansible-artifact
+          path: ansible_artifact.tar
