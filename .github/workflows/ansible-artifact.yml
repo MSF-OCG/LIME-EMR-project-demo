@@ -11,17 +11,21 @@ on:
 
 jobs:
   upload-artifact:
-    runs-on: ubuntu-latest
-
-    steps:
+      runs-on: ubuntu-latest
+      steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+        
       - name: Tar files
         run: tar -cvf ansible_artifact.tar ./Ansible
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        
+      - uses: actions/download-artifact@v2
         with:
-          name: ansible-artifact
-          path: ansible_artifact.tar
+          path: ./Ansible
+
+      - uses: pyTooling/Actions/releaser@r0
+        with:
+          token: ${{ secrets._GITHUB_TOKEN }}
+          tag: 'nightly'
+          files: |
+            ansible_artifact.tar
