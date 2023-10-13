@@ -1,4 +1,4 @@
-name: Package Ansible Folder
+name: Package Installation Files
 
 on:
   schedule:
@@ -6,10 +6,10 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'Ansible/**'
+      - 'setup/**'
   pull_request:
     paths:
-      - 'Ansible/**'
+      - 'setup/**'
 
 jobs:
   upload-artifact:
@@ -19,12 +19,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         
-      - name: Tar files
-        run: tar -czvf ansible_artifact.tar.gz ./Ansible/*
-
-      - name: Build
-        run: |
-          echo "Build Ansible artifact" > ansible_artifact.tar.gz
+      - name: Zip the folder
+        run: zip -r installation.zip ./Ansible/*
   
       - uses: pyTooling/Actions/releaser@r0
         with:
@@ -32,4 +28,4 @@ jobs:
           tag: 'nightly'
           rm: true
           files: |
-            ansible_artifact.tar.gz
+            installation.zip
