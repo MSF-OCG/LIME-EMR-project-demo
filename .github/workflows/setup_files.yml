@@ -19,8 +19,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         
-      - name: Zip the installation folder
-        run: zip -r installation.zip ./Ansible/*
+      - name: Zip the installation files
+        run: zip -r lime_setup.zip ./Ansible/*
+        
+      - name: Tar the installation files
+        run: tar -czvf lime_setup.tar.gz ./Ansible/*
   
       - uses: pyTooling/Actions/releaser@r0
         with:
@@ -28,4 +31,5 @@ jobs:
           tag: 'nightly'
           rm: true
           files: |
-            installation.zip
+            lime_setup.zip
+            lime_setup.tar.gz
