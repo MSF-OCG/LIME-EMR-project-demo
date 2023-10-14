@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Define URL variables for each environment
+REPO_URL="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/"
+DEV_branch="dev"
+QA_branch="qa"
+PROD_branch="main"
+INSTALLATION_DIR="/home/lime/setup/Ansible/"
+
 set -e
 
 echo "Installing Ansible..."
@@ -23,20 +30,51 @@ echo "Ansible installation completed!"
 
 echo "Downloading Ansible playbooks for LIME"
 
-# Downloading files
-curl -O -L --create-dirs --output-dir /home/lime/setup/ https://github.com/MSF-OCG/LIME-EMR-project-demo/releases/download/nightly/lime_setup.tar.gz
+# Prompt user for environment selection
+echo "Please select an environment:"
+select env in "DEV" "QA" "PROD"; do
+    case $env in
+        DEV ) 
+            branch=$DEV_branch
+            break
+            ;;
+        QA ) 
+            branch=$QA_branch
+            break
+            ;;
+        PROD ) 
+            branch=$PROD_branch
+            break
+            ;;
+        * ) 
+            echo "Invalid selection. Please choose a valid option."
+            ;;
+    esac
+done
 
-# Unpacking Ansible playbooks and files
-cd /home/lime/setup/ && tar -xzf lime_setup.tar.gz -C /home/lime/setup/
+# Download the selected playbook
+echo "Downloading playbook from LIME $branch..."
+if curl -L --create-dirs --output $INSTALLATION_DIR/playbook.yaml "$REPO_URL/$branch/Ansible/playbook.yaml"; then
+    echo "Playbook downloaded successfully!"
+else
+    echo "Error downloading playbook. Please check the URL or your internet connection."
+    exit 1
+fi
 
-# Removing archive
-rm lime_setup.tar.gz
+# Download the associated inventory
+echo "Downloading inventory from LIME $branch..."
+if curl -L --create-dirs --output $INSTALLATION_DIR/inventories/"$branch".ini "$REPO_URL/$branch/Ansible/inventories/$branch.ini"; then
+    echo "Inventory downloaded successfully!"
+else
+    echo "Error downloading Inventory. Please check the URL or your internet connection."
+    exit 1
+fi
 
 echo "Ansible playbooks ready for execution!"
 
 echo "Installing the LIME application with Ansible playbooks..."
 
 # Starting the LIME installation
-cd /home/lime/setup/Ansible && ansible-playbook -i inventories/dev.ini playbook.yaml 
+cd /home/lime/setup/Ansible && ansible-playbook -i inventories/"$branch".ini playbook.yaml 
 
 echo "LIME installation complete and application running!"
