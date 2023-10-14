@@ -7,6 +7,8 @@ QA_branch="qa"
 PROD_branch="main"
 INSTALLATION_DIR="/home/lime/setup/Ansible/"
 
+set -e
+
 # Prompt user for environment selection
 echo "Please select an environment:"
 select env in "DEV" "QA" "PROD"; do
@@ -34,8 +36,6 @@ if [ -z "$branch" ]; then
     echo "No valid environment selected. Exiting."
     exit 1
 fi
-
-set -e
 
 echo "Installing Ansible..."
 
