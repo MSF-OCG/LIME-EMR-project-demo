@@ -301,6 +301,36 @@ UUID formula for Excel:
 =LOWER(CONCATENATE(DEC2HEX(RANDBETWEEN(0,POWER(16,8)),8),"-",DEC2HEX(RANDBETWEEN(0,POWER(16,4)),4),"-","4",DEC2HEX(RANDBETWEEN(0,POWER(16,3)),3),"-",DEC2HEX(RANDBETWEEN(8,11)),DEC2HEX(RANDBETWEEN(0,POWER(16,3)),3),"-",DEC2HEX(RANDBETWEEN(0,POWER(16,8)),8),DEC2HEX(RANDBETWEEN(0,POWER(16,4)),4)))
 ```
 
+# Translations
+
+## Configuration
+
+1. Add the locale in the supported language in the distro in: https://github.com/openmrs/openmrs-distro-referenceapplication/blob/758a11fc510df7dd09e23b565ebc8e366cf9e673/distro/configuration/globalproperties/i18n.xml#L5
+
+## Frontend UI
+
+1. checkout the mono repo
+2. install dependencies using `yarn`
+3. add new language locale code
+4. create additional translation files using `yarn run extract-translations`
+5. update the translation files
+6. reflect translations in Transifex
+7. commit and pull request
+
+List of i18next parsers
+- https://github.com/openmrs/openmrs-esm-core/blob/17830ad39ae631d33a4db9b6a7e1b021ce8e8847/tools/i18next-parser.config.js#L45
+- https://github.com/openmrs/openmrs-esm-patient-chart/blob/46602a6a9f8d60be01a11d538226c095d433b589/tools/i18next-parser.config.js#L45
+- https://github.com/openmrs/openmrs-esm-patient-management/blob/40ca359d14608f0cea13677a1d2633e9b0ccd8c2/tools/i18next-parser.config.js#L45
+- https://github.com/openmrs/openmrs-esm-template-app/blob/5844f04c5d9e249f0342f2cbbf0bf66010d6e2d0/i18next-parser.config.js#L45
+- https://github.com/openmrs/openmrs-esm-admin-tools/blob/4ebc0cb3206bf124812d3169f1048c182ee00cb4/tools/i18next-parser.config.js#L45
+- https://github.com/openmrs/openmrs-esm-fast-data-entry-app/blob/d75f71933dcd8ccc36c27496d7ba498ade016f4e/tools/i18next-parser.config.js#L45
+
+## Forms and content
+
+1. add translation in OCL concepts
+2. pull release in OpenMRS from OCL using the Initializer
+3. leave the form labels empty to pull the label based on the translations in the concepts
+
 # Build
 Docker images will automatically be rebuilt and pushed to [Docker Hub of MSF OCG](https://hub.docker.com/r/msfocg) when binaries or configurations are modified. 
 
