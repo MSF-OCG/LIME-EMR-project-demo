@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "Installing Ansible..."
 
 # Update the system
