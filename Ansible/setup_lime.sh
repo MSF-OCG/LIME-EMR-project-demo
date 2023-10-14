@@ -10,22 +10,27 @@ INSTALLATION_DIR="/home/lime/setup/Ansible/"
 set -e
 
 # Prompt user for environment selection
-echo "Please select an environment:"
-select env in "DEV" "QA" "PROD"; do
-    case $env in
-        DEV ) 
+while true; do
+    echo "Please select an environment:"
+    echo "1) DEV"
+    echo "2) QA"
+    echo "3) PROD"
+    read -p "Enter your choice (1/2/3): " choice
+
+    case $choice in
+        1)
             branch=$DEV_branch
             break
             ;;
-        QA ) 
+        2)
             branch=$QA_branch
             break
             ;;
-        PROD ) 
+        3)
             branch=$PROD_branch
             break
             ;;
-        * ) 
+        *)
             echo "Invalid selection. Please choose a valid option."
             ;;
     esac
