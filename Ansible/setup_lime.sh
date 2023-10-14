@@ -12,8 +12,12 @@ set -e
 echo "Installing Ansible..."
 
 # Add Ansible repositories in Package Manager sources
-echo "deb https://ppa.launchpadcontent.net/ansible/ansible/ubuntu jammy main" | tee -a /etc/apt/sources.list
-echo "deb deb-src https://ppa.launchpadcontent.net/ansible/ansible/ubuntu jammy main" | tee -a /etc/apt/sources.list
+SOURCE_LINE="deb https://ppa.launchpadcontent.net/ansible/ansible/ubuntu jammy main"
+SOURCE_LIST="/etc/apt/sources.list"
+
+if ! grep -qxF "$SOURCE_LINE" "$SOURCE_LIST"; then
+    echo "$SOURCE_LINE" | sudo tee -a "$SOURCE_LIST"
+fi
 
 # Update the system
 apt update
