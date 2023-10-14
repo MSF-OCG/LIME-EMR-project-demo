@@ -14,6 +14,9 @@ echo "Installing Ansible..."
 # Update the system
 apt update
 
+# Install Curl
+apt install -y curl
+
 # Install software-properties-common (required for add-apt-repository)
 apt install -y software-properties-common
 
