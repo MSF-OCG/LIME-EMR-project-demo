@@ -7,8 +7,6 @@ QA_branch="qa"
 PROD_branch="main"
 INSTALLATION_DIR="/home/lime/setup/Ansible/"
 
-set -e
-
 echo "Installing Ansible..."
 
 # Check if Ansible is already installed
@@ -58,6 +56,14 @@ select env in "DEV" "QA" "PROD"; do
             ;;
     esac
 done
+
+# Check if a valid environment was chosen
+if [ -z "$branch" ]; then
+    echo "No valid environment selected. Exiting."
+    exit 1
+fi
+
+set -e
 
 # Download the selected playbook
 echo "Downloading playbook from LIME $branch..."
