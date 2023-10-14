@@ -21,9 +21,6 @@ jobs:
         
       - name: Zip the installation folder
         run: zip -r installation.zip ./Ansible/*
-
-      - name: Gzip the installation folder
-        run: gzip -r installation.gzip ./Ansible
   
       - uses: pyTooling/Actions/releaser@r0
         with:
@@ -32,4 +29,3 @@ jobs:
           rm: true
           files: |
             installation.zip
-            installation.gzip
