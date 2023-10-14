@@ -11,17 +11,18 @@ set -e
 
 echo "Installing Ansible..."
 
+# Add Ansible repositories in Package Manager sources
+echo "deb https://ppa.launchpadcontent.net/ansible/ansible/ubuntu jammy main" | tee -a /etc/apt/sources.list
+echo "deb deb-src https://ppa.launchpadcontent.net/ansible/ansible/ubuntu jammy main" | tee -a /etc/apt/sources.list
+
 # Update the system
 apt update
 
 # Install Curl
 apt install -y curl
 
-# Install Python
-apt install -y python3-pip
-
 # Install Ansible
-pip3 install ansible 
+apt install -y ansible
 
 # Verify the installation
 ansible --version
