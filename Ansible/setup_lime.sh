@@ -11,19 +11,14 @@ set -e
 
 echo "Installing Ansible..."
 
-# Add Ansible repositories in Package Manager sources
-SOURCE_LINE="deb https://ppa.launchpadcontent.net/ansible/ansible/ubuntu jammy main"
-SOURCE_LIST="/etc/apt/sources.list"
-
-if ! grep -qxF "$SOURCE_LINE" "$SOURCE_LIST"; then
-    echo "$SOURCE_LINE" | sudo tee -a "$SOURCE_LIST"
-fi
+# Add the Ansible PPA
+add-apt-repository --yes --update ppa:ansible/ansible
 
 # Update the system
 apt update
 
-# Install Curl
-apt install -y curl
+# Install software-properties-common (required for add-apt-repository)
+apt install -y software-properties-common
 
 # Install Ansible
 apt install -y ansible
