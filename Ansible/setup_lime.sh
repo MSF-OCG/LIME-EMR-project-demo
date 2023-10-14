@@ -17,14 +17,11 @@ apt update
 # Install Curl
 apt install -y curl
 
-# Install software-properties-common (required for add-apt-repository)
-apt install -y software-properties-common
-
-# Add the Ansible PPA
-add-apt-repository --yes --update ppa:ansible/ansible
+# Install Python
+apt install -y python3-pip
 
 # Install Ansible
-apt install -y ansible
+pip3 install ansible 
 
 # Verify the installation
 ansible --version
