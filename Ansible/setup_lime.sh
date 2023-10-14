@@ -7,34 +7,6 @@ QA_branch="qa"
 PROD_branch="main"
 INSTALLATION_DIR="/home/lime/setup/Ansible/"
 
-echo "Installing Ansible..."
-
-# Check if Ansible is already installed
-if ! command -v ansible &> /dev/null; then
-    echo "Ansible not found. Installing..."
-    
-    # Update package lists
-    sudo apt update
-    
-    # Install software-properties-common to use add-apt-repository
-    sudo apt install -y software-properties-common
-    
-    # Add Ansible PPA
-    sudo add-apt-repository --yes --update ppa:ansible/ansible
-    
-    # Install Ansible
-    sudo apt install -y ansible
-else
-    echo "Ansible is already installed."
-fi
-
-# Verify the installation
-ansible --version
-
-echo "Ansible installation completed!"
-
-echo "Downloading Ansible playbooks for LIME"
-
 # Prompt user for environment selection
 echo "Please select an environment:"
 select env in "DEV" "QA" "PROD"; do
@@ -64,6 +36,34 @@ if [ -z "$branch" ]; then
 fi
 
 set -e
+
+echo "Installing Ansible..."
+
+# Check if Ansible is already installed
+if ! command -v ansible &> /dev/null; then
+    echo "Ansible not found. Installing..."
+    
+    # Update package lists
+    sudo apt update
+    
+    # Install software-properties-common to use add-apt-repository
+    sudo apt install -y software-properties-common
+    
+    # Add Ansible PPA
+    sudo add-apt-repository --yes --update ppa:ansible/ansible
+    
+    # Install Ansible
+    sudo apt install -y ansible
+else
+    echo "Ansible is already installed."
+fi
+
+# Verify the installation
+ansible --version
+
+echo "Ansible installation completed!"
+
+echo "Downloading Ansible playbooks for LIME"
 
 # Download the selected playbook
 echo "Downloading playbook from LIME $branch..."
