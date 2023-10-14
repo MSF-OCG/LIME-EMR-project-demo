@@ -11,17 +11,24 @@ set -e
 
 echo "Installing Ansible..."
 
-# Add the Ansible PPA
-add-apt-repository --yes --update ppa:ansible/ansible
-
-# Update the system
-apt update
-
-# Install software-properties-common (required for add-apt-repository)
-apt install -y software-properties-common
-
-# Install Ansible
-apt install -y ansible
+# Check if Ansible is already installed
+if ! command -v ansible &> /dev/null; then
+    echo "Ansible not found. Installing..."
+    
+    # Update package lists
+    sudo apt update
+    
+    # Install software-properties-common to use add-apt-repository
+    sudo apt install -y software-properties-common
+    
+    # Add Ansible PPA
+    sudo add-apt-repository --yes --update ppa:ansible/ansible
+    
+    # Install Ansible
+    sudo apt install -y ansible
+else
+    echo "Ansible is already installed."
+fi
 
 # Verify the installation
 ansible --version
