@@ -12,6 +12,13 @@
   "@openmrs/esm-primary-navigation-app": {
     "logo": {
       "src": "header-logo.png"
+    },
+    "extensionSlots": {
+      "patient-chart-dashboard-slot": {
+        "remove": [
+          "offline-tools-patient-chart-actions-dashboard-link"
+        ]
+      }
     }
   },
   "@openmrs/esm-styleguide": {
