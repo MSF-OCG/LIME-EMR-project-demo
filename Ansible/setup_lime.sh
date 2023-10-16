@@ -1,18 +1,67 @@
 #!/bin/bash
 
+# Define URL variables for each environment
+REPO_URL="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/"
+DEV_branch="dev"
+QA_branch="qa"
+PROD_branch="main"
+INSTALLATION_DIR="/home/lime/setup/Ansible/"
+
+set -e
+
+# Prompt user for environment selection
+while true; do
+    echo "Please select an environment:"
+    echo "1) DEV"
+    echo "2) QA"
+    echo "3) PROD"
+    read -p "Enter your choice (1/2/3): " choice
+
+    case $choice in
+        1)
+            branch=$DEV_branch
+            break
+            ;;
+        2)
+            branch=$QA_branch
+            break
+            ;;
+        3)
+            branch=$PROD_branch
+            break
+            ;;
+        *)
+            echo "Invalid selection. Please choose a valid option."
+            ;;
+    esac
+done
+
+# Check if a valid environment was chosen
+if [ -z "$branch" ]; then
+    echo "No valid environment selected. Exiting."
+    exit 1
+fi
+
 echo "Installing Ansible..."
 
-# Update the system
-apt update
-
-# Install software-properties-common (required for add-apt-repository)
-apt install -y software-properties-common
-
-# Add the Ansible PPA
-add-apt-repository --yes --update ppa:ansible/ansible
-
-# Install Ansible
-apt install -y ansible
+# Check if Ansible is already installed
+if ! command -v ansible &> /dev/null; then
+    echo "Ansible not found. Installing..."
+    
+    # Update package lists
+    sudo apt update
+    
+    # Install software-properties-common to use add-apt-repository
+    sudo apt install -y software-properties-common
+    
+    # Add Ansible PPA
+    sudo add-apt-repository --yes --update ppa:ansible/ansible
+    
+    # Install Ansible
+    sudo apt install -y ansible
+else
+    echo "Ansible is already installed."
+fi
 
 # Verify the installation
 ansible --version
@@ -21,20 +70,29 @@ echo "Ansible installation completed!"
 
 echo "Downloading Ansible playbooks for LIME"
 
-# Downloading files
-curl -O -L --create-dirs --output-dir /home/lime/setup/ https://github.com/MSF-OCG/LIME-EMR-project-demo/releases/download/nightly/lime_setup.tar.gz
+# Download the selected playbook
+echo "Downloading playbook from LIME $branch..."
+if curl -L --create-dirs --output $INSTALLATION_DIR/playbook.yaml "$REPO_URL/$branch/Ansible/playbook.yaml"; then
+    echo "Playbook downloaded successfully!"
+else
+    echo "Error downloading playbook. Please check the URL or your internet connection."
+    exit 1
+fi
 
-# Unpacking Ansible playbooks and files
-cd /home/lime/setup/ && tar -xzf lime_setup.tar.gz -C /home/lime/setup/
-
-# Removing archive
-rm lime_setup.tar.gz
+# Download the associated inventory
+echo "Downloading inventory from LIME $branch..."
+if curl -L --create-dirs --output $INSTALLATION_DIR/inventories/"$branch".ini "$REPO_URL/$branch/Ansible/inventories/$branch.ini"; then
+    echo "Inventory downloaded successfully!"
+else
+    echo "Error downloading Inventory. Please check the URL or your internet connection."
+    exit 1
+fi
 
 echo "Ansible playbooks ready for execution!"
 
 echo "Installing the LIME application with Ansible playbooks..."
 
 # Starting the LIME installation
-cd /home/lime/setup/Ansible && ansible-playbook -i inventories/dev.ini playbook.yaml 
+cd /home/lime/setup/Ansible && ansible-playbook -i inventories/"$branch".ini playbook.yaml 
 
 echo "LIME installation complete and application running!"
