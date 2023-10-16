@@ -203,6 +203,44 @@ omod.serialization.xstream.type=omod
 
 ### Examples
 
+#### Modify branding and styleguide
+```json
+"@openmrs/esm-patient-chart-app": {
+  "logo": {
+    "src": "header-logo.png"
+  }
+},
+"@openmrs/esm-login-app": {
+  "logo": {
+    "src": "logo.png"
+  }
+},
+"@openmrs/esm-primary-navigation-app": {
+  "logo": {
+    "src": "header-logo.png"
+  }
+},
+"@openmrs/esm-styleguide": {
+  "Brand color #1": "#D7211E",
+  "Brand color #2": "#414141",
+  "Brand color #3": "#D7211E"
+}
+```
+
+#### Modify navigation 
+```json
+"@openmrs/esm-primary-navigation-app": {
+  "extensionSlots": {
+    "patient-chart-dashboard-slot": {
+      "remove": [
+        "offline-tools-patient-chart-actions-dashboard-link"
+      ]
+    }
+  }
+}
+```
+
+
 #### Modify the registration content
 ```json
 "@openmrs/esm-patient-registration-app": {
