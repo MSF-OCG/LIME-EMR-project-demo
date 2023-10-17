@@ -10,6 +10,7 @@ INSTALLATION_DIR="/home/lime/setup"
 LOG_DIR="/var/logs/lime/setup"
 REPO_URL="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/"
 BRANCH="dev"
+INVENTORY="dev"
 
 # Functions
 generate_log_filename() {
@@ -51,11 +52,11 @@ download_from_repo() {
 }
 
 install_LIME() {
-    echo "Installing LIME from $BRANCH branch"
+    echo "Installing LIME from $BRANCH branch and $INVENTORY Ansibly inventory"
     echo "Downloading Ansible playbooks for LIME"
     
     download_from_repo "Ansible/playbook.yaml" "$INSTALLATION_DIR/playbook.yaml"
-    download_from_repo "Ansible/inventories/$BRANCH.ini" "$INSTALLATION_DIR/inventories/$BRANCH.ini"
+    download_from_repo "Ansible/inventories/$INVENTORY.ini" "$INSTALLATION_DIR/inventories/$INVENTORY.ini"
     
     echo "Ansible playbooks ready for execution!"
     
@@ -78,18 +79,21 @@ case $CURRENT_HOSTNAME in
     $DEMO|$DEV_ENV) 
         echo "This is the $CURRENT_HOSTNAME environment." 
         BRANCH="dev"
+        INVENTORY="dev"
         install_ansible
         install_LIME
         ;;
     $QA_ENV) 
         echo "This is the QA environment." 
         BRANCH="qa"
+        INVENTORY="qa"
         install_ansible
         install_LIME
         ;;
     $UAT_ENV) 
         echo "This is the UAT environment." 
         BRANCH="main"
+        INVENTORY="prod"
         install_ansible
         install_LIME
         ;;
