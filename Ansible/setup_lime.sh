@@ -1,98 +1,105 @@
 #!/bin/bash
-
-# Define URL variables for each environment
-REPO_URL="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/"
-DEV_branch="dev"
-QA_branch="qa"
-PROD_branch="main"
-INSTALLATION_DIR="/home/lime/setup/Ansible/"
-
 set -e
 
-# Prompt user for environment selection
-while true; do
-    echo "Please select an environment:"
-    echo "1) DEV"
-    echo "2) QA"
-    echo "3) PROD"
-    read -p "Enter your choice (1/2/3): " choice
+# Variables
+DEMO="azeuwocgomr01d"
+DEV_ENV="GCH555VLIME001D"
+QA_ENV="GCH555VLIME001T"
+UAT_ENV="GCH001VLIME001P"
+INSTALLATION_DIR="/home/lime/setup"
+LOG_DIR="/var/logs/lime/setup"
+REPO_URL="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/"
+BRANCH="dev"
+INVENTORY="dev"
 
-    case $choice in
-        1)
-            branch=$DEV_branch
-            break
-            ;;
-        2)
-            branch=$QA_branch
-            break
-            ;;
-        3)
-            branch=$PROD_branch
-            break
-            ;;
-        *)
-            echo "Invalid selection. Please choose a valid option."
-            ;;
-    esac
-done
+# Functions
+generate_log_filename() {
+    local current_timestamp
+    current_timestamp=$(date '+%Y%m%d%H%M%S')
+    echo "$LOG_DIR/lime_setup_stderr_${current_timestamp}.log"
+}
 
-# Check if a valid environment was chosen
-if [ -z "$branch" ]; then
-    echo "No valid environment selected. Exiting."
-    exit 1
-fi
+error_handler() {
+    echo "An error occurred. Logging to $(generate_log_filename)" >&2
+    echo "Error on line $1" >> $(generate_log_filename)
+}
 
-echo "Installing Ansible..."
+install_ansible() {
+    echo "Installing Ansible..."
 
-# Check if Ansible is already installed
-if ! command -v ansible &> /dev/null; then
-    echo "Ansible not found. Installing..."
+    if ! command -v ansible &> /dev/null; then
+        apt update
+        apt install -y software-properties-common
+        add-apt-repository --yes --update ppa:ansible/ansible
+        apt install -y ansible
+    else
+        echo "Ansible is already installed."
+    fi
+
+    ansible --version
+}
+
+download_from_repo() {
+    local path=$1
+    local destination=$2
+
+    if curl -L --create-dirs --output "$destination" "$REPO_URL/$BRANCH/$path"; then
+        echo "Downloaded $path in $destination successfully!"
+    else
+        echo "Error downloading $path. Please check the URL or your internet connection." >&2
+        exit 1
+    fi
+}
+
+install_LIME() {
+    echo "Installing LIME from $BRANCH branch and $INVENTORY Ansibly inventory"
+    echo "Downloading Ansible playbooks for LIME"
     
-    # Update package lists
-    sudo apt update
+    download_from_repo "Ansible/playbook.yaml" "$INSTALLATION_DIR/playbook.yaml"
+    download_from_repo "Ansible/inventories/$INVENTORY.ini" "$INSTALLATION_DIR/inventories/$INVENTORY.ini"
     
-    # Install software-properties-common to use add-apt-repository
-    sudo apt install -y software-properties-common
+    echo "Ansible playbooks ready for execution!"
     
-    # Add Ansible PPA
-    sudo add-apt-repository --yes --update ppa:ansible/ansible
-    
-    # Install Ansible
-    sudo apt install -y ansible
-else
-    echo "Ansible is already installed."
-fi
+    cd $INSTALLATION_DIR
+    if ! ansible-playbook -i inventories/"$BRANCH".ini playbook.yaml; then
+        echo "Error: Ansible playbook execution failed!" >&2
+        exit 1
+    fi
+    echo "LIME installation complete and application running!"
+}
 
-# Verify the installation
-ansible --version
+# Set trap to handle errors
+trap 'error_handler $LINENO' ERR
 
-echo "Ansible installation completed!"
+# Main script
+mkdir -p "$INSTALLATION_DIR" "$LOG_DIR" "$INSTALLATION_DIR/inventories"
+CURRENT_HOSTNAME=$(hostname)
 
-echo "Downloading Ansible playbooks for LIME"
-
-# Download the selected playbook
-echo "Downloading playbook from LIME $branch..."
-if curl -L --create-dirs --output $INSTALLATION_DIR/playbook.yaml "$REPO_URL/$branch/Ansible/playbook.yaml"; then
-    echo "Playbook downloaded successfully!"
-else
-    echo "Error downloading playbook. Please check the URL or your internet connection."
-    exit 1
-fi
-
-# Download the associated inventory
-echo "Downloading inventory from LIME $branch..."
-if curl -L --create-dirs --output $INSTALLATION_DIR/inventories/"$branch".ini "$REPO_URL/$branch/Ansible/inventories/$branch.ini"; then
-    echo "Inventory downloaded successfully!"
-else
-    echo "Error downloading Inventory. Please check the URL or your internet connection."
-    exit 1
-fi
-
-echo "Ansible playbooks ready for execution!"
-
-echo "Installing the LIME application with Ansible playbooks..."
-
-# Starting the LIME installation
-cd /home/lime/setup/Ansible && ansible-playbook -i inventories/"$branch".ini playbook.yaml 
-
-echo "LIME installation complete and application running!"
+case $CURRENT_HOSTNAME in
+    $DEMO|$DEV_ENV) 
+        echo "This is the $CURRENT_HOSTNAME environment." 
+        BRANCH="dev"
+        INVENTORY="dev"
+        install_ansible
+        install_LIME
+        ;;
+    $QA_ENV) 
+        echo "This is the QA environment." 
+        BRANCH="qa"
+        INVENTORY="qa"
+        install_ansible
+        install_LIME
+        ;;
+    $UAT_ENV) 
+        echo "This is the UAT environment." 
+        BRANCH="main"
+        INVENTORY="prod"
+        install_ansible
+        install_LIME
+        ;;
+    *) 
+        echo "Hostname doesn't match any known environment. Exiting without further action." >&2
+        echo "Hostname $CURRENT_HOSTNAME not recognized" >> $(generate_log_filename)
+        exit 1
+        ;;
+esac
