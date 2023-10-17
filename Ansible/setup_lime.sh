@@ -3,7 +3,7 @@ set -e
 
 # Variables
 DEMO="azeuwocgomr01d"
-DEV_ENV="test"
+DEV_ENV="GCH555VLIME001D"
 QA_ENV="GCH555VLIME001T"
 UAT_ENV="GCH001VLIME001P"
 INSTALLATION_DIR="/home/lime/setup"
