@@ -16,7 +16,7 @@ services:
   frontend:
     profiles: ["openmrs3"]
     container_name: openmrs-frontend
-    image: msfocg/openmrs3-frontend:dev
+    image: msfocg/openmrs3-frontend:${HOSTNAME_TAG:-dev}
     environment:
       SPA_PATH: /openmrs/spa
       API_URL: /openmrs
@@ -31,7 +31,7 @@ services:
   backend:
     profiles: ["openmrs3", "openmrs"]
     container_name: openmrs-backend
-    image: msfocg/openmrs3-backend:dev
+    image: msfocg/openmrs3-backend:${HOSTNAME_TAG:-dev}
     depends_on:
       - db
     environment:
