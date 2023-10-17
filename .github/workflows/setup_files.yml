@@ -1,0 +1,35 @@
+name: Package Installation Files
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - 'setup/**'
+  pull_request:
+    paths:
+      - 'setup/**'
+
+jobs:
+  upload-artifact:
+      name: '📦 Release'
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Zip the installation files
+        run: zip -r lime_setup.zip ./Ansible/*
+        
+      - name: Tar the installation files
+        run: tar -czvf lime_setup.tar.gz ./Ansible/*
+  
+      - uses: pyTooling/Actions/releaser@r0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: 'nightly'
+          rm: true
+          files: |
+            lime_setup.zip
+            lime_setup.tar.gz
