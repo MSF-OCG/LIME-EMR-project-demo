@@ -67,9 +67,8 @@ install_LIME() {
     echo "LIME installation complete and application running!"
 }
 
-# Set trap to handle errors and ensure ansible installation upon exit
+# Set trap to handle errors
 trap 'error_handler $LINENO' ERR
-trap 'install_LIME' EXIT
 
 # Main script
 mkdir -p "$INSTALLATION_DIR" "$LOG_DIR" "$INSTALLATION_DIR/inventories"
@@ -79,21 +78,24 @@ case $CURRENT_HOSTNAME in
     $DEMO|$DEV_ENV) 
         echo "This is the $CURRENT_HOSTNAME environment." 
         BRANCH="dev"
+        install_ansible
+        install_LIME
         ;;
     $QA_ENV) 
         echo "This is the QA environment." 
         BRANCH="qa"
+        install_ansible
+        install_LIME
         ;;
     $UAT_ENV) 
         echo "This is the UAT environment." 
         BRANCH="main"
+        install_ansible
+        install_LIME
         ;;
     *) 
-        echo "Hostname doesn't match any known environment. Error reported in log file and setup stopped." >&2
+        echo "Hostname doesn't match any known environment. Exiting without further action." >&2
+        echo "Hostname $CURRENT_HOSTNAME not recognized" >> $(generate_log_filename)
         exit 1
         ;;
 esac
-
-echo "Current repository branch is: $BRANCH"
-
-install_ansible
