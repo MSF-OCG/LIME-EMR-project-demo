@@ -102,6 +102,16 @@
       wait_for:
         timeout: 10
 
+    - name: Restart docker-compose with OpenMRS3 profile
+      command:
+        cmd: docker-compose --profile openmrs3 restart
+        chdir: "{{ dest_folder }}"
+      when: docker_compose_pull_result is changed
+
+    - name: Wait for a few seconds for containers to restart
+      wait_for:
+        timeout: 10
+
     - name: Confirm Docker containers are running
       command: docker ps
       register: docker_ps_output
