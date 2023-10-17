@@ -3,7 +3,7 @@ set -e
 
 # Variables
 DEMO="azeuwocgomr01d"
-DEV_ENV="GCH555VLIME001D"
+DEV_ENV="test"
 QA_ENV="GCH555VLIME001T"
 UAT_ENV="GCH001VLIME001P"
 INSTALLATION_DIR="/home/lime/setup"
@@ -16,6 +16,11 @@ generate_log_filename() {
     local current_timestamp
     current_timestamp=$(date '+%Y%m%d%H%M%S')
     echo "$LOG_DIR/lime_setup_stderr_${current_timestamp}.log"
+}
+
+error_handler() {
+    echo "An error occurred. Logging to $(generate_log_filename)" >&2
+    echo "Error on line $1" >> $(generate_log_filename)
 }
 
 install_ansible() {
@@ -62,12 +67,12 @@ install_LIME() {
     echo "LIME installation complete and application running!"
 }
 
-# Set trap to ensure ansible installation upon exit
+# Set trap to handle errors and ensure ansible installation upon exit
+trap 'error_handler $LINENO' ERR
 trap 'install_LIME' EXIT
 
 # Main script
 mkdir -p "$INSTALLATION_DIR" "$LOG_DIR" "$INSTALLATION_DIR/inventories"
-exec 2>$(generate_log_filename)
 CURRENT_HOSTNAME=$(hostname)
 
 case $CURRENT_HOSTNAME in
