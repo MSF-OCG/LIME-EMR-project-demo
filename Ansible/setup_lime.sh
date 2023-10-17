@@ -61,7 +61,7 @@ install_LIME() {
     echo "Ansible playbooks ready for execution!"
     
     cd $INSTALLATION_DIR
-    if ! ansible-playbook -i inventories/"$BRANCH".ini playbook.yaml; then
+    if ! ansible-playbook -i inventories/"$INVENTORY".ini playbook.yaml; then
         echo "Error: Ansible playbook execution failed!" >&2
         exit 1
     fi
