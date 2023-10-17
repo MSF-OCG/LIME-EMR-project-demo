@@ -72,6 +72,16 @@
       debug:
         var: git_pull_result
 
+    - name: Get the latest commit SHA
+      command:
+        cmd: git rev-parse HEAD
+        chdir: "{{ dest_folder }}"
+      register: git_commit_sha
+
+    - name: Display the latest commit SHA
+      debug:
+        msg: "Latest commit SHA: {{ git_commit_sha.stdout }}"
+
     - name: Pull images using Docker Compose pull
       command:
         cmd: docker-compose pull
