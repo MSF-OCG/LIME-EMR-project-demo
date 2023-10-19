@@ -74,7 +74,10 @@ trap 'error_handler $LINENO' ERR
 # Main script
 mkdir -p "$INSTALLATION_DIR" "$LOG_DIR" "$INSTALLATION_DIR/inventories"
 
-# Extract the last letter of the hostname using regex
+# Get the hostname
+CURRENT_HOSTNAME=$(hostname)
+
+# Extract the last letter using regex
 ENV_LETTER=$(echo "$(hostname)" | sed 's/.*\(.\)$/\1/')
 
 # Print the env letter
