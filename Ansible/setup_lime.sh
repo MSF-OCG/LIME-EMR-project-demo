@@ -107,7 +107,7 @@ case $ENV_LETTER in
         install_LIME
         ;;
     *) 
-        echo "Hostname doesn't match any known environment. Error reported in log file." >&2
+        echo "Hostname doesn't match any known environment ($ENV_LETTER). Error reported in log file." >&2
         echo "Hostname $CURRENT_HOSTNAME not recognized" >> $(generate_log_filename)
         exit 1
         ;;
