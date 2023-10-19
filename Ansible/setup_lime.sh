@@ -80,6 +80,10 @@ CURRENT_HOSTNAME=$(hostname)
 # Extract the last letter using regex
 ENV_LETTER=$(echo "$hostname" | sed 's/.*\(.\)$/\1/')
 
+
+# Print the env letter
+echo "$ENV_LETTER"
+
 case $ENV_LETTER in
     $DEMO|$DEV_ENV) 
         echo "This is the Demo/Dev environment." 
@@ -103,7 +107,7 @@ case $ENV_LETTER in
         install_LIME
         ;;
     *) 
-        echo "Hostname doesn't match any known environment. Dev setup selected by default." >&2
+        echo "Hostname doesn't match any known environment. Error reported in log file." >&2
         echo "Hostname $CURRENT_HOSTNAME not recognized" >> $(generate_log_filename)
         exit 1
         ;;
