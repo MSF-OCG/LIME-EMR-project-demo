@@ -98,8 +98,11 @@ case $CURRENT_HOSTNAME in
         install_LIME
         ;;
     *) 
-        echo "Hostname doesn't match any known environment. Exiting without further action." >&2
-        echo "Hostname $CURRENT_HOSTNAME not recognized" >> $(generate_log_filename)
-        exit 1
+        echo "This is the $CURRENT_HOSTNAME environment." 
+        echo "Hostname doesn't match any known environment. Dev setup selected by default." >&2
+        BRANCH="dev"
+        INVENTORY="dev"
+        install_ansible
+        install_LIME
         ;;
 esac
