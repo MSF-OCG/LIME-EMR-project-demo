@@ -40,5 +40,6 @@
   "apiUrl": "$API_URL",
   "configUrls": ["$SPA_CONFIG_URLS"],
   "defaultLocale": "$SPA_DEFAULT_LOCALE",
-  "importmap": "$SPA_PATH/importmap.json"
+  "importmap": "$SPA_PATH/importmap.json",
+  "supportOffline": false
 }
