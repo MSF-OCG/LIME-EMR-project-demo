@@ -2,10 +2,10 @@
 set -e
 
 # Variables
-DEMO="azeuwocgomr01d"
-DEV_ENV="GCH555VLIME001D"
-QA_ENV="GCH555VLIME001T"
-UAT_ENV="GCH001VLIME001P"
+DEMO="d"
+DEV_ENV="D"
+QA_ENV="T"
+PROD_ENV="P"
 INSTALLATION_DIR="/home/lime/setup"
 LOG_DIR="/var/logs/lime/setup"
 REPO_URL="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/"
@@ -61,7 +61,7 @@ install_LIME() {
     echo "Ansible playbooks ready for execution!"
     
     cd $INSTALLATION_DIR
-    if ! ansible-playbook -i inventories/"$BRANCH".ini playbook.yaml; then
+    if ! ansible-playbook -i inventories/"$INVENTORY".ini playbook.yaml; then
         echo "Error: Ansible playbook execution failed!" >&2
         exit 1
     fi
@@ -73,32 +73,40 @@ trap 'error_handler $LINENO' ERR
 
 # Main script
 mkdir -p "$INSTALLATION_DIR" "$LOG_DIR" "$INSTALLATION_DIR/inventories"
+
+# Get the hostname
 CURRENT_HOSTNAME=$(hostname)
 
-case $CURRENT_HOSTNAME in
+# Extract the last letter using regex
+ENV_LETTER=$(echo "$(hostname)" | sed 's/.*\(.\)$/\1/')
+
+# Print the env letter
+echo "$ENV_LETTER"
+
+case $ENV_LETTER in
     $DEMO|$DEV_ENV) 
-        echo "This is the $CURRENT_HOSTNAME environment." 
+        echo "This is the Demo/Dev environment." 
         BRANCH="dev"
         INVENTORY="dev"
         install_ansible
         install_LIME
         ;;
     $QA_ENV) 
-        echo "This is the QA environment." 
+        echo "This is the QA/UAT environment." 
         BRANCH="qa"
         INVENTORY="qa"
         install_ansible
         install_LIME
         ;;
-    $UAT_ENV) 
-        echo "This is the UAT environment." 
+    $PROD_ENV) 
+        echo "This is the Prod environment." 
         BRANCH="main"
         INVENTORY="prod"
         install_ansible
         install_LIME
         ;;
     *) 
-        echo "Hostname doesn't match any known environment. Exiting without further action." >&2
+        echo "Hostname doesn't match any known environment ($ENV_LETTER). Error reported in log file." >&2
         echo "Hostname $CURRENT_HOSTNAME not recognized" >> $(generate_log_filename)
         exit 1
         ;;
