@@ -28,10 +28,16 @@ install_ansible() {
     echo "Installing Ansible..."
 
     if ! command -v ansible &> /dev/null; then
-        apt update
-        apt install -y software-properties-common
-        add-apt-repository --yes --update ppa:ansible/ansible
-        apt install -y ansible
+        DEBIAN_FRONTEND=noninteractive apt update
+        DEBIAN_FRONTEND=noninteractive apt install -y software-properties-common
+        DEBIAN_FRONTEND=noninteractive add-apt-repository --yes --update ppa:ansible/ansible
+        DEBIAN_FRONTEND=noninteractive apt install -y ansible
+
+        # Check if Ansible was successfully installed
+        if ! command -v ansible &> /dev/null; then
+            echo "Error: Failed to install Ansible!" >&2
+            exit 1
+        fi
     else
         echo "Ansible is already installed."
     fi

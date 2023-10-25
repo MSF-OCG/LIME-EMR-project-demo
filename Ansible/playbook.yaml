@@ -6,6 +6,8 @@
     app_repository: https://github.com/MSF-OCG/LIME-EMR-project-demo.git
     app_url: http://localhost
     app_admin_url: http://localhost/openmrs/login.htm
+    dest_folder: "/path/to/destination_folder"
+    git_branch: "main"
   tasks:
     - name: Install prerequisites for MacOS
       when: ansible_os_family == "Darwin"
@@ -121,19 +123,20 @@
       wait_for:
         timeout: 60
 
-    - name: Verify if OpenMRS admin is accessible
+    - name: Check if OpenMRS login page is reachable
       uri:
         url: "{{ app_admin_url }}"
         method: GET
         status_code: 200
       register: result
+      ignore_errors: yes
 
-    - name: Display URL check result
+    - name: Display result if URL is reachable
       debug:
-        msg: "OpenMRS Administration is accessible!"
+        msg: "The OpenMRS login page is reachable."
       when: result.status == 200
 
-    - name: Display URL check failure
+    - name: Display error if URL is not reachable
       debug:
-        msg: "OpenMRS Administration is NOT accessible!"
-      when: result.status != 200
+        msg: "The OpenMRS login page is not reachable. Status: {{ result.status }} Reason: {{ result.msg }}"
+      when: result.failed
