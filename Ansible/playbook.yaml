@@ -3,9 +3,11 @@
   hosts: all
   become: yes
   vars:
-    app_repository: https://github.com/MSF-OCG/LIME-EMR-project-demo.git
-    app_url: http://localhost
-    app_admin_url: http://localhost/openmrs/login.htm
+    app_repository: https://github.com/MSF-OCG/LIME-EMR-project-demo.git # Define the LIME Github repository
+    app_url: http://localhost # Define the OpenMRS 3 URL
+    app_admin_url: http://localhost/openmrs/login.htm # Define the OpenMRS admin URL
+    dest_folder: "/path/to/destination_folder"  # Define the destination folder
+    git_branch: "main"  # Define the git branch
   tasks:
     - name: Install prerequisites for MacOS
       when: ansible_os_family == "Darwin"
