@@ -35,7 +35,17 @@
     "@openmrs/esm-fast-data-entry-app": "next",
     "@openmrs/esm-cohort-builder-app": "next",
     "@openmrs/esm-form-builder-app": "next",
-    "@ugandaemr/esm-bed-management-app": "next"
+    "@ugandaemr/esm-bed-management-app": "next",
+    "@ugandaemr/esm-primary-navigation-app": "next",
+    "@ugandaemr/esm-data-visualizer-app": "next",
+    "@ugandaemr/esm-patient-queues-app": "next",
+    "@ugandaemr/esm-ugandaemr-commons-lib": "next",
+    "@ugandaemr/esm-theatre-app": "next",
+    "@ugandaemr/esm-radiology-app": "next",
+    "@ugandaemr/esm-ugandaemr-app": "next",
+    "@ugandaemr/esm-family-health-app": "next",
+    "@ugandaemr/esm-inpatient-app": "next",
+    "@ugandaemr/esm-menu-app": "next"
   },
   "spaPath": "$SPA_PATH",
   "apiUrl": "$API_URL",
