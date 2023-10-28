@@ -112,7 +112,8 @@
           ]
         },
         {
-          "isExpanded": "true",
+          "label": "Obstetric history",
+          "isExpanded": "false",
           "questions": [
             {
               "type": "obs",
@@ -278,7 +279,8 @@
           ]
         },
         {
-          "isExpanded": "true",
+          "label": "Examination on admission",
+          "isExpanded": "false",
           "questions": [
             {
               "type": "obs",
@@ -529,7 +531,8 @@
           ]
         },
         {
-          "isExpanded": "true",
+          "label": "Vaginal examination",
+          "isExpanded": "false",
           "questions": [
             {
               "type": "obs",
@@ -806,7 +809,7 @@
   "processor": "EncounterFormProcessor",
   "encounterType": "dd528487-82a5-4082-9c72-ed246bd49591",
   "referencedForms": [],
-  "uuid": "6332f7ed-2991-4798-946f-01da8bfc0fea",
+  "uuid": "4fa36eff-c504-431d-ae0d-a9c183be0bc5",
   "description": "Maternity form",
-  "version": "0.7"
+  "version": "0.9"
 }
