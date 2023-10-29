@@ -65,11 +65,15 @@ install_LIME() {
     download_from_repo "Ansible/inventories/$INVENTORY.ini" "$INSTALLATION_DIR/inventories/$INVENTORY.ini"
 
     current_timestamp=$(date '+%Y%m%d%H%M%S')
+    export ANSIBLE_LOG_PATH=$LOG_DIR/lime_setup_stderr_${current_timestamp}.log
+    export ANSIBLE_DISPLAY_SKIPPED_HOSTS=false
+    export ANSIBLE_DISPLAY_OK_HOSTS=false
+    export ANSIBLE_DISPLAY_CHANGED_HOSTS=false
     
     echo "Ansible playbooks ready for execution!"
     
     cd $INSTALLATION_DIR
-    if ! ANSIBLE_LOG_PATH=$LOG_DIR/lime_setup_stderr_${current_timestamp}.log ANSIBLE_DISPLAY_CHANGED_HOSTS=no ANSIBLE_DISPLAY_OK_HOSTS=no ANSIBLE_DISPLAY_SKIPPED_HOSTS=no ansible-playbook -i inventories/"$INVENTORY".ini playbook.yaml; then
+    if ! ansible-playbook -i inventories/"$INVENTORY".ini playbook.yaml; then
         echo "Error: Ansible playbook execution failed!" >&2
         exit 1
     fi
