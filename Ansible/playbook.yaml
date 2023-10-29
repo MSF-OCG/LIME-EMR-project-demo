@@ -10,7 +10,6 @@
     log_dir: "/var/logs/lime/setup"
 
   tasks:
-
     - name: Get current date and time
       set_fact:
         current_timestamp: "{{ lookup('pipe', 'date \"+%Y%m%d%H%M%S%Z\"') }}"
@@ -96,15 +95,17 @@
             msg: "Latest commit SHA: {{ git_commit_sha.stdout }}"
 
         - name: Pull images using Docker Compose pull
-          command:
-            cmd: docker-compose pull
-            chdir: "{{ dest_folder }}"
+          docker_compose:
+            project_src: "{{ dest_folder }}"
+            pull: yes
           register: docker_compose_pull_result
 
         - name: Run docker-compose with OpenMRS3 profile
-          command:
-            cmd: docker-compose --profile openmrs3 up -d
-            chdir: "{{ dest_folder }}"
+          docker_compose:
+            project_src: "{{ dest_folder }}"
+            profiles:
+              - openmrs3
+            state: present
           register: docker_compose_up_result
 
         - name: Display Docker Compose up result
@@ -116,9 +117,11 @@
             timeout: 10
 
         - name: Restart docker-compose with OpenMRS3 profile
-          command:
-            cmd: docker-compose --profile openmrs3 restart
-            chdir: "{{ dest_folder }}"
+          docker_compose:
+            project_src: "{{ dest_folder }}"
+            profiles:
+              - openmrs3
+            restarted: yes
           when: docker_compose_pull_result is changed
 
         - name: Wait for a few seconds for containers to restart
@@ -160,4 +163,3 @@
             module: shell
             args:
               cmd: "echo 'Error encountered on {{ current_timestamp }}: {{ ansible_failed_task.name }} - {{ ansible_failed_result.msg }}' >> {{ log_dir }}/{{ log_file }}"
-
