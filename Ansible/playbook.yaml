@@ -114,16 +114,6 @@
           wait_for:
             timeout: 10
 
-        - name: Restart docker-compose for OpenMRS3 
-          docker_compose:
-            project_src: "{{ dest_folder }}"
-            restarted: yes
-          when: docker_compose_pull_result is changed
-
-        - name: Wait for a few seconds for containers to restart
-          wait_for:
-            timeout: 10
-
         - name: Confirm Docker containers are running
           command: docker ps
           register: docker_ps_output
@@ -131,7 +121,7 @@
 
         - name: Wait for a few seconds for containers to start
           wait_for:
-            timeout: 60
+            timeout: 30
 
         - name: Check if OpenMRS login page is reachable
           uri:
@@ -140,6 +130,8 @@
             return_content: yes
             method: HEAD
             status_code: 200
+            retries: 18
+            delay: 10
           register: result
           ignore_errors: no
 
