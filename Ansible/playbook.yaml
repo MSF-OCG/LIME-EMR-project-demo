@@ -114,11 +114,9 @@
           wait_for:
             timeout: 10
 
-        - name: Restart docker-compose with OpenMRS3 profile
+        - name: Restart docker-compose for OpenMRS3 
           docker_compose:
             project_src: "{{ dest_folder }}"
-            profiles:
-              - openmrs3
             restarted: yes
           when: docker_compose_pull_result is changed
 
