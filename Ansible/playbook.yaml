@@ -100,11 +100,9 @@
             pull: yes
           register: docker_compose_pull_result
 
-        - name: Run docker-compose with OpenMRS3 profile
+        - name: Run docker-compose for OpenMRS3 
           docker_compose:
             project_src: "{{ dest_folder }}"
-            profiles:
-              - openmrs3
             state: present
           register: docker_compose_up_result
 
