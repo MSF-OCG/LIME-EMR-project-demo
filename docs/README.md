@@ -377,6 +377,19 @@ Docker images will automatically be rebuilt and pushed to [Docker Hub of MSF OCG
 
 ### Build Docker images
 ### Update metadata and content
+
+#### Update OpenMRS frontend
+rebuild frontend image in Github Actions
+docker compose --profile openmrs3 pull
+docker compose --profile openmrs3 up d
+#### Update OpenMRS backend
+rebuild backend image in Github Actions
+docker compose --profile openmrs3 pull
+docker compose --profile openmrs3 up d
+#### Update content
+git pull
+docker restart backent
+
 ### Update documentation
 
 ## Branches
