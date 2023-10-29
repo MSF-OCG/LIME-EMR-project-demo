@@ -67,7 +67,7 @@ install_LIME() {
     echo "Ansible playbooks ready for execution!"
     
     cd $INSTALLATION_DIR
-    if ! ansible-playbook -i inventories/"$INVENTORY".ini playbook.yaml; then
+    if ! ANSIBLE_LOG_PATH=/var/logs/lime/setup/ansible_$(date +"%d%m%Y_%H%M%S").log ansible-playbook -i inventories/"$INVENTORY".ini playbook.yaml; then
         echo "Error: Ansible playbook execution failed!" >&2
         exit 1
     fi
