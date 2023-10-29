@@ -7,6 +7,7 @@
     app_url: http://localhost
     app_admin_url: http://localhost/openmrs/login.htm
     git_branch: "main"
+    log_dir: "/var/logs/lime/setup"
 
   tasks:
 
@@ -158,5 +159,5 @@
           local_action:
             module: shell
             args:
-              cmd: "echo 'Error encountered on {{ current_timestamp }}: {{ ansible_failed_task.name }} - {{ ansible_failed_result.msg }}' >> {{ log_file }}"
+              cmd: "echo 'Error encountered on {{ current_timestamp }}: {{ ansible_failed_task.name }} - {{ ansible_failed_result.msg }}' >> {{ log_dir }}/{{ log_file }}"
 
