@@ -3,7 +3,6 @@ version: "3.8"
 services:
   # Networking
   gateway:
-    profiles: ["openmrs3"]
     container_name: openmrs-gateway
     image: openmrs/openmrs-reference-application-3-gateway:${TAG:-nightly}
     depends_on:
@@ -14,7 +13,6 @@ services:
 
   # OpenMRS 3 Frontend
   frontend:
-    profiles: ["openmrs3"]
     container_name: openmrs-frontend
     image: msfocg/openmrs3-frontend:${HOSTNAME_TAG:-dev}
     environment:
@@ -29,7 +27,6 @@ services:
 
   # OpenMRS Core Backend
   backend:
-    profiles: ["openmrs3", "openmrs"]
     container_name: openmrs-backend
     image: msfocg/openmrs3-backend:${HOSTNAME_TAG:-dev}
     depends_on:
@@ -53,7 +50,6 @@ services:
 
   # MariaDB
   db:
-    profiles: ["openmrs3", "openmrs"]
     container_name: openmrs-db
     image: mariadb:10.8.2
     command: "mysqld --character-set-server=utf8 --collation-server=utf8_general_ci"
