@@ -63,6 +63,8 @@ install_LIME() {
     
     download_from_repo "Ansible/playbook.yaml" "$INSTALLATION_DIR/playbook.yaml"
     download_from_repo "Ansible/inventories/$INVENTORY.ini" "$INSTALLATION_DIR/inventories/$INVENTORY.ini"
+
+    current_timestamp=$(date '+%Y%m%d%H%M%S')
     
     echo "Ansible playbooks ready for execution!"
     
