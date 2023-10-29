@@ -58,7 +58,7 @@ download_from_repo() {
 }
 
 install_LIME() {
-    echo "Installing LIME from $BRANCH branch and $INVENTORY Ansibly inventory"
+    echo "Installing LIME from $BRANCH branch and $INVENTORY Ansible inventory"
     echo "Downloading Ansible playbooks for LIME"
     
     download_from_repo "Ansible/playbook.yaml" "$INSTALLATION_DIR/playbook.yaml"
