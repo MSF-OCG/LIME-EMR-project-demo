@@ -15,7 +15,7 @@ INVENTORY="dev"
 # Functions
 generate_log_filename() {
     local current_timestamp
-    current_timestamp=$(date '+%Y%m%d%H%M%S')
+    current_timestamp=$(date '+%Y%m%d%H%M%S%Z\')
     echo "$LOG_DIR/lime_setup_stderr_${current_timestamp}.log"
 }
 
@@ -65,8 +65,7 @@ install_LIME() {
     download_from_repo "Ansible/inventories/$INVENTORY.ini" "$INSTALLATION_DIR/inventories/$INVENTORY.ini"
 
     current_timestamp=$(date '+%Y%m%d%H%M%S')
-    export ANSIBLE_LOG_PATH=$LOG_DIR/lime_setup_stderr_${current_timestamp}.log
-    export ANSIBLE_DISPLAY_SKIPPED_HOSTS=false
+    export ANSIBLE_DISPLAY_SKIPPED_HOSTS=true
     export ANSIBLE_DISPLAY_OK_HOSTS=false
     export ANSIBLE_DISPLAY_CHANGED_HOSTS=false
     
