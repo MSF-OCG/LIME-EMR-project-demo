@@ -1,0 +1,4 @@
+Error encountered on 20231029154115+03: test docker-compose - Unable to load docker-compose. Try `pip install docker-compose`. Error: Traceback (most recent call last):
+  File "/var/folders/7s/9k0q7cqn22ggdjdbrggzxnmr0000gn/T/ansible_docker_compose_payload_k1hl95la/ansible_docker_compose_payload.zip/ansible_collections/community/docker/plugins/modules/docker_compose.py", line 506, in <module>
+ModuleNotFoundError: No module named compose
+
