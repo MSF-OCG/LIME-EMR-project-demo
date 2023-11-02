@@ -1,7 +1,7 @@
 ---
 - name: Setup Docker, Docker-compose, Git and Deploy OpenMRS 3
   hosts: all
-  become: yes
+  become: true
   vars:
     app_repository: https://github.com/MSF-OCG/LIME-EMR-project-demo.git
     app_url: http://localhost
