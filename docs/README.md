@@ -545,6 +545,14 @@ This script performs a MySQL dump of an OpenMRS database, compresses the output 
 ```echo $now Backup of openmrs db has run```: This line appends a message to a log file that confirms that the backup has been run. The message includes the timestamp variable $now.
 
 
+### Quick backup of the database in Docker
+#### Backup
+```docker exec openmrs-db /usr/bin/mysqldump --max_allowed_packet=51012M --verbose -u '****' --password='****' openmrs --skip-lock-tables --single-transaction --skip-triggers | gzip -v > openmrs_db_backup.sql.gz```
+#### Transfer locally
+```scp -P 22 user@remote_server:/remote_directory/openmrs_db_backup.sql.gz /destination```
+#### Restore
+```docker exec openmrs-db /usr/bin/mysqldump --max_allowed_packet=51012M --verbose -u '****' --password='****' openmrs --skip-lock-tables --single-transaction --skip-triggers | gzip -v > /destination/openmrs_db_backup.sql.gz``` 
+
 ## Deitentify
 
 ## Restore
