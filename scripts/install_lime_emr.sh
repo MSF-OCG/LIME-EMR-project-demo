@@ -114,7 +114,7 @@ get_branch_name() {
     local last_char=$(hostname | awk '{print tolower(substr($0,length,1))}')
     case "$last_char" in
         d) BRANCH_NAME="dev";;
-        t) BRANCH_NAME="QA";;
+        t) BRANCH_NAME="qa";;
         p) BRANCH_NAME="main";;
         *)
           BRANCH_NAME="main"
