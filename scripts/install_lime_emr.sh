@@ -13,7 +13,7 @@ LOG_DIR="/var/logs/$APP_NAME"
 SUCCESS_LOG="$LOG_DIR/install_script_success.log"
 ERROR_LOG="$LOG_DIR/install_script_error.log"
 MAX_ATTEMPTS=5
-MAX_RETRIES=18
+MAX_RETRIES=50
 COMPOSE_VERSION="2.23.0"
 
 # Ensure the log directories and files exist
