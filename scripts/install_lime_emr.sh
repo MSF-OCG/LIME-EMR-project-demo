@@ -57,7 +57,7 @@ is_package_installed_and_latest() {
 install_packages() {
     sudo apt-get update -y
     sudo DEBIAN_FRONTEND=noninteractive apt-get install -y git curl vim screen gettext-base jq pwgen mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2
-    log_success "All required packages have been installed."
+    log_message "Success" "All required packages have been installed."
 }
 
 # Function to install Docker Compose if not already installed
