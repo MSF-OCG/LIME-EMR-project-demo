@@ -7,6 +7,9 @@ APP_NAME="emr"
 APP_URL="http://localhost/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 
+# List of dependencies to be installed
+PACKAGES_TO_INSTALL="git curl vim screen gettext-base jq pwgen mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2"
+
 # Configurable variables for installation and logs
 INSTALL_DIR="/home/lime/$APP_NAME"
 LOG_DIR="/var/logs/lime"
@@ -39,10 +42,24 @@ remove_empty_log() {
 }
 
 # Install necessary packages non-interactively
-install_packages() {
-    sudo apt-get update -y
-    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y git curl vim screen gettext-base jq pwgen mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2
-    log_success "All required packages have been installed."
+function install_packages() {
+  # Update the package list
+  sudo apt-get update
+
+  # Loop over the packages and attempt to install each one
+  for package in $PACKAGES_TO_INSTALL; do
+    echo "Installing $package..."
+    if sudo DEBIAN_FRONTEND=noninteractive apt-get install -y $package; then
+      # If the package is installed successfully, log this to the success log
+      log_success "Installed $package"
+      echo "$package installed successfully."
+    else
+      # If there is an error installing the package, log this to the error log
+      local error_message="Failed to install $package"
+      log_error "$error_message"
+      echo "$error_message. See '$ERROR_LOG' for details."
+    fi
+  done
 }
 
 # Function to install Docker Compose if not already installed
@@ -156,7 +173,7 @@ clone_repository() {
     fi
 }
 
-# Main installation function
+# Main installation functions
 install_application() {
     install_packages
     install_docker_compose
