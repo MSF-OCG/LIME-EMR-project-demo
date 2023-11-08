@@ -9,7 +9,7 @@ CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 
 # Configurable variables for installation and logs
 INSTALL_DIR="/home/lime/$APP_NAME"
-LOG_DIR="/var/logs/lime/"
+LOG_DIR="/var/logs/lime"
 SUCCESS_LOG="$LOG_DIR/${APP_NAME}_install_script_success.log"
 ERROR_LOG="$LOG_DIR/${APP_NAME}_install_script_error.log"
 MAX_ATTEMPTS=5
