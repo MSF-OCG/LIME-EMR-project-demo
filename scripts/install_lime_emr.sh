@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Configurable variables
 REPOSITORY_URL="https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
