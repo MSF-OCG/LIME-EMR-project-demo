@@ -3,8 +3,8 @@
 # Configurable variables
 REPOSITORY_URL="https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
 BRANCH_NAME="main" # Default branch name
-INSTALL_DIR="$HOME/LIME"
-LOG_DIR="$HOME/logs"
+INSTALL_DIR="/home/LIME"
+LOG_DIR="/var/logs"
 SUCCESS_LOG="$LOG_DIR/install_script_success.log"
 ERROR_LOG="$LOG_DIR/install_script_error.log"
 APP_URL="http://localhost/openmrs/login.htm"
