@@ -138,7 +138,7 @@ clone_repository() {
 
     if [ ! -d "$INSTALL_DIR/.git" ]; then
         echo "Cloning the repository branch '$BRANCH_NAME' into $INSTALL_DIR."
-        git clone --single-branch --branch "$BRANCH_NAME" "$REPOSITORY_URL" "$INSTALL_DIR" 2>>"$ERROR_LOG"
+        git clone --single-branch --branch "$BRANCH_NAME" "$REPOSITORY_URL" "$INSTALL_DIR"
         if [ $? -eq 0 ]; then
             log_success "Cloned the '$BRANCH_NAME' branch of the repository into $INSTALL_DIR."
         else
