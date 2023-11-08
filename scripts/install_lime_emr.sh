@@ -76,7 +76,7 @@ install_packages() {
         esac
     done
     if [ "$package_install_required" = true ]; then
-        if ! sudo DEBIAN_FRONTEND=noninteractive apt-get install -y $PACKAGES_TO_INSTALL; then
+        if ! sudo DEBIAN_FRONTEND=noninteractive apt-get install -y $PACKAGES_TO_INSTALL --allow-unauthenticated; then
             log_message "Error" "Failed to install required packages." "$ERROR_LOG"
             return 1
         fi
