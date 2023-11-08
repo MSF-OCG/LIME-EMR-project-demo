@@ -65,7 +65,7 @@ install_docker_compose() {
 # Function to start docker-compose
 start_docker_compose() {
     echo "Starting docker-compose..."
-    (cd "$INSTALL_DIR" && docker-compose up -d) >> "$SUCCESS_LOG" 2>> "$ERROR_LOG"
+    (cd "$INSTALL_DIR" && docker-compose up -d)
     if [ $? -eq 0 ]; then
         log_success "docker-compose started successfully."
     else
