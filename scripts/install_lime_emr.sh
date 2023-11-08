@@ -7,7 +7,7 @@ INSTALL_DIR="$HOME/LIME"
 LOG_DIR="$HOME/logs"
 SUCCESS_LOG="$LOG_DIR/install_script_success.log"
 ERROR_LOG="$LOG_DIR/install_script_error.log"
-APP_URL="http://localhost/openmrs/login.htm" 
+APP_URL="http://localhost/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend gateway"
 MAX_ATTEMPTS=5
 MAX_RETRIES=18
@@ -28,24 +28,19 @@ log_error() {
     echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')] Error: $1" >> "$ERROR_LOG"
 }
 
-# Check prerequisites (requires manual intervention if not installed)
-check_prerequisites() {
-    for pkg in git curl vim screen gettext-base jq pwgen mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2; do
-        if ! dpkg -l "$pkg" > /dev/null 2>&1; then
-            echo "The package $pkg is missing and needs to be installed."
-            echo "Please run 'sudo apt-get install $pkg' to install it."
-            exit 1
-        fi
-    done
-    log_success "All required packages are installed."
+# Install necessary packages non-interactively
+install_packages() {
+    sudo apt-get update -y
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y git curl vim screen gettext-base jq pwgen mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2
+    log_success "All required packages have been installed."
 }
 
 # Function to install Docker Compose if not already installed
 install_docker_compose() {
     if ! docker-compose --version > /dev/null 2>&1 || [ "$(docker-compose --version | awk '{print $3}' | cut -d ',' -f1)" != "$COMPOSE_VERSION" ]; then
         echo "Installing Docker Compose..."
-        curl -L "https://github.com/docker/compose/releases/download/v${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
-        chmod +x /usr/local/bin/docker-compose && \
+        sudo curl -L "https://github.com/docker/compose/releases/download/v${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
         log_success "Installed Docker Compose version $COMPOSE_VERSION" || \
         log_error "Failed to install Docker Compose."
     else
@@ -98,6 +93,7 @@ verify_application_url() {
 # Clone the repository into INSTALL_DIR/LIME
 clone_repository() {
     if [ ! -d "$INSTALL_DIR" ]; then
+        GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" \
         git clone --single-branch --branch "$BRANCH_NAME" "$REPOSITORY_URL" "$INSTALL_DIR" && \
         log_success "Cloned the repository into $INSTALL_DIR." || \
         log_error "Failed to clone the repository into $INSTALL_DIR."
@@ -108,20 +104,13 @@ clone_repository() {
 
 # Main installation function
 install_application() {
-    if check_prerequisites && install_docker_compose; then
-        clone_repository
-        if check_containers; then
-            verify_application_url
-        fi
-    else
-        return 1
-    fi
+    install_packages
+    install_docker_compose
+    clone_repository
+    check_containers && verify_application_url && \
+    log_success "Installation and verifications completed successfully." || \
+    log_error "Installation or verification failed." && return 1
 }
 
 # Start the installation process
-if install_application; then
-    log_success "Installation and verifications completed successfully."
-else
-    log_error "Installation or verification failed."
-    exit 1
-fi
+install_application
