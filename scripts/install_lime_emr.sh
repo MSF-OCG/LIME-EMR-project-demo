@@ -68,12 +68,6 @@ install_docker_compose() {
 start_docker_compose() {
     echo "Starting docker-compose..."
     (cd "$INSTALL_DIR" && docker-compose up -d) >> "$SUCCESS_LOG" 2>> "$ERROR_LOG"
-    if [ $? -eq 0 ]; then
-        log_success "docker-compose started successfully."
-    else
-        log_error "Failed to start docker-compose."
-        # Do not exit the script if docker-compose starts with error; just log the error.
-    fi
 }
 
 # Function to check Docker containers
