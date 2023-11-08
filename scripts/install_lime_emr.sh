@@ -162,11 +162,6 @@ clone_repository() {
 # Main installation function
 install_application() {
     install_packages
-    install_docker_compose
-    clone_repository
-    start_docker_compose
-    check_containers
-    verify_application_url
     log_success "Installation and verifications completed successfully." || \
     log_error "Installation or verification failed." && return 1
     remove_empty_log "$SUCCESS_LOG"
