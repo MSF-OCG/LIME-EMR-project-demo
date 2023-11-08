@@ -37,14 +37,18 @@ install_packages() {
 
 # Function to install Docker Compose if not already installed
 install_docker_compose() {
-    if ! docker-compose --version > /dev/null 2>&1 || [ "$(docker-compose --version | awk '{print $3}' | cut -d ',' -f1)" != "$COMPOSE_VERSION" ]; then
-        echo "Installing Docker Compose..."
+    if ! command -v docker-compose > /dev/null 2>&1; then
+        echo "Docker Compose is not installed. Installing..."
         sudo curl -L "https://github.com/docker/compose/releases/download/v${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
-        log_success "Installed Docker Compose version $COMPOSE_VERSION" || \
-        log_error "Failed to install Docker Compose."
+        if [ "$(docker-compose --version)" = "docker-compose version ${COMPOSE_VERSION},"* ]; then
+            log_success "Docker Compose version $COMPOSE_VERSION has been installed."
+        else
+            log_error "Failed to install Docker Compose."
+            return 1
+        fi
     else
-        log_success "Docker Compose version $COMPOSE_VERSION is already installed."
+        log_success "Docker Compose is already installed."
     fi
 }
 
