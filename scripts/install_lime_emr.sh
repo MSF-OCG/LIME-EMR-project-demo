@@ -18,8 +18,6 @@ COMPOSE_VERSION="2.23.0"
 
 # Ensure the log directories and files exist
 mkdir -p "$LOG_DIR"
-touch "$SUCCESS_LOG"
-touch "$ERROR_LOG"
 
 # Function to log success messages
 log_success() {
