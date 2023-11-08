@@ -111,13 +111,19 @@ verify_application_url() {
 
 # Function to determine the branch name based on the hostname
 get_branch_name() {
-    local last_char=$(hostname | awk '{print substr($0,length,1)}')
+    local last_char=$(hostname | awk '{print tolower(substr($0,length,1))}')
     case "$last_char" in
-        [Dd]) BRANCH_NAME="dev";;
-        [Tt]) BRANCH_NAME="QA";;
-        [Pp]) BRANCH_NAME="main";;
-        *) BRANCH_NAME="main"; echo "Hostname does not end with D, T, or P. Using default branch 'main'.";;
+        d) BRANCH_NAME="dev";;
+        t) BRANCH_NAME="QA";;
+        p) BRANCH_NAME="main";;
+        *)
+          BRANCH_NAME="main"
+          log_error "Hostname does not end with D, T, or P. Using default branch 'main'."
+          return 1
+          ;;
     esac
+    log_success "Branch name set to '$BRANCH_NAME' based on the hostname."
+    return 0
 }
 
 # Function to clone the repository
