@@ -37,22 +37,6 @@ remove_empty_log() {
     [ ! -s "$1" ] && rm -f "$1" && echo "Removed empty log file: $1"
 }
 
-# Function to check if a package is installed and at the latest version
-is_package_installed_and_latest() {
-    local package=$1
-    if dpkg -s "$package" >/dev/null 2>&1; then
-        local installed_version=$(dpkg -s "$package" | grep '^Version:' | awk '{print $2}')
-        local available_version=$(apt list --upgradable 2>/dev/null | grep "^${package}/" | awk -F'[/ ]' '{print $3}')
-        if [ "$installed_version" = "$available_version" ] || [ -z "$available_version" ]; then
-            return 0 # Package is installed and up-to-date
-        else
-            return 1 # Package is installed but not up-to-date
-        fi
-    else
-        return 2 # Package is not installed
-    fi
-}
-
 # Install necessary packages non-interactively
 install_packages() {
     sudo apt-get update -y
