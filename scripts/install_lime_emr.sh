@@ -5,7 +5,7 @@ REPOSITORY_URL="https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
 BRANCH_NAME="main" # Default branch name
 APP_NAME="LIME"
 APP_URL="http://localhost/openmrs/login.htm"
-CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend gateway"
+CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 
 # Configurable variables for installation and logs
 INSTALL_DIR="/home/$APP_NAME"
