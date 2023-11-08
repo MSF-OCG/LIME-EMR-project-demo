@@ -3,13 +3,13 @@
 # Configurable variables for the application
 REPOSITORY_URL="https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
 BRANCH_NAME="main"
-APP_NAME="lime"
+APP_NAME="emr"
 APP_URL="http://localhost/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 
 # Configurable variables for installation and logs
-INSTALL_DIR="/home/$APP_NAME"
-LOG_DIR="/var/logs/$APP_NAME"
+INSTALL_DIR="/home/lime/$APP_NAME"
+LOG_DIR="/var/logs/lime/"
 SUCCESS_LOG="$LOG_DIR/install_script_success.log"
 ERROR_LOG="$LOG_DIR/install_script_error.log"
 MAX_ATTEMPTS=5
