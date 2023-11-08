@@ -31,6 +31,15 @@ log_error() {
     echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')] Error: $1" >> "$ERROR_LOG"
 }
 
+# Function to remove log file if it is empty
+remove_empty_log() {
+    local logfile="$1"
+    if [ ! -s "$logfile" ]; then # Check if the file is empty
+        rm -f "$logfile"
+        echo "Removed empty log file: $logfile"
+    fi
+}
+
 # Install necessary packages non-interactively
 install_packages() {
     sudo apt-get update -y
@@ -161,6 +170,8 @@ install_application() {
     verify_application_url
     log_success "Installation and verifications completed successfully." || \
     log_error "Installation or verification failed." && return 1
+    remove_empty_log "$SUCCESS_LOG"
+    remove_empty_log "$ERROR_LOG"
 }
 
 # Start the installation process
