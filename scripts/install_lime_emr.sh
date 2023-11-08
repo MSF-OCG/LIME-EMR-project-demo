@@ -2,7 +2,7 @@
 
 # Configurable variables for the application
 REPOSITORY_URL="https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
-BRANCH_NAME="main" # Default branch name
+BRANCH_NAME="main"
 APP_NAME="LIME"
 APP_URL="http://localhost/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
@@ -109,24 +109,50 @@ verify_application_url() {
     done
 }
 
-# Clone the repository into INSTALL_DIR/LIME
+# Function to determine the branch name based on the hostname
+get_branch_name() {
+    local last_char=$(hostname | awk '{print substr($0,length,1)}')
+    case "$last_char" in
+        [Dd]) BRANCH_NAME="dev";;
+        [Tt]) BRANCH_NAME="QA";;
+        [Pp]) BRANCH_NAME="main";;
+        *) BRANCH_NAME="main"; echo "Hostname does not end with D, T, or P. Using default branch 'main'.";;
+    esac
+}
+
+# Function to clone the repository
 clone_repository() {
-    if [ ! -d "$INSTALL_DIR" ]; then
-        GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" \
-        git clone --single-branch --branch "$BRANCH_NAME" "$REPOSITORY_URL" "$INSTALL_DIR" && \
-        log_success "Cloned the repository $REPOSITORY_URL with branch $BRANCH_NAME into $INSTALL_DIR." || \
-        log_error "Failed to clone the repository $REPOSITORY_URL with branch $BRANCH_NAME into $INSTALL_DIR."
+    get_branch_name
+
+    if [ ! -d "$INSTALL_DIR/.git" ]; then
+        echo "Cloning the repository branch '$BRANCH_NAME' into $INSTALL_DIR."
+        git clone --single-branch --branch "$BRANCH_NAME" "$REPOSITORY_URL" "$INSTALL_DIR" 2>>"$ERROR_LOG"
+        if [ $? -eq 0 ]; then
+            log_success "Cloned the '$BRANCH_NAME' branch of the repository into $INSTALL_DIR."
+        else
+            log_error "Failed to clone the '$BRANCH_NAME' branch of the repository into $INSTALL_DIR."
+            exit 1
+        fi
     else
-        log_success "The directory $INSTALL_DIR already exists."
+        echo "Repository already cloned. Checking for updates..."
+        (cd "$INSTALL_DIR" && git fetch && git checkout "$BRANCH_NAME" && git pull origin "$BRANCH_NAME" 2>>"$ERROR_LOG")
+        if [ $? -eq 0 ]; then
+            log_success "Updated the '$BRANCH_NAME' branch of the repository in $INSTALL_DIR."
+        else
+            log_error "Failed to update the '$BRANCH_NAME' branch of the repository in $INSTALL_DIR."
+            exit 1
+        fi
     fi
 }
 
 # Main installation function
 install_application() {
-    install_packages && install_docker_compose
+    install_packages
+    install_docker_compose
     clone_repository
     start_docker_compose
-    check_containers && verify_application_url && \
+    check_containers
+    verify_application_url
     log_success "Installation and verifications completed successfully." || \
     log_error "Installation or verification failed." && return 1
 }
