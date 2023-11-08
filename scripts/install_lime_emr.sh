@@ -1,14 +1,17 @@
 #!/bin/sh
 
-# Configurable variables
+# Configurable variables for the application
 REPOSITORY_URL="https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
 BRANCH_NAME="main" # Default branch name
-INSTALL_DIR="/home/LIME"
-LOG_DIR="/var/logs"
-SUCCESS_LOG="$LOG_DIR/install_script_success.log"
-ERROR_LOG="$LOG_DIR/install_script_error.log"
+APP_NAME="LIME"
 APP_URL="http://localhost/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend gateway"
+
+# Configurable variables for installation and logs
+INSTALL_DIR="/home/$APP_NAME"
+LOG_DIR="/var/logs/$APP_NAME"
+SUCCESS_LOG="$LOG_DIR/install_script_success.log"
+ERROR_LOG="$LOG_DIR/install_script_error.log"
 MAX_ATTEMPTS=5
 MAX_RETRIES=18
 COMPOSE_VERSION="2.23.0"
@@ -49,6 +52,18 @@ install_docker_compose() {
         fi
     else
         log_success "Docker Compose is already installed."
+    fi
+}
+
+# Function to start Docker Compose
+start_docker_compose() {
+    echo "Starting Docker Compose services..."
+    (cd "$INSTALL_DIR" && docker-compose up -d)
+    if [ $? -eq 0 ]; then
+        log_success "Docker Compose services started successfully."
+    else
+        log_error "Failed to start Docker Compose services."
+        exit 1
     fi
 }
 
@@ -108,9 +123,9 @@ clone_repository() {
 
 # Main installation function
 install_application() {
-    install_packages
-    install_docker_compose
+    install_packages && install_docker_compose
     clone_repository
+    start_docker_compose
     check_containers && verify_application_url && \
     log_success "Installation and verifications completed successfully." || \
     log_error "Installation or verification failed." && return 1
