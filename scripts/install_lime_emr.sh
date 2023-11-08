@@ -160,6 +160,8 @@ clone_repository() {
 # Main installation function
 install_application() {
     install_packages
+    install_docker_compose
+    clone_repository
 }
 
 # Start the installation process
