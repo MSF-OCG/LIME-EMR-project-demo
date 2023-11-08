@@ -3,7 +3,7 @@
 # Configurable variables for the application
 REPOSITORY_URL="https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
 BRANCH_NAME="main"
-APP_NAME="LIME"
+APP_NAME="lime"
 APP_URL="http://localhost/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 
