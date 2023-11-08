@@ -55,35 +55,9 @@ is_package_installed_and_latest() {
 
 # Install necessary packages non-interactively
 install_packages() {
-    local package
-    local package_install_required=false
-    if ! sudo apt-get update -y; then
-        log_message "Error" "Failed to update package list." "$ERROR_LOG"
-        return 1
-    fi
-    for package in $PACKAGES_TO_INSTALL; do
-        is_package_installed_and_latest "$package"
-        case $? in
-            0) echo "$package is already installed and up to date." ;;
-            1) 
-                echo "$package is installed but not up to date. Upgrading..."
-                package_install_required=true
-                ;;
-            2) 
-                echo "$package is not installed. Installing..."
-                package_install_required=true
-                ;;
-        esac
-    done
-    if [ "$package_install_required" = true ]; then
-        if ! sudo DEBIAN_FRONTEND=noninteractive apt-get install -y $PACKAGES_TO_INSTALL --allow-unauthenticated; then
-            log_message "Error" "Failed to install required packages." "$ERROR_LOG"
-            return 1
-        fi
-        log_message "Success" "Required packages have been installed or updated." "$SUCCESS_LOG"
-    else
-        log_message "Success" "All required packages are already installed and up to date." "$SUCCESS_LOG"
-    fi
+    sudo apt-get update -y
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y git curl vim screen gettext-base jq pwgen mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2
+    log_success "All required packages have been installed."
 }
 
 # Function to install Docker Compose if not already installed
