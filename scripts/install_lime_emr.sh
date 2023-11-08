@@ -111,11 +111,11 @@ get_branch_name() {
         p) BRANCH_NAME="main";;
         *)
           BRANCH_NAME="main"
-          log_error "Hostname does not end with D, T, or P. Using default branch 'main'."
+          log_message "Error" "Hostname does not end with D, T, or P. Using default branch 'main'."
           return 1
           ;;
     esac
-    log_success "Branch name set to '$BRANCH_NAME' based on the hostname."
+    log_message "Success" "Branch name set to '$BRANCH_NAME' based on the hostname."
     return 0
 }
 
