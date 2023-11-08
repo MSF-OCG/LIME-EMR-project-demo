@@ -133,3 +133,9 @@ install_application() {
 
 # Start the installation process
 install_application
+if [ $? -eq 0 ]; then
+    log_success "Installation and verifications completed successfully."
+else
+    log_error "Installation or verification failed."
+    exit 1
+fi
