@@ -147,7 +147,6 @@ clone_repository() {
         fi
     else
         echo "Repository already cloned. Checking for updates..."
-        (cd "$INSTALL_DIR" && git fetch && git checkout "$BRANCH_NAME" && git pull origin "$BRANCH_NAME" 2>>"$ERROR_LOG")
         if [ $? -eq 0 ]; then
             log_success "Updated the '$BRANCH_NAME' branch of the repository in $INSTALL_DIR."
         else
