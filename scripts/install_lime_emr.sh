@@ -160,10 +160,6 @@ clone_repository() {
 # Main installation function
 install_application() {
     install_packages
-    log_success "Installation and verifications completed successfully." || \
-    log_error "Installation or verification failed." && return 1
-    remove_empty_log "$SUCCESS_LOG"
-    remove_empty_log "$ERROR_LOG"
 }
 
 # Start the installation process
