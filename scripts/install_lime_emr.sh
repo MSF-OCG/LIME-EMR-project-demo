@@ -161,6 +161,9 @@ install_application() {
     install_packages
     install_docker_compose
     clone_repository
+    start_docker_compose
+    check_containers
+    verify_application_url
 }
 
 # Start the installation process
