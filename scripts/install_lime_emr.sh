@@ -186,6 +186,29 @@ update_application() {
   # Update commands to be added
 }
 
+# Uninstall application function
+uninstall_application() {
+  echo "Uninstalling application..."
+
+  # Remove logs
+  echo "Removing log files..."
+  rm -rf /var/logs/lime/emr || { echo "Failed to remove log files."; exit 1; }
+
+  # Remove files in the home directory
+  echo "Removing application files..."
+  rm -rf /home/lime/* || { echo "Failed to remove application files."; exit 1; }
+
+  # Stop all Docker containers
+  echo "Stopping all Docker containers..."
+  docker stop $(docker ps -aq) || { echo "Failed to stop Docker containers."; exit 1; }
+
+  # Remove all Docker containers
+  echo "Removing all Docker containers..."
+  docker rm $(docker ps -aq) || { echo "Failed to remove Docker containers."; exit 1; }
+
+  echo "Application uninstalled successfully."
+}
+
 # Check the command line argument and call the appropriate procedure
 case "$1" in
   "install")
@@ -196,6 +219,9 @@ case "$1" in
     ;;
   "backup")
     backup_application
+    ;;
+  "uninstall")
+    uninstall_application
     ;;
   *)
     echo "Invalid procedure. Please specify 'install', 'update', or 'backup'."
