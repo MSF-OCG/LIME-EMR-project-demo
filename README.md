@@ -28,6 +28,22 @@
 ## Technical documentation of the project
 [https://msf-ocg.github.io/LIME-EMR-project-demo](https://msf-ocg.github.io/LIME-EMR-project-demo) 
 
+
+
+## Quick start
+
+### Package the distribution and prepare the run
+```
+docker compose build
+```
+### Run the app
+
+```
+docker compose up
+```
+
+
+
 ## Ambitions and success criteria
 
 - Integrated – with OpenMRS ecosystem and community roadmap 
