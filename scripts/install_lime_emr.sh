@@ -10,11 +10,14 @@ CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 # List of dependencies to be installed
 PACKAGES_TO_INSTALL="git curl vim mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2"
 
+# Get the current date and time in GMT
+current_date_gmt=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
 # Configurable variables for installation and logs
 INSTALL_DIR="/home/lime/$APP_NAME"
 LOG_DIR="/var/logs/lime"
-SUCCESS_LOG="$LOG_DIR/install_script_success.log"
-ERROR_LOG="$LOG_DIR/install_script_error.log"
+SUCCESS_LOG="$LOG_DIR/setup-emr-success-$current_date_gmt.log"
+ERROR_LOG="$LOG_DIR/setup-emr-stderr-$current_date_gmt.log"
 MAX_ATTEMPTS=5
 MAX_RETRIES=300
 COMPOSE_VERSION="2.23.0"
