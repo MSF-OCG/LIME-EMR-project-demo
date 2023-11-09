@@ -19,23 +19,6 @@ MAX_ATTEMPTS=5
 MAX_RETRIES=100
 COMPOSE_VERSION="2.23.0"
 
-# Check the command line argument and call the appropriate procedure
-case "$1" in
-  "install")
-    install_application
-    ;;
-  "update")
-    update_application
-    ;;
-  "backup")
-    backup_application
-    ;;
-  *)
-    echo "Invalid procedure. Please specify 'install', 'update', or 'backup'."
-    exit 1
-    ;;
-esac
-
 # Ensure the log directories and files exist
 mkdir -p "$LOG_DIR"
 
@@ -203,3 +186,19 @@ update_application() {
   # Update commands to be added
 }
 
+# Check the command line argument and call the appropriate procedure
+case "$1" in
+  "install")
+    install_application
+    ;;
+  "update")
+    update_application
+    ;;
+  "backup")
+    backup_application
+    ;;
+  *)
+    echo "Invalid procedure. Please specify 'install', 'update', or 'backup'."
+    exit 1
+    ;;
+esac
