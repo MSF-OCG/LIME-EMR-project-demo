@@ -199,7 +199,7 @@ uninstall_application() {
 
   # Remove application files after stopping Docker services
   echo "Removing application files..."
-  rm -rf "$INSTALL_DIR"/* || { echo "Failed to remove application files."; exit 1; }
+  rm -rf "$INSTALL_DIR" || { echo "Failed to remove application files."; exit 1; }
 
   # Remove logs
   echo "Removing log files..."
