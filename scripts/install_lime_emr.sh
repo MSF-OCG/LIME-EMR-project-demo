@@ -190,21 +190,20 @@ update_application() {
 uninstall_application() {
   echo "Uninstalling application..."
 
+  # Navigate to the Docker Compose directory
+  cd "$INSTALL_DIR" || { echo "Failed to enter directory $INSTALL_DIR"; exit 1; }
+
+  # Stop and remove containers, networks, and volumes created by `docker-compose up`
+  echo "Stopping services and removing containers, networks, and volumes..."
+  docker-compose down -v || { echo "Failed to remove containers, networks, and volumes."; exit 1; }
+
+  # Remove application files after stopping Docker services
+  echo "Removing application files..."
+  rm -rf "$INSTALL_DIR"/* || { echo "Failed to remove application files."; exit 1; }
+
   # Remove logs
   echo "Removing log files..."
-  rm -rf /var/logs/lime/emr || { echo "Failed to remove log files."; exit 1; }
-
-  # Remove files in the home directory
-  echo "Removing application files..."
-  rm -rf /home/lime/* || { echo "Failed to remove application files."; exit 1; }
-
-  # Stop all Docker containers
-  echo "Stopping all Docker containers..."
-  docker stop $(docker ps -aq) || { echo "Failed to stop Docker containers."; exit 1; }
-
-  # Remove all Docker containers
-  echo "Removing all Docker containers..."
-  docker rm $(docker ps -aq) || { echo "Failed to remove Docker containers."; exit 1; }
+  rm -rf $LOG_DIR/* || { echo "Failed to remove log files."; exit 1; }
 
   echo "Application uninstalled successfully."
 }
