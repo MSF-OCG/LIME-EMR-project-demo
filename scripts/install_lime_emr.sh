@@ -31,7 +31,7 @@ case "$1" in
     backup_application
     ;;
   *)
-    echo "Invalid procedure. Please specify 'installation', 'update', or 'backup'."
+    echo "Invalid procedure. Please specify 'install', 'update', or 'backup'."
     exit 1
     ;;
 esac
