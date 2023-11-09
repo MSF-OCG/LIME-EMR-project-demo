@@ -21,7 +21,7 @@ COMPOSE_VERSION="2.23.0"
 
 # Check the command line argument and call the appropriate procedure
 case "$1" in
-  "installation")
+  "install")
     install_application
     ;;
   "update")
