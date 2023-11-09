@@ -16,7 +16,7 @@ LOG_DIR="/var/logs/lime"
 SUCCESS_LOG="$LOG_DIR/install_script_success.log"
 ERROR_LOG="$LOG_DIR/install_script_error.log"
 MAX_ATTEMPTS=5
-MAX_RETRIES=100
+MAX_RETRIES=300
 COMPOSE_VERSION="2.23.0"
 
 # Ensure the log directories and files exist
