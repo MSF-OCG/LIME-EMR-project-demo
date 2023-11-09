@@ -8,7 +8,7 @@ APP_URL="http://localhost/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 
 # List of dependencies to be installed
-PACKAGES_TO_INSTALL="git curl vim screen gettext-base jq pwgen mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2"
+PACKAGES_TO_INSTALL="git curl vim mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2"
 
 # Configurable variables for installation and logs
 INSTALL_DIR="/home/lime/$APP_NAME"
@@ -18,6 +18,23 @@ ERROR_LOG="$LOG_DIR/install_script_error.log"
 MAX_ATTEMPTS=5
 MAX_RETRIES=100
 COMPOSE_VERSION="2.23.0"
+
+# Check the command line argument and call the appropriate procedure
+case "$1" in
+  "installation")
+    install_application
+    ;;
+  "update")
+    update_application
+    ;;
+  "backup")
+    backup_application
+    ;;
+  *)
+    echo "Invalid procedure. Please specify 'installation', 'update', or 'backup'."
+    exit 1
+    ;;
+esac
 
 # Ensure the log directories and files exist
 mkdir -p "$LOG_DIR"
@@ -132,6 +149,17 @@ verify_application_url() {
     done
 }
 
+# Function to clone the repository and handle updates
+clone_repository() {
+    if [ ! -d "$INSTALL_DIR/.git" ]; then
+        echo "Cloning the repository branch '$BRANCH_NAME' into $INSTALL_DIR."
+        git clone --single-branch --branch "$BRANCH_NAME" "$REPOSITORY_URL" "$INSTALL_DIR" && log_success "Cloned the '$BRANCH_NAME' branch of the repository into $INSTALL_DIR." || log_error "Failed to clone the '$BRANCH_NAME' branch of the repository into $INSTALL_DIR."
+    else
+        echo "Repository already cloned. Checking for updates..."
+        (cd "$INSTALL_DIR" && git pull origin "$BRANCH_NAME") && log_success "Updated the '$BRANCH_NAME' branch of the repository in $INSTALL_DIR." || log_error "Failed to update the '$BRANCH_NAME' branch of the repository in $INSTALL_DIR."
+    fi
+}
+
 # Function to determine the branch name based on the hostname
 get_branch_name() {
     local last_char=$(hostname | awk '{print tolower(substr($0,length,1))}')
@@ -142,46 +170,36 @@ get_branch_name() {
         *)
           BRANCH_NAME="main"
           log_error "Hostname does not end with D, T, or P. Using default branch 'main'."
-          return 1
           ;;
     esac
     log_success "Branch name set to '$BRANCH_NAME' based on the hostname."
-    return 0
 }
 
-# Function to clone the repository
-clone_repository() {
-    get_branch_name
-
-    if [ ! -d "$INSTALL_DIR/.git" ]; then
-        echo "Cloning the repository branch '$BRANCH_NAME' into $INSTALL_DIR."
-        git clone --single-branch --branch "$BRANCH_NAME" "$REPOSITORY_URL" "$INSTALL_DIR"
-        if [ $? -eq 0 ]; then
-            log_success "Cloned the '$BRANCH_NAME' branch of the repository into $INSTALL_DIR."
-        else
-            log_error "Failed to clone the '$BRANCH_NAME' branch of the repository into $INSTALL_DIR."
-            exit 1
-        fi
+# Update application function
+install_application() {
+  # Implement installation logic
+  echo "Installating application..."
+    if install_packages && install_docker_compose && clone_repository && start_docker_compose && check_containers && verify_application_url; then
+        log_success "Application installation completed successfully."
+        echo "Installation completed successfully."
     else
-        echo "Repository already cloned. Checking for updates..."
-        if [ $? -eq 0 ]; then
-            log_success "Updated the '$BRANCH_NAME' branch of the repository in $INSTALL_DIR."
-        else
-            log_error "Failed to update the '$BRANCH_NAME' branch of the repository in $INSTALL_DIR."
-            exit 1
-        fi
+        log_error "Application installation failed."
+        echo "Installation failed. Check the logs for details."
+        return 1 # Return from the function with an error status
     fi
 }
 
-# Main installation functions
-install_application() {
-    install_packages
-    install_docker_compose
-    clone_repository
-    start_docker_compose
-    check_containers
-    verify_application_url
+# Backup function
+backup_application() {
+  # Implement backup logic
+  echo "Backing up application..."
+  # Backup commands to be added
 }
 
-# Start the installation process
-install_application
+# Update application function
+update_application() {
+  # Implement update logic
+  echo "Updating application..."
+  # Update commands to be added
+}
+
