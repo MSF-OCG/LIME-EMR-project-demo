@@ -19,7 +19,7 @@ LOG_DIR="/var/logs/lime"
 SUCCESS_LOG="$LOG_DIR/setup-emr-success-$current_date_gmt.log"
 ERROR_LOG="$LOG_DIR/setup-emr-stderr-$current_date_gmt.log"
 MAX_ATTEMPTS=5
-MAX_RETRIES=300
+MAX_RETRIES=600
 COMPOSE_VERSION="2.23.0"
 
 # Ensure the log directories and files exist
