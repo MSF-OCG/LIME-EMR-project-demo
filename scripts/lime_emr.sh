@@ -76,6 +76,7 @@ if command_exists docker; then
     echo "Docker version: $(docker --version)"
     log_success "Docker version $(docker --version) is installed."
     # Check if Docker service is running
+    sudo systemctl start docker
     if sudo systemctl is-active --quiet docker; then
         echo "Docker service is running."
         log_success "Docker service is running."
