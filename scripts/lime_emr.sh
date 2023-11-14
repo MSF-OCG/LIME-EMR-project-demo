@@ -8,7 +8,7 @@ APP_URL="http://localhost/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 
 # List of dependencies to be installed
-PACKAGES_TO_INSTALL="git curl vim mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2"
+PACKAGES_TO_INSTALL="git curl vim mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2 docker.io"
 
 # Get the current date and time in GMT
 current_date_gmt=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -44,6 +44,11 @@ remove_empty_log() {
     fi
 }
 
+# Function to check if a command exists
+command_exists() {
+    type "$1" &> /dev/null
+}
+
 # Install necessary packages non-interactively
 function install_packages() {
   # Update the package list
@@ -65,16 +70,43 @@ function install_packages() {
   done
 }
 
-# Function to install Docker Compose if not already installed
+# Check for Docker installation
+if command_exists docker; then
+    echo "Docker is installed."
+    echo "Docker version: $(docker --version)"
+    log_success "Docker version $(docker --version) is installed."
+    # Check if Docker service is running
+    if sudo systemctl is-active --quiet docker; then
+        echo "Docker service is running."
+        log_success "Docker service is running."
+    else
+        echo "Docker service is not running."
+        log_error "Docker service is not running."
+    fi
+else
+    echo "Docker is not installed."
+    log_error "Docker is not installed."
+fi
+
 install_docker_compose() {
-    if ! command -v docker-compose > /dev/null 2>&1; then
+    # Check if docker-compose is installed
+    if ! command_exists docker-compose && ! (command_exists docker && docker compose version &> /dev/null); then
         echo "Docker Compose is not installed. Installing..."
         sudo curl -L "https://github.com/docker/compose/releases/download/v${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
-        if [ "$(docker-compose --version)" = "docker-compose version ${COMPOSE_VERSION},"* ]; then
-            log_success "Docker Compose version $COMPOSE_VERSION has been installed."
+
+        # Check if Docker Compose (docker-compose or docker compose) is installed
+        if command_exists docker-compose; then
+            echo "Docker Compose (docker-compose) is installed."
+            echo "Docker Compose version: $(docker-compose --version)"
+            log_success "Docker Compose version $(docker-compose --version) is installed."
+        elif command_exists docker && docker compose version &> /dev/null; then
+            echo "Docker Compose (docker compose) is integrated into Docker."
+            echo "Docker Compose version: $(docker compose version)"
+            log_success "Docker Compose version $(docker compose version) is installed."
         else
-            log_error "Failed to install Docker Compose."
+            echo "Docker Compose installation failed."
+            log_error "Docker Compose installation failed."
             return 1
         fi
     else
