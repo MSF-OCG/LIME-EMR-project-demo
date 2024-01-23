@@ -4,6 +4,7 @@
 REPOSITORY_URL="https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
 BRANCH_NAME="main"
 APP_NAME="emr"
+ENVIRONMENT="dev"
 APP_URL="http://localhost/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 
@@ -21,6 +22,7 @@ ERROR_LOG="$LOG_DIR/setup-emr-stderr-$current_date_gmt.log"
 MAX_ATTEMPTS=5
 MAX_RETRIES=600
 COMPOSE_VERSION="2.23.0"
+CONFIG_DIR="$INSTALL_DIR/config"
 
 # Ensure the log directories and files exist
 mkdir -p "$LOG_DIR"
@@ -118,7 +120,7 @@ install_docker_compose() {
 # Function to start docker-compose
 start_docker_compose() {
     echo "Starting docker-compose..."
-    (cd "$INSTALL_DIR" && docker-compose up -d)
+    (cd "$INSTALL_DIR" && docker-compose --env-file "$CONFIG_DIR/.env.$ENVIRONMENT" --env-file "$CONFIG_DIR/$ENVIRONMENT-secrets.env" up -d)
     if [ $? -eq 0 ]; then
         log_success "docker-compose started successfully."
     else
@@ -192,13 +194,16 @@ get_branch_name() {
           ;;
     esac
     log_success "Branch name set to '$BRANCH_NAME' based on the hostname."
+    # If BRANCH_NAME is "qa" set ENVIRONMENT to "qa"
+    [ "$BRANCH_NAME" == "qa" ] && ENVIRONMENT="qa"
+    log_success "Running the '$ENVIRONMENT' environment based on the hostname."
 }
 
 # Update application function
 install_application() {
   # Implement installation logic
   echo "Installating application..."
-    if install_packages && install_docker_compose && clone_repository && start_docker_compose && check_containers && verify_application_url; then
+    if install_packages && install_docker_compose && clone_repository && get_branch_name && start_docker_compose && check_containers && verify_application_url; then
         log_success "Application installation completed successfully."
         echo "Installation completed successfully."
     else
