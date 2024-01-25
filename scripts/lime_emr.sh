@@ -185,9 +185,12 @@ clone_repository() {
 get_branch_name() {
     local last_char=$(hostname | awk '{print tolower(substr($0,length,1))}')
     case "$last_char" in
-        d) BRANCH_NAME="dev";;
-        t) BRANCH_NAME="qa";;
-        p) BRANCH_NAME="main";;
+        d) BRANCH_NAME="dev"
+           ENV_VARIABLE="dev";;
+        t) BRANCH_NAME="qa"
+           ENV_VARIABLE="qa";;
+        p) BRANCH_NAME="main"
+           ENV_VARIABLE="prod";;
         *)
           BRANCH_NAME="main"
           log_error "Hostname does not end with D, T, or P. Using default branch 'main'."
