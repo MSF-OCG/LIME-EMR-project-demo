@@ -197,9 +197,6 @@ get_branch_name() {
           ;;
     esac
     log_success "Branch name set to '$BRANCH_NAME' based on the hostname."
-    # If BRANCH_NAME is "qa" set ENVIRONMENT to "qa"
-    [ "$BRANCH_NAME" == "qa" ] && ENVIRONMENT="qa"
-    log_success "Running the '$ENVIRONMENT' environment based on the hostname."
 }
 
 # Update application function
