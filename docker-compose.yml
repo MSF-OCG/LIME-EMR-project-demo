@@ -78,10 +78,15 @@ services:
   sops:
     image: mozilla/sops:latest
     container_name: msfocg-sops
-    command: ["sops", "--config", "/config/${ENVIRONMENT:-dev}/sops.yaml", "--decrypt", "/config/${ENVIRONMENT:-dev}/${ENVIRONMENT:-dev}.env", "&&", "sops", "--config", "/config/${ENVIRONMENT:-dev}/sops.yaml", "--decrypt", "/config/${ENVIRONMENT:-dev}/${ENVIRONMENT:-dev}.secrets.env"]
+    command: [
+      "/bin/sh",
+      "-c",
+      "sops --config /config/secrets/sops.yaml --decrypt /config/secrets/${ENVIRONMENT:-dev}/${ENVIRONMENT:-dev}.env && sops --config /config/secrets/${ENVIRONMENT:-dev}/sops.yaml --decrypt /config/secrets/${ENVIRONMENT:-dev}/${ENVIRONMENT:-dev}.secrets.env"
+    ]
+    environment:
+      SOPS_PGP_PRIVATE_KEY: /config/secrets/private.key
     volumes:
-      - ./config/${ENVIRONMENT:-dev}:/config/${ENVIRONMENT:-dev}
-      - .sops.yaml:/config/${ENVIRONMENT:-dev}/sops.yaml
+      - ./config/secrets:/config/secrets
 
   # FHIR store
   fhir:
