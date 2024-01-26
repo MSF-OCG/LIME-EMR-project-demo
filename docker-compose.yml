@@ -75,6 +75,13 @@ services:
       - db-data:/var/lib/mysql
       - ./FHIR/mysql.cnf:/etc/mysql/conf.d/custom.cnf  # mysql config preconfigured to allow binlog/debezium
 
+  sops:
+    image: mozilla/sops:latest
+    container_name: msfocg-sops
+    command: ["sops", "--config", "/config/${ENVIRONMENT:-dev}/sops.yaml", "--decrypt", "/config/${ENVIRONMENT:-dev}/${ENVIRONMENT:-dev}.env", "&&", "sops", "--config", "/config/${ENVIRONMENT:-dev}/sops.yaml", "--decrypt", "/config/${ENVIRONMENT:-dev}/${ENVIRONMENT:-dev}.secrets.env"]
+    volumes:
+      - ./config/${ENVIRONMENT:-dev}:/config/${ENVIRONMENT:-dev}
+      - .sops.yaml:/config/${ENVIRONMENT:-dev}/sops.yaml
 
   # FHIR store
   fhir:
