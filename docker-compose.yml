@@ -30,7 +30,10 @@ services:
     container_name: openmrs-backend
     image: msfocg/openmrs3-backend:${HOSTNAME_TAG:-dev}
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+      sops:
+        condition: service_completed_successfully
     environment:
       OMRS_CONFIG_MODULE_WEB_ADMIN: ${OMRS_CONFIG_MODULE_WEB_ADMIN:-true}
       OMRS_CONFIG_AUTO_UPDATE_DATABASE: ${OMRS_CONFIG_AUTO_UPDATE_DATABASE:-true}
@@ -52,6 +55,11 @@ services:
   db:
     container_name: openmrs-db
     image: mariadb:10.8.2
+    depends_on:
+      db:
+        condition: service_healthy
+      sops:
+        condition: service_completed_successfully
     command: "mysqld --character-set-server=utf8 --collation-server=utf8_general_ci"
     healthcheck:
       test: "mysql --user=${OMRS_DB_USER:-openmrs} --password=${OMRS_DB_PASSWORD:-openmrs} --execute \"SHOW DATABASES;\""
@@ -81,10 +89,11 @@ services:
     command: [
       "/bin/sh",
       "-c",
-      "sops --config /config/secrets/sops.yaml --decrypt /config/secrets/${ENVIRONMENT:-dev}/${ENVIRONMENT:-dev}.env && sops --config /config/secrets/${ENVIRONMENT:-dev}/sops.yaml --decrypt /config/secrets/${ENVIRONMENT:-dev}/${ENVIRONMENT:-dev}.secrets.env"
+      "sops --decrypt /config/secrets/${ENVIRONMENT:-dev}/${ENVIRONMENT:-dev}.env && sops --decrypt /config/secrets/${ENVIRONMENT:-dev}/${ENVIRONMENT:-dev}.secrets.env"
+      # "sops --decrypt --age \"$(awk '/public key:/ {key = substr($0, index($0,$4))} END {print key}' /config/secrets/age.key)\" -i /config/secrets/dev/dev.env"
     ]
     environment:
-      SOPS_PGP_PRIVATE_KEY: /config/secrets/private.key
+      SOPS_AGE_KEY_FILE: /config/secrets/age.key
     volumes:
       - ./config/secrets:/config/secrets
 
