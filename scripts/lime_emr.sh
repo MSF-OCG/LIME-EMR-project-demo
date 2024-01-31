@@ -120,7 +120,7 @@ install_docker_compose() {
 # Function to start docker-compose
 start_docker_compose() {
     echo "Starting docker-compose..."
-    (cd "$INSTALL_DIR" && HOSTNAME_TAG=$BRANCH_NAME ENVIRONMENT=$ENV_VARIABLE docker-compose --env-file ./config/secrets/$ENVIRONMENT/$ENVIRONMENT.env  up -d)
+    (cd "$INSTALL_DIR" && HOSTNAME_TAG=$BRANCH_NAME ENVIRONMENT=$ENV_VARIABLE docker-compose --env-file $CONFIG_DIR/secrets/$ENVIRONMENT/$ENVIRONMENT.env  up -d)
     if [ $? -eq 0 ]; then
         log_success "docker-compose started successfully."
     else
