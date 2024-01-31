@@ -3,20 +3,22 @@ FROM --platform=$BUILDPLATFORM node:18-alpine as dev
 
 ARG APP_SHELL_VERSION=next
 
+ARG ENVIRONMENT=dev
+
 RUN mkdir -p /app
 WORKDIR /app
 
-COPY /frontend/spa-build-config.json .
+COPY /frontend/${ENVIRONMENT:-dev}/spa-build-config.json .
 
 ARG CACHE_BUST
 RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} assemble --manifest --mode config --config spa-build-config.json --target ./spa
 RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} build --build-config spa-build-config.json --target ./spa
 
-COPY /frontend/custom-config.json ./spa/custom-config.json
-COPY /frontend/assets/logo.png ./spa/logo.png
-COPY /frontend/assets/header-logo.png ./spa/header-logo.png
-COPY /frontend/assets/favicon.ico ./spa/favicon.ico
-COPY /frontend/assets/favicon-32x32.webp ./spa/favicon-32x32.webp
+COPY /frontend/${ENVIRONMENT:-dev}/custom-config.json ./spa/custom-config.json
+COPY /frontend/${ENVIRONMENT:-dev}/assets/logo.png ./spa/logo.png
+COPY /frontend/${ENVIRONMENT:-dev}/assets/header-logo.png ./spa/header-logo.png
+COPY /frontend/${ENVIRONMENT:-dev}/assets/favicon.ico ./spa/favicon.ico
+COPY /frontend/${ENVIRONMENT:-dev}/assets/favicon-32x32.webp ./spa/favicon-32x32.webp
 
 FROM nginx:1.23-alpine
 
