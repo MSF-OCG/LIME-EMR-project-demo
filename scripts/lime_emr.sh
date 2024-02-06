@@ -4,6 +4,7 @@
 REPOSITORY_URL="https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
 BRANCH_NAME="main"
 APP_NAME="emr"
+ENVIRONMENT="dev"
 APP_URL="http://localhost/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 
@@ -21,6 +22,7 @@ ERROR_LOG="$LOG_DIR/setup-emr-stderr-$current_date_gmt.log"
 MAX_ATTEMPTS=5
 MAX_RETRIES=600
 COMPOSE_VERSION="2.23.0"
+CONFIG_DIR="$INSTALL_DIR/config"
 
 # Ensure the log directories and files exist
 mkdir -p "$LOG_DIR"
@@ -118,7 +120,7 @@ install_docker_compose() {
 # Function to start docker-compose
 start_docker_compose() {
     echo "Starting docker-compose..."
-    (cd "$INSTALL_DIR" && docker-compose up -d)
+    (cd "$INSTALL_DIR" && HOSTNAME_TAG=$BRANCH_NAME ENVIRONMENT=$ENV_VARIABLE docker-compose --env-file $CONFIG_DIR/secrets/$ENVIRONMENT/$ENVIRONMENT.env  up -d)
     if [ $? -eq 0 ]; then
         log_success "docker-compose started successfully."
     else
@@ -183,9 +185,12 @@ clone_repository() {
 get_branch_name() {
     local last_char=$(hostname | awk '{print tolower(substr($0,length,1))}')
     case "$last_char" in
-        d) BRANCH_NAME="dev";;
-        t) BRANCH_NAME="qa";;
-        p) BRANCH_NAME="main";;
+        d) BRANCH_NAME="dev"
+           ENV_VARIABLE="dev";;
+        t) BRANCH_NAME="qa"
+           ENV_VARIABLE="qa";;
+        p) BRANCH_NAME="main"
+           ENV_VARIABLE="prod";;
         *)
           BRANCH_NAME="main"
           log_error "Hostname does not end with D, T, or P. Using default branch 'main'."
@@ -198,7 +203,7 @@ get_branch_name() {
 install_application() {
   # Implement installation logic
   echo "Installating application..."
-    if install_packages && install_docker_compose && clone_repository && start_docker_compose && check_containers && verify_application_url; then
+    if install_packages && install_docker_compose && clone_repository && get_branch_name && start_docker_compose && check_containers && verify_application_url; then
         log_success "Application installation completed successfully."
         echo "Installation completed successfully."
     else
