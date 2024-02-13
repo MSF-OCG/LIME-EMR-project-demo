@@ -1,6 +1,6 @@
 # Introduction
 
-> Note: This documentation describes how the OpenMRS 3.x demo for the MSF OCG LIME project is running. It follows standard practices from OpenMRS and its community, and goes through the lifecycle of the product. The integration with other dependencies such as [OpenConceptLab (OCL)](https://openconceptlab.org/) and [DHIS2](https://dhis2.org/) is also documented here. Any feedback and pull requests are welcomed to continuously improved this demo!
+> Note: This documentation describes how the OpenMRS 3.x demo for the MSF OCG LIME project is running. It follows standard practices from OpenMRS and its community, and goes through the lifecycle of the product. The integration with other dependencies such as [OpenConceptLab (OCL)](https://openconceptlab.org/) and [DHIS2](https://dhis2.org/) is also documented here. Any feedback and pull requests are welcomed to continuously improved this demo! 
 
 # Getting started
 
@@ -90,7 +90,7 @@ services:
       timeout: 1s
       retries: 5
     environment:
-      MYSQL_DATABASE: openmrs
+      MYSQL_DATABASE: ${OMRS_CONFIG_CONNECTION_DATABASE:-openmrs}
       MYSQL_USER: ${OMRS_DB_USER:-openmrs}
       MYSQL_PASSWORD: ${OMRS_DB_PASSWORD:-openmrs}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
