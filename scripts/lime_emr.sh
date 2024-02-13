@@ -252,7 +252,8 @@ backup_application() {
 
     echo "Copying anonymisation scripts to the $CONTAINER_NAME container"
     docker cp $ANONYMISE_FOLDER_PATH $CONTAINER_NAME:/usr/bin
-    log_process_status "Copying anonymisation scripts to the $CONTAINER_NAME container completed successfully!" "Error: Copying anonymisation scripts to the $CONTAINER_NAME container failed!"
+    log_process_status "Copying anonymisation scripts to the $CONTAINER_NAME container completed successfully!" \
+        "Error: Copying anonymisation scripts to the $CONTAINER_NAME container failed!"
 
     echo "Checking for dump in the $CONTAINER_NAME Container"
 
