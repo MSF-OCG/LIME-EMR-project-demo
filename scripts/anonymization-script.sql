@@ -300,14 +300,11 @@ SET
     SET
       pa.value = concat('anon-', char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97) );
 
-  /* for all person attribute WHERE Block number is getting captured */
-
     UPDATE
       person_attribute pa
       INNER JOIN
          person_attribute_type pat
          ON pat.person_attribute_type_id = pa.person_attribute_type_id
-         AND pat.name LIKE '%Block number%'
          AND pat.format = 'java.lang.String'
     SET
       pa.value = concat('anon-', FLOOR(RAND() * 100000000));
