@@ -310,7 +310,7 @@ backup_application() {
     echo "copying and anonymising patient files"
     docker exec openmrs-backend /bin/sh -c "\
         if [ -d "/openmrs/data/complex_obs/" ]; then \
-            echo 'patient files present'; \
+            echo 'patient files present in openmrs-backend container'; \
             exit 0; \
         else \
             echo 'patient files abscent'; \
