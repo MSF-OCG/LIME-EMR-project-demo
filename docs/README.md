@@ -587,3 +587,72 @@ update mysql.user set host='%' where user='openmrs'
   b. In the driver properties, set the "allowPublicKeyRetrieval" to "true"
 3. Test the connection to confirm that it is successful
 4. Configure the Proxy SSH/Proxy to do the same on a remote server
+
+# [Environment Configuration](#environment-configuration)
+
+Below are guidelines on how to test and deploy LIME-EMR-PROJECT in various environments (Dev, QA, UAT, Prod). The installation script is designed to automatically detect the environment based on the hostname and configure the application accordingly.
+
+1. ### Environment Detection
+    The installation script automatically detects the environment based on the hostname's last character. Depending on whether the hostname ends with 'd', 't', or 'p', the installation script identifies the environment as Dev, QA, or Prod, respectively. if the hostname doesn't match any of the above conditions, `Dev Environment` is assumed.
+
+2. ### Configuration Management
+    Each environment (Dev, QA, UAT, Prod) has its own configuration folder located at `/home/lime/emr/config`. Within this folder, separate configuration files are stored for each environment. These configuration files contain environment-specific settings specific to each server.
+
+3. ### Dynamic Configuration Loading
+    Upon initialization, OpenMRS 3 dynamically loads the configuration based on the detected environment. This ensures that the application operates with the appropriate settings for the environment it is deployed in.
+
+4. ### Identification of Configuration
+    Environment-specific logos are shown for each environment. This visual cue assists developers and users in recognizing the environment they are currently working with.
+
+5. ### Testing Procedure
+
+    To test the automated environment-based deployment:
+
+    ##### Using installation script
+    ```bash
+    curl -sSL https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/dev/scripts/lime_emr.sh | bash -s install
+    ```
+    ###### Result
+    LIME-EMR development logo is shown on OpenMRS login screen
+    <div>
+    <img src="./_media/lime_dev_login_page.png" width=60%>
+    </div>
+
+    ##### Running Docker compose directly
+    Replace the `your_env` with the environment you want to run ie `qa`, `dev`, `uat` or `prod`
+    ```bash
+    docker compose --env-file ./config/secrets/your_env/your_env.env up
+    ```
+    Eg: for dev environment run `docker compose --env-file ./config/secrets/dev/dev.env up`
+
+    ###### Result
+    LIME-EMR development logo is shown on OpenMRS login screen
+    <div>
+    <img src="./_media/lime_dev_login_page.png" width=60%>
+    </div>
+
+### [OpenMRS Frontend Image Building with Environment Detection](#frontend-image-building)
+
+When building the frontend image for OpenMRS 3, the system automatically detects the environment to use by adding an Environment variable to the Docker build argument. This ensures that the corresponding environment files are included in the image, allowing for seamless configuration based on the deployment environment.
+
+1. **Navigate to the Root of the Repository:**
+   Before executing the build command, ensure that you are at the root of the repository. This step is crucial for the build process to work correctly.
+
+   ```bash
+   cd LIME-EMR-project-demo
+   ```
+
+2. **Execute Docker Build Command:**
+   Specifying the desired environment using the `ENVIRONMENT` build argument:
+
+   ```bash
+   docker buildx build --build-arg ENVIRONMENT=your_env --progress=plain -f ./frontend/Dockerfile -t msfocg/openmrs3-frontend:your_env .
+   ```
+   **For Example**, building openmrs-frontend image using the `qa` environment
+   ```bash
+   docker buildx build --build-arg ENVIRONMENT=qa --progress=plain -f ./frontend/Dockerfile -t msfocg/openmrs3-frontend:qa .
+   ```
+   - `--build-arg ENVIRONMENT=qa`: This argument sets the environment variable `ENVIRONMENT` to `qa` during the build process, indicating that the QA environment configuration files should be included.
+   - `--progress=plain`: This option shows the build progress in plain text format, making it easier to track the build process. (this is optional)
+   - `-f ./frontend/Dockerfile`: Specifies that we are using the frontend Dockerfile for building
+   - `-t msfocg/openmrs3-frontend:qa`: tag of the frontend image must have the same name as in docker compose.
