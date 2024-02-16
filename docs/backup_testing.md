@@ -25,6 +25,20 @@ Run Backup Command: Execute the following command to initiate the backup process
   - Ensure that the database dump includes all necessary data.
   - Confirm that the anonymization process is applied to sensitive data in the database dump.
     - unzip the ***anonymized\_lime\_dc\_db\_daily….sql.gz***  in the ***.sql*** file check that person.names table has randomized anonymous names 
+
+        | Data Type                   | Anonymization Procedure | Scope        |
+        |-----------------------------|-------------------------|--------------|
+        | Person Names                | Randomize given_name and family_name with the prefix 'AnonFN' and 'AnonLN' followed by random alpha-numeric characters. | Applied to the person_name table. |
+        | Birthdates                  | Randomize birthdates within a range of +/- 6 months for persons older than 15 years, +/- 3 months for persons between 5 and 15 years, and +/- 30 days for persons less than 5 years. Birthdate estimation flag is also randomized. | Applied to the person table. Birthdate estimation flag is also randomized. |
+        | Death Dates                 | Randomize death dates within a range of +/- 3 months. | Applied to the person table where death_date is not null. |
+        | Gender                      | Set the opposite gender. | Applied to the person table, changing 'F' to 'M' and 'M' to 'F'. |
+        | Phone Numbers                | Randomize phone numbers with a '+' prefix followed by random numbers. 
+        | Applied to person_attribute table where attribute type is related to phone numbers. |
+        | Addresses                    | Randomize addresses with the prefix 'anon-' followed by random alpha-numeric characters. | Applied to person_attribute table where attribute type is related to addresses. |
+        | Appointment Scheduling Notes | Replace comments with the prefix 'anon-AppointmentComments' followed by random alpha-numeric characters.            | Applied to the patient_appointment table.                 |
+        | Observations and Test Notes  | Replace observation comments with 'anonymized comment' and test notes with 'anon-TestNotes'.                         | Applied to the obs table for specific concept IDs related to sensitive information in comments and notes fields. |
+
+
     - unzip the ***anonymized\_patient\_files\_lime\_dc\_db\_daily….tar.gz***  in the created ***complex-obs*** folder check that images or sensitive documents have been replaced with a simple text file but with the same names as the initial patient files 
 
 - **Encryption:**
