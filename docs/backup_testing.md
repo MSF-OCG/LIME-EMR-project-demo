@@ -11,7 +11,7 @@ The backup functionality in the script is designed to create backups of the data
 Run Backup Command: Execute the following command to initiate the backup process: 
 **NOTE: server must be running already**
 <div>
-  <img src="backup_1.png" width=60%>
+  <img src="_media/backup_1.png" width=60%>
 </div>
 
 ## **Verification Steps:**
@@ -19,7 +19,7 @@ Run Backup Command: Execute the following command to initiate the backup process
 - **Database and Patient File Backup:**
   - Check if the script successfully creates either 2 or 6 backup files of the database and patient files if present like in sample below
     <div>
-    <img src="backup_2.png" width=60%>
+    <img src="_media/backup_2.png" width=60%>
     </div>
   - Verify that the backup files are compressed and saved in the ***/home/backup*** directory.
   - Ensure that the database dump includes all necessary data.
@@ -39,31 +39,31 @@ Run Backup Command: Execute the following command to initiate the backup process
 - **Logs:**
   - Backup process is logged with errors if any or with success messages
     <div>
-      <img src="backup_3.png" width=60%>
+      <img src="_media/backup_3.png" width=60%>
     </div>
   - Ensure that success and error messages are logged accurately to respective files
   - **Success log**
     <div>
-      <img src="backup_4.png" width=60%>
+      <img src="_media/backup_4.png" width=60%>
     </div>
   - **Error log**
     <div>
-      <img src="backup_5.png" width=60%>
+      <img src="_media/backup_5.png" width=60%>
     </div>
   - **Terminal Output**
     <div>
-      <img src="backup_6.png" width=60%>
+      <img src="_media/backup_6.png" width=60%>
     </div>
 
 - **Cleanup:**
   - Temp database created when anonymising db doesn’t exist.  We name it ***openmrs\_copy***
     <div>
-      <img src="backup_7.png" width=60%>
+      <img src="_media/backup_7.png" width=60%>
     </div>
   - Deleting unencrypted backup files after encryption is done
   - Database dump files created in openmrs-db have been successfully deleted.
     <div>
-      <img src="backup_8.png" width=60%>
+      <img src="_media/backup_8.png" width=60%>
     </div>
 - **Dependency Installation:**
   - If **gpg** is not installed, we install it
