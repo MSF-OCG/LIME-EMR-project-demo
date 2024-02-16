@@ -2,13 +2,13 @@
 
 # Configurable variables for the application
 REPOSITORY_URL="https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
-BRANCH_NAME="dev"
+BRANCH_NAME="main"
 APP_NAME="emr"
 APP_URL="http://localhost/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 
 # List of dependencies to be installed
-PACKAGES_TO_INSTALL="git gnupg curl vim mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2 docker.io"
+PACKAGES_TO_INSTALL="git curl vim mlocate rsync software-properties-common apt-transport-https ca-certificates gnupg2 docker.io"
 
 # Get the current date and time in GMT
 current_date_gmt=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -21,30 +21,6 @@ ERROR_LOG="$LOG_DIR/setup-emr-stderr-$current_date_gmt.log"
 MAX_ATTEMPTS=5
 MAX_RETRIES=600
 COMPOSE_VERSION="2.23.0"
-CONFIG_DIR="$INSTALL_DIR/config"
-BACKUP_DIR="/home/backup"
-BACKUP_SERVER_CRIDENTIALS="backup@172.24.48.32"
-
-# Get only the current date in GMT
-current_date=$(date +"%Y_%m_%d")
-
-# Must remain constant at the moment
-OPENMRS_BACKUP_DIR="/openmrs/backup"
-
-# backup and anonymisation configuration
-CONTAINER_NAME=openmrs-db
-SOURCE_DB=${OMRS_CONFIG_CONNECTION_DATABASE:-openmrs}
-TEMP_DB=$SOURCE_DB"_copy"
-HAS_PATIENT_FILES=false
-MSF_OCG_SAMPLE_EMAIL_KEY="msf.ocg@example.com"
-COMPLEX_OBS_DIR="$BACKUP_DIR/complex_obs"
-PATIENT_FILES_BACKUP_FILE="patient_files_lime_dc_db_daily_$current_date.tar.gz"
-ANONYMISED_PATIENT_FILES_BACKUP_FILE="anonymised_$PATIENT_FILES_BACKUP_FILE"
-ANONYMISIND_SCRIPT="$INSTALL_DIR/scripts/anonymization-script.sql"
-ANONYMISE_SAMPLE_COMPLEX_OBS="$INSTALL_DIR/scripts/sample-complex-obs"
-ENCRYPTED_LOCAL_BACKUP="$BACKUP_DIR/encrypted_lime_dc_db_daily_$current_date.gz.gpg"
-ENCRYPTED_REMOTE_PATIENT_FILES_BACKUP_DIR="$OPENMRS_BACKUP_DIR/lime_dc_storage/"
-ENCRYPTED_REMOTE_DATABASE_BACKUP_DIR="$OPENMRS_BACKUP_DIR/lime_dc_database/"
 
 # Ensure the log directories and files exist
 mkdir -p "$LOG_DIR"
@@ -74,7 +50,7 @@ command_exists() {
 }
 
 # Install necessary packages non-interactively
-install_packages() {
+function install_packages() {
   # Update the package list
   sudo apt-get update
 
@@ -232,184 +208,11 @@ install_application() {
     fi
 }
 
-# Generates a MySQL database backup command.
-compress_database() {
-    database="$1"
-    output_file="$2"
-    command="mysqldump --max_allowed_packet=51012M --user=root --password=${MYSQL_ROOT_PASSWORD:-openmrs} $database --skip-lock-tables --single-transaction --skip-triggers | gzip -v -f > $output_file"
-    echo "$command"
-}
-
-# Executes a MySQL database command.
-execute_database() {
-    arguments="$@"
-    command="mysql --user=root --password=${MYSQL_ROOT_PASSWORD:-openmrs} -e \"$arguments\""
-    echo "$command"
-}
-
 # Backup function
 backup_application() {
-
-    # check if daily backup exists
-    if [ -d "$BACKUP_DIR" ]; then 
-        echo "clearing backup directory"
-        rm -rf "$BACKUP_DIR/*"
-    else
-        echo "creating backup directory"
-        mkdir "$BACKUP_DIR"
-    fi;
-
-    if ! docker ps --format '{{.Names}}' | grep -q "$CONTAINER_NAME"; then
-        echo "Container $CONTAINER_NAME is not running."
-        log_error "Container $CONTAINER_NAME is not running."
-        start_docker_compose
-    fi
-
-    echo "Copying anonymisation scripts to the $CONTAINER_NAME container"
-    docker cp $ANONYMISIND_SCRIPT $CONTAINER_NAME:/usr/bin
-    log_process_status "Copying anonymisation scripts to the $CONTAINER_NAME container completed successfully!" \
-        "Error: Copying anonymisation scripts to the $CONTAINER_NAME container failed!"
-
-    echo "Creating dump in $CONTAINER_NAME Container"
-
-    docker exec $CONTAINER_NAME /bin/sh -c "\
-        COMPRESSED_DUMP_FILE=$OPENMRS_BACKUP_DIR/lime_dc_db_daily_$current_date.sql.gz; \
-        if [ ! -d "$OPENMRS_BACKUP_DIR/" ]; then \
-            echo 'Database dump directory does not exist hence creating it'; \
-            mkdir -p $OPENMRS_BACKUP_DIR/; \
-        else \
-            echo 'Found Database dump directory hence clearing it'; \
-            rm -rf $OPENMRS_BACKUP_DIR/*; \
-        fi \
-
-        $(compress_database "$SOURCE_DB" "$OPENMRS_BACKUP_DIR/lime_dc_db_daily_$current_date.sql.gz"); \
-        echo 'Attempting to decompress database dump: '; \
-        gunzip -v -k -f \$COMPRESSED_DUMP_FILE; \
-        SQL_DUMP_FILE=\$(ls $OPENMRS_BACKUP_DIR/lime_dc_db*.sql); \
-
-        echo 'creating temp database'; \
-        $(execute_database "DROP DATABASE IF EXISTS $TEMP_DB;" "CREATE DATABASE $TEMP_DB;");\
-
-        echo 'Dumping and anonymising data into temp database'; \
-        $(execute_database "USE $TEMP_DB;" "source \$SQL_DUMP_FILE;" "source /usr/bin/anonymization-script.sql;");\
-
-        echo 'Compressing Anonymised temp database'; \
-        $(compress_database "$TEMP_DB" "$OPENMRS_BACKUP_DIR/anonymised_lime_dc_db_daily_$current_date.sql.gz"); \
-
-        echo 'Cleaning up temp database'; \
-        rm -rf \$SQL_DUMP_FILE;\
-        $(execute_database "DROP DATABASE IF EXISTS $TEMP_DB;");\
-    "
-
-    log_process_status "Creating database dump in $CONTAINER_NAME completed successfully!" "Error: creating database dump in $CONTAINER_NAME failed!"
-
-    echo "Copying both anonymised backup and non anonymised backup"
-    docker cp $CONTAINER_NAME:$OPENMRS_BACKUP_DIR/ /home 
-    log_process_status "Copying files from $CONTAINER_NAME to host completed successfully!" "Error: copying files from $CONTAINER_NAME to host failed!"
-    
-    echo "copying and anonymising patient files"
-    docker exec openmrs-backend /bin/sh -c "\
-        if [ -d "/openmrs/data/complex_obs/" ]; then \
-            echo 'patient files present in openmrs-backend container'; \
-            exit 0; \
-        else \
-            echo 'patient files abscent'; \
-            exit 1; \
-        fi \
-    " && HAS_PATIENT_FILES=true
-
-    if [ "$HAS_PATIENT_FILES" = true ]; then
-        anonymise_patient_Files
-        log_process_status "Anonymisng patient files completed successfully!" "Error: anonymisng patient files failed!"
-    fi
-
-    echo "Encrypting database backup to a single file"
-    encrypt_database
-    log_process_status "Encryption completed successfully!" "Error: encryption failed!"
-
-    echo "cleaning backup"
-    rm -rf $BACKUP_DIR/*lime_dc_db_daily*$current_date.*.gz
-
-    echo "cleaning $CONTAINER_NAME container"
-    docker exec $CONTAINER_NAME /bin/sh -c "rm -rf /openmrs/"
-    log_process_status "Cleaning $CONTAINER_NAME container completed successfully!" "Error: cleaning $CONTAINER_NAME container failed!"
-
-    echo "synchronizing database dump to backup server"
-    sync_to_remote_lime "$BACKUP_DIR/lime_dc_db_daily_$current_date.sql.gz.gpg" "$ENCRYPTED_REMOTE_DATABASE_BACKUP_DIR"
-    sync_to_remote_lime "$BACKUP_DIR/anonymised_lime_dc_db_daily_$current_date.sql.gz.gpg" "$ENCRYPTED_REMOTE_DATABASE_BACKUP_DIR"
-    if [ "$HAS_PATIENT_FILES" = true ]; then
-        sync_to_remote_lime "$BACKUP_DIR/$PATIENT_FILES_BACKUP_FILE.gpg" "$ENCRYPTED_REMOTE_PATIENT_FILES_BACKUP_DIR"
-        sync_to_remote_lime "$BACKUP_DIR/$ANONYMISED_PATIENT_FILES_BACKUP_FILE.gpg" "$ENCRYPTED_REMOTE_PATIENT_FILES_BACKUP_DIR"
-    fi
-
-}
-
-anonymise_patient_Files() {
-    if [ "$HAS_PATIENT_FILES" = true ]; then
-        echo "Found patient files in system"
-        docker cp openmrs-backend:/openmrs/data/complex_obs/ $BACKUP_DIR
-        
-        echo "Backing up patient files"
-        tar -zcvf $BACKUP_DIR/$PATIENT_FILES_BACKUP_FILE $BACKUP_DIR/complex_obs
-        log_process_status "Backing up patient files completed successfully!" "Error: backing up patient files failed!"
-
-        # Loop through each file in the directory
-        for patient_file in "$COMPLEX_OBS_DIR"/*; do
-            if [ -f "$patient_file" ]; then
-                patient_file_name=$(basename -- "$patient_file")
-                # Anonymize the file by replacing it with our sample file
-                cp "$ANONYMISE_SAMPLE_COMPLEX_OBS" "${COMPLEX_OBS_DIR}/${patient_file_name}"
-                echo "Anonymized file: $patient_file_name"
-            fi
-        done
-        echo "Anonymising patient files"
-        tar -zcvf $BACKUP_DIR/$ANONYMISED_PATIENT_FILES_BACKUP_FILE $BACKUP_DIR/complex_obs
-        log_process_status "Anonymising patient files completed successfully!" "Error: anonymising patient files failed!"
-
-        rm -rf $BACKUP_DIR/complex_obs
-    else
-        echo "No patient files found in system"
-    fi
-}
-
-# ecnryption application functions
-encrypt_database() {
-    if ! command_exists gpg ; then 
-        echo "gpg not installed attempting to install it."
-        install_packages
-    fi
-    
-    echo "checking for presence of the sample msf-ocg key"
-    # note that the MSF_OCG_SAMPLE_EMAIL_KEY is msf.ocg@example.com'
-    if ! gpg -K $MSF_OCG_SAMPLE_EMAIL_KEY | grep -E '*msf\.ocg@example\.com' >/dev/null; then
-        echo "No GPG key with the email '$MSF_OCG_SAMPLE_EMAIL_KEY' found, hence creating a new one"
-        gpg --batch --passphrase '' --quick-gen-key $MSF_OCG_SAMPLE_EMAIL_KEY
-    fi
-
-    echo "Encryptig database backup"
-    gpg --batch --yes --encrypt-files --recipient $MSF_OCG_SAMPLE_EMAIL_KEY $BACKUP_DIR/*lime_dc*$current_date.*.gz
-}
-
-# function to sync the backup archive to a remote destination
-sync_to_remote_lime() {
-    source_path=$1
-    remote_destination=$2
-
-    echo "Syncing $source_path to $BACKUP_SERVER_CRIDENTIALS:$remote_destination..."
-    rsync --delete $source_path $BACKUP_SERVER_CRIDENTIALS:$remote_destination
-    log_process_status "Synchronizing database dump to backup server completed successfully!" "Error: synchronizing database dump to backup server failed!"
-}
-
-# logging previous command function
-log_process_status() {
-    if [ $? -eq 0 ]; then
-        echo "$1"
-        log_success "$1"
-    else
-        echo "$2"
-        log_error "$2"
-        exit 1
-    fi
+  # Implement backup logic
+  echo "Backing up application..."
+  # Backup commands to be added
 }
 
 # Update application function
