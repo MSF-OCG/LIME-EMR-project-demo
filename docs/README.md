@@ -455,6 +455,10 @@ Type of maintenance activities
 
 ## Backup
 
+**Note:** 
+To ensure that your backup system is working correctly see [Database and Patient File Backup Testing Documentation](./backup_testing.md).
+This document provides a straightforward testing procedure for database and patient files backup. It covers initiation, verification, error handling, logs management, cleanup, and dependency installation.
+
 ### Overview
 
 <div>
