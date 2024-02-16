@@ -318,16 +318,17 @@ backup_application() {
         fi \
     " && HAS_PATIENT_FILES=true
 
-    echo "patient files are present is: $HAS_PATIENT_FILES"
-    anonymise_patient_Files
-    log_process_status "Anonymisng patient files completed successfully!" "Error: anonymisng patient files failed!"
+    if [ "$HAS_PATIENT_FILES" = true ]; then
+        anonymise_patient_Files
+        log_process_status "Anonymisng patient files completed successfully!" "Error: anonymisng patient files failed!"
+    fi
 
     echo "Encrypting database backup to a single file"
     encrypt_database
     log_process_status "Encryption completed successfully!" "Error: encryption failed!"
 
     echo "cleaning backup"
-    rm -rf $BACKUP_DIR/*lime_dc_db_daily*$current_date.sql.gz
+    rm -rf $BACKUP_DIR/*lime_dc_db_daily*$current_date.*.gz
 
     echo "cleaning $CONTAINER_NAME container"
     docker exec $CONTAINER_NAME /bin/sh -c "rm -rf /openmrs/"
