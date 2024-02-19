@@ -24,7 +24,7 @@ Run Backup Command: Execute the following command to initiate the backup process
   - Verify that the backup files are compressed and saved in the ***/home/backup*** directory.
   - Ensure that the database dump includes all necessary data.
   - Confirm that the anonymization process is applied to sensitive data in the database dump.
-    - unzip the ***anonymized\_lime\_dc\_db\_daily….sql.gz***  in the ***.sql*** file check that person.names table has randomized anonymous names 
+    - Table below shows the anonymization process of the database
 
         | Data Type                   | Anonymization Procedure | Scope        |
         |-----------------------------|-------------------------|--------------|
@@ -32,19 +32,25 @@ Run Backup Command: Execute the following command to initiate the backup process
         | Birthdates                  | Randomize birthdates within a range of +/- 6 months for persons older than 15 years, +/- 3 months for persons between 5 and 15 years, and +/- 30 days for persons less than 5 years. Birthdate estimation flag is also randomized. | Applied to the person table. Birthdate estimation flag is also randomized. |
         | Death Dates                 | Randomize death dates within a range of +/- 3 months. | Applied to the person table where death_date is not null. |
         | Gender                      | Set the opposite gender. | Applied to the person table, changing 'F' to 'M' and 'M' to 'F'. |
-        | Phone Numbers                | Randomize phone numbers with a '+' prefix followed by random numbers. 
-        | Applied to person_attribute table where attribute type is related to phone numbers. |
+        | Phone Numbers                | Randomize phone numbers with a '+' prefix followed by random numbers. | Applied to person_attribute table where attribute type is related to phone numbers. |
         | Addresses                    | Randomize addresses with the prefix 'anon-' followed by random alpha-numeric characters. | Applied to person_attribute table where attribute type is related to addresses. |
         | Appointment Scheduling Notes | Replace comments with the prefix 'anon-AppointmentComments' followed by random alpha-numeric characters.            | Applied to the patient_appointment table.                 |
         | Observations and Test Notes  | Replace observation comments with 'anonymized comment' and test notes with 'anon-TestNotes'.                         | Applied to the obs table for specific concept IDs related to sensitive information in comments and notes fields. |
 
-
-    - unzip the ***anonymized\_patient\_files\_lime\_dc\_db\_daily….tar.gz***  in the created ***complex-obs*** folder check that images or sensitive documents have been replaced with a simple text file but with the same names as the initial patient files 
+    - unzip the ***anonymized\_lime\_dc\_db\_daily….sql.gz***  in the ***.sql*** file check that person.names table has randomized anonymous names 
+    - unzip the ***anonymized\_patient\_files\_lime\_dc\_db\_daily….tar.gz***  in the created ***complex-obs*** folder check that images or sensitive documents have been replaced with a simple text file but with the same names as the initial patient files
 
 - **Encryption:**
-  - Sample msf key <.msf.ocg@example.com> is created if is already doesn't exist.  Also creating this key is non-interactive
-  - All backup files are encrypted using GPG. and have a ***.gpg*** extension
-
+  - Sample msf key **msf.ocg@example.com** is imported if it already doesn't exist from the file `msfkeys.asc` using the command `gpg --output - msfkeys.asc | gpg --import --batch --passphrase 'msf'`
+  - How do we create this key file
+      - First, we generate a key using a sample msf email **msf.ocg@example.com** and passcode **msf**
+        ```bash
+        gpg --batch --passphrase 'msf' --quick-gen-key msf.ocg@example.com
+        ```
+      - Then use the [Dark Otter's approach](https://vhs.codeberg.page/post/moving-gpg-keys-privately/) to generate an ASCII-armored key file, `msfkeys.asc`, used for encryption and decryption of files.  This created file is stored in a private repository. 
+        ```bash
+        gpg --passphrase 'msf' --batch --output msfpubkey.gpg --export msf.ocg@example.com && gpg --passphrase 'msf' --batch --output - --export-secret-key msf.ocg@example.com | cat msfpubkey.gpg - | gpg --armor --batch  --passphrase 'msf' --output msfkeys.asc --symmetric --cipher-algo AES256
+        ```
 - **Synchronization:**
   - Confirm that the encrypted backup files are synchronized to the remote backup server. ie `backup@172.24.48.32`
 
