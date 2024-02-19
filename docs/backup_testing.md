@@ -41,15 +41,18 @@ Run Backup Command: Execute the following command to initiate the backup process
     - unzip the ***anonymized\_patient\_files\_lime\_dc\_db\_daily….tar.gz***  in the created ***complex-obs*** folder check that images or sensitive documents have been replaced with a simple text file but with the same names as the initial patient files
 
 - **Encryption:**
-  - Sample msf key **msf.ocg@example.com** is imported if it already doesn't exist from the file `msfkeys.asc` using the command `gpg --output - msfkeys.asc | gpg --import --batch --passphrase 'msf'`
+  - Sample msf key **msf.ocg@example.com** is imported if it already doesn't exist from the file `msfkeys.asc` using the command 
+    ```bash
+    gpg --pinentry-mode=loopback --passphrase '<msf_passphrase>' --output - <location_of_our_key_file> | gpg --import --batch --pinentry-mode=loopback --passphrase '<msf_passphrase>'
+    ```
   - How do we create this key file
       - First, we generate a key using a sample msf email **msf.ocg@example.com** and passcode **msf**
         ```bash
-        gpg --batch --passphrase 'msf' --quick-gen-key msf.ocg@example.com
+        gpg --batch --passphrase '<msf_passphrase>' --quick-gen-key msf.ocg@example.com
         ```
       - Then use the [Dark Otter's approach](https://vhs.codeberg.page/post/moving-gpg-keys-privately/) to generate an ASCII-armored key file, `msfkeys.asc`, used for encryption and decryption of files.  This created file is stored in a private repository. 
         ```bash
-        gpg --passphrase 'msf' --batch --output msfpubkey.gpg --export msf.ocg@example.com && gpg --passphrase 'msf' --batch --output - --export-secret-key msf.ocg@example.com | cat msfpubkey.gpg - | gpg --armor --batch  --passphrase 'msf' --output msfkeys.asc --symmetric --cipher-algo AES256
+        gpg --passphrase '<msf_passphrase>' --batch --output msfpubkey.gpg --export msf.ocg@example.com && gpg --passphrase '<msf_passphrase>' --batch --output - --export-secret-key msf.ocg@example.com | cat msfpubkey.gpg - | gpg --armor --batch  --passphrase '<msf_passphrase>' --output msfkeys.asc --symmetric --cipher-algo AES256
         ```
 - **Synchronization:**
   - Confirm that the encrypted backup files are synchronized to the remote backup server. ie `backup@172.24.48.32`
