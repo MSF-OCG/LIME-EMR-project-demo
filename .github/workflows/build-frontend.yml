@@ -39,7 +39,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          file: /frontend/Dockerfile
+          file: frontend/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-frontend:${{ env.BRANCH_NAME }}
