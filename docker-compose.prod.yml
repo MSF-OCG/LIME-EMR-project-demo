@@ -59,7 +59,7 @@ services:
     image: mariadb:10.8.2
     command: "mysqld --character-set-server=utf8 --collation-server=utf8_general_ci"
     healthcheck:
-      test: "mysql --user=${OMRS_DB_USER:-openmrs} --password=${OMRS_DB_PASSWORD:-openmrs} --execute \"SHOW DATABASES;\""
+      test: "mysql --user=${OPENMRS_DB_USER:-openmrs} --password=${OPENMRS_DB_PASSWORD:-openmrs} --execute \"SHOW DATABASES;\""
       interval: 3s
       timeout: 1s
       retries: 5
@@ -70,9 +70,9 @@ services:
         delay: 10s
         order: stop-first
     environment:
-      MYSQL_DATABASE: openmrs
-      MYSQL_USER: ${OMRS_DB_USER:-openmrs}
-      MYSQL_PASSWORD: ${OMRS_DB_PASSWORD:-openmrs}
+      MYSQL_DATABASE: ${OMRS_CONFIG_CONNECTION_DATABASE:-openmrs}
+      MYSQL_USER: ${OPENMRS_DB_USER:-openmrs}
+      MYSQL_PASSWORD: ${OPENMRS_DB_PASSWORD:-openmrs}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
     ports: 
       - 3307:3306
