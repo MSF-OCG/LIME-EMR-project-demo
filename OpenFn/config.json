@@ -1,0 +1,5 @@
+{
+  "endpoint": "http://localhost:4000",
+  "statePath": "./projectState.json",
+  "specPath": "./project.yaml"
+}
