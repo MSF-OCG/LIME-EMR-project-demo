@@ -704,6 +704,12 @@ It is also highly recommended to install the companion VS Code extension:
 (https://playwright.dev/docs/getting-started-vscode)
 
 
+## Features Tested
+
+- User login
+- Patient Registration
+- Patient Search
+
 ## Writing New Tests
 
 In general, it is recommended to read through the official [Playwright docs](https://playwright.dev/docs/intro)
