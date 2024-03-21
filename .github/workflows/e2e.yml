@@ -1,0 +1,97 @@
+name: E2E Tests
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  run_e2e_tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Extract branch name
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_BASE_REF#refs/heads/} | sed 's/\//-/g')" >> $GITHUB_ENV
+
+      - name: Set the Environment
+        shell: bash
+        run: |
+          if [ "${{ env.BRANCH_NAME }}" = "main" ]; then
+            echo "ENVIRONMENT=prod" >> $GITHUB_ENV
+          else
+            echo "ENVIRONMENT=${{ env.BRANCH_NAME }}" >> $GITHUB_ENV
+          fi
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack before setting up Node
+        run: corepack enable
+        
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Copy test environment variables
+        run: cp example.env .env
+        working-directory: ./e2e
+        
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./e2e
+
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+        working-directory: ./e2e
+
+      - name: Run MSF/OCG LIME ${{ env.BRANCH_NAME }} server
+        run: docker compose -f docker-compose.yml --env-file ./config/secrets/${{ env.ENVIRONMENT }}/${{ env.ENVIRONMENT }}.env up -d
+
+      - name: Wait for OpenMRS instance to start
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost/openmrs/login.htm)" != "200" ]]; do sleep 10; done
+
+      - name: Run E2E tests
+        run: yarn test-e2e
+        working-directory: ./e2e
+
+      - name: Stop dev server
+        if: '!cancelled()'
+        run: docker stop $(docker ps -a -q)
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        if: '!cancelled()'
+        with:
+          name: playwright-report
+          path: e2e/playwright-report/
+          retention-days: 30
+          overwrite: true
+
+      - name: Capture Server Logs
+        if: '!cancelled()'
+        uses: jwalton/gh-docker-logs@v2
+        with:
+          dest: './logs'
+
+      - name: Upload Logs as Artifact
+        uses: actions/upload-artifact@v4
+        if: '!cancelled()'
+        with:
+          name: server-logs
+          path: './logs'
+          retention-days: 2
+          overwrite: true

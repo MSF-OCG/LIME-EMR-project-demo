@@ -1,0 +1,17 @@
+{
+  "name": "msf-ocg-lime-e2e-tests",
+  "private": true,
+  "description": "E@E tests fo",
+  "scripts": {
+    "prettier": "prettier --config prettier.config.js --write \"**/*.ts\"",
+    "test-e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.42.1",
+    "dayjs": "^1.11.10",
+    "dotenv": "^16.4.5",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.2"
+  },
+  "packageManager": "yarn@4.1.1"
+}
