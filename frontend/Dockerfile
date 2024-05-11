@@ -11,7 +11,7 @@ WORKDIR /app
 COPY /frontend/${ENVIRONMENT:-dev}/spa-build-config.json .
 
 ARG CACHE_BUST
-RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} assemble --manifest --mode config --config spa-build-config.json --target ./spa
+RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} assemble --manifest --mode config --config spa-assemble-config.json --target ./spa
 RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} build --build-config spa-build-config.json --target ./spa
 
 COPY /frontend/${ENVIRONMENT:-dev}/custom-config.json ./spa/custom-config.json
