@@ -43,6 +43,5 @@ RUN chmod +x /usr/local/bin/startup.sh
 COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=dev /app/spa /usr/share/nginx/html
-COPY custom-config.json /usr/share/nginx/html
 
 CMD ["/usr/local/bin/startup.sh"]
