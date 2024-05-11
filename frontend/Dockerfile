@@ -7,7 +7,7 @@ ARG ENVIRONMENT=dev
 
 RUN mkdir -p /app
 WORKDIR /app
-
+COPY /frontend/${ENVIRONMENT:-dev}/spa-assemble-config.json .
 COPY /frontend/${ENVIRONMENT:-dev}/spa-build-config.json .
 
 ARG CACHE_BUST
