@@ -17,6 +17,7 @@ RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} assemble --manifes
 RUN npx --legacy-peer-deps openmrs@${APP_SHELL_VERSION:-next} build --build-config spa-build-config.json --target ./spa
 RUN if [ ! -f ./spa/index.html ]; then echo 'Build failed. Please check the logs above for details. This may have happened because of an update to a library that OpenMRS depends on.'; exit 1; fi
 
+COPY /frontend/${ENVIRONMENT:-dev}/custom-config.json ./spa/custom-config.json
 COPY /frontend/${ENVIRONMENT:-dev}/assets/logo.png ./spa/logo.png
 COPY /frontend/${ENVIRONMENT:-dev}/assets/header-logo.png ./spa/header-logo.png
 COPY /frontend/${ENVIRONMENT:-dev}/assets/favicon.ico ./spa/favicon.ico
