@@ -38,8 +38,6 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY /frontend/startup.sh /usr/local/bin/startup.sh
 RUN chmod +x /usr/local/bin/startup.sh
 
-COPY nginx.conf /etc/nginx/nginx.conf
-
 COPY --from=dev /app/spa /usr/share/nginx/html
 COPY /frontend/nginx.conf /etc/nginx/nginx.conf
 
