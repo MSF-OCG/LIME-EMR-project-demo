@@ -4,15 +4,15 @@
 FROM openmrs/openmrs-core:dev as dev
 WORKDIR /openmrs_distro
 
-ARG MVN_ARGS_SETTINGS="-s /usr/share/maven/ref/settings-docker.xml -U -P distro"
+ARG MVN_ARGS_SETTINGS="-s /usr/share/maven/ref/settings-docker.xml -U"
 ARG MVN_ARGS="install"
 
 # Copy build files
 COPY pom.xml ./
 COPY distro ./distro/
 
-# Build the distro, but only deploy from the amd64 build
-RUN --mount=type=secret,id=m2settings,target=/usr/share/maven/ref/settings-docker.xml if [[ "$MVN_ARGS" != "deploy" || "$(arch)" = "x86_64" ]]; then mvn $MVN_ARGS_SETTINGS $MVN_ARGS; else mvn $MVN_ARGS_SETTINGS install; fi
+# Build the distro
+RUN --mount=type=secret,id=m2settings,target=/root/.m2/settings.xml mvn $MVN_ARGS_SETTINGS $MVN_ARGS
 
 RUN cp /openmrs_distro/distro/target/sdk-distro/web/openmrs.war /openmrs/distribution/openmrs_core/
 
@@ -21,7 +21,7 @@ RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/modules /openmrs/distribu
 RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/owa /openmrs/distribution/openmrs_owas
 
 # Clean up after copying needed artifacts
-RUN mvn $MVN_ARGS_SETTINGS clean
+RUN mvn clean $MVN_ARGS_SETTINGS
 
 ### Run Stage
 # Replace 'nightly' with the exact version of openmrs-core built for production (if available)
