@@ -1,16 +1,16 @@
 # Introduction
 
-> Note: This documentation describes how the OpenMRS 3.x demo for the MSF OCG LIME project is running. It follows standard practices from OpenMRS and its community, and goes through the lifecycle of the product. The integration with other dependencies such as [OpenConceptLab (OCL)](https://openconceptlab.org/) and [DHIS2](https://dhis2.org/) is also documented here. Any feedback and pull requests are welcomed to continuously improved this demo! 
+> Note: This documentation describes how the OpenMRS 3.x demo for the MSF OCG LIME project is running. It follows standard practices from OpenMRS and its community, and goes through the lifecycle of the product. The integration with other dependencies such as [OpenConceptLab (OCL)](https://openconceptlab.org/) and [DHIS2](https://dhis2.org/) is also documented here. Any feedback and pull requests are welcomed to continuously improved this demo!
 
 # Getting started
 
 ## Prerequisites
 1. Setup Docker on the localhost and hosting instances
-2. Get the latest docker-compose.yml 
+2. Get the latest docker-compose.yml
 3. Pull the latest images and run the app with Docker Compose (docker-compose pull && docker-compose up -d)
 
-## Tools 
-- Diagram and pathway design tool: https://bpmn.io/ 
+## Tools
+- Diagram and pathway design tool: https://bpmn.io/
 
 ## File structure
 
@@ -112,7 +112,7 @@ Types of configurations:
 2. Backend modules (/distro/distro.properties)
 3. Frontend modules (/frontend/spa-build-config.json)
 4. Frontend customizations (/frontend/custom-config.json)
-5. Metadata (/distro/configuration) 
+5. Metadata (/distro/configuration)
 6. Concepts and content (OCL)
 
 > #### [Diagram representing the types of configuration](https://docs.google.com/drawings/d/1FqoAuYAhWf-P8YAd18wHN-7yRBnAKEkrabBSGOCkWr8/edit?usp=sharing)
@@ -162,7 +162,7 @@ omod.serialization.xstream.type=omod
     "@openmrs/esm-offline-tools-app": "next",
     "@openmrs/esm-primary-navigation-app": "next",
     "@openmrs/esm-home-app": "next",
-    "@openmrs/esm-form-entry-app": "next",
+    "@openmrs/esm-form-engine-app": "next",
     "@openmrs/esm-generic-patient-widgets-app": "next",
     "@openmrs/esm-patient-allergies-app": "next",
     "@openmrs/esm-patient-appointments-app": "next",
@@ -227,7 +227,7 @@ omod.serialization.xstream.type=omod
 }
 ```
 
-#### Modify navigation 
+#### Modify navigation
 ```json
 "@openmrs/esm-primary-navigation-app": {
   "extensionSlots": {
@@ -330,7 +330,7 @@ In OpenConceptLab (OCL)
 5. Release the collection and export it as a ZIP file
 In distribution configuration
 1. Add the ZIP file in /distro/configuration/ampathforms/___.zip
-2. Restart OpenMRS to verify that the new concepts are well loaded in the OpenMRS dictionnary 
+2. Restart OpenMRS to verify that the new concepts are well loaded in the OpenMRS dictionnary
 
 ### OpenConceptLab (OCL)
 
@@ -370,7 +370,7 @@ List of i18next parsers
 3. leave the form labels empty to pull the label based on the translations in the concepts
 
 # Build
-Docker images will automatically be rebuilt and pushed to [Docker Hub of MSF OCG](https://hub.docker.com/r/msfocg) when binaries or configurations are modified. 
+Docker images will automatically be rebuilt and pushed to [Docker Hub of MSF OCG](https://hub.docker.com/r/msfocg) when binaries or configurations are modified.
 
 ## Actions
 
@@ -398,7 +398,7 @@ docker restart backent
 <img src="./_media/development-workflow.png" width=80%>
 </div>
 
-## Environments 
+## Environments
 
 Dev, QA/UAT, Preprod, prod
 
@@ -407,7 +407,7 @@ Dev, QA/UAT, Preprod, prod
 | Local | Modified to load custom frontend assets (logo, config json, etc.) | docker-compose.local.yml | Loading distro/configuration from the Docker host (local machine) when restarting the Docker backend, frontend must be rebuilt if modified (assets, spa modules, etc) |
 | Dev/Staging/Prod | Modified to load custom frontend assets (logo, config json, etc.) | docker-compose.yml | Loading frontend and backend Docker images built in Github actions and pushed to Docker Hub |
 
-# Deploy 
+# Deploy
 
 ## On localhost
 ```shell
@@ -420,9 +420,9 @@ docker-compose up -d
 # Verify that OpenMRS services are running
 docker ps
 # IF docker-compose file is missing, download configuration, then start OpenMRS
-curl https://raw.githubusercontent.com/openmrs/openmrs-distro-referenceapplication/main/docker-compose.yml > docker-compose.yml 
+curl https://raw.githubusercontent.com/openmrs/openmrs-distro-referenceapplication/main/docker-compose.yml > docker-compose.yml
 # Verify that the web app is available
-https://___.cloudapp.azure.com 
+https://___.cloudapp.azure.com
 # All done!
 ```
 
@@ -440,7 +440,7 @@ sudo apt install ansible
 # Run the recipe
 ansible-playbook -i inventories/dev.ini playbook.yaml --ask-become-pass
 ```
-## On premises 
+## On premises
 
 # Maintain
 
@@ -508,7 +508,7 @@ gpg --encrypt --recipient "Your Name" backup_file.tar.gz
 ```
 Replace "Your Name" with the name associated with your GPG key pair, and replace "backup_file.tar.gz" with the name of your backup file.
 
-### Consolidated script 
+### Consolidated script
 
 ```shell
 #!/bin/bash
@@ -561,7 +561,7 @@ This script performs a MySQL dump of an OpenMRS database, compresses the output 
 
 ## Restore
 
-## Update 
+## Update
 
 Type of updates:
 1. Binaries (OpenMRS files) - updated by Build actions
@@ -575,19 +575,19 @@ docker-compose pull && docker-compose up -d
 
 # Development tooling
 
-## Local database 
+## Local database
 ### Connect DBeaver to the Docker MariaDB container
 1. Update the openmrs user to be usable from the host machine
 ```shell
 ## Login in the MariaDB container
 docker exec -it lime-emr-project-demo-db-1 sh
 ## Connect to MySQL as root
-mysql -u root -p 
-## Update the host allowance of the openmrs user 
+mysql -u root -p
+## Update the host allowance of the openmrs user
 update mysql.user set host='%' where user='openmrs'
 ```
 2. In MariaDB
-  a. Set the server host as "localhost", the port as "3306", the database as "openmrs" and the database authentication username as "openmrs" 
+  a. Set the server host as "localhost", the port as "3306", the database as "openmrs" and the database authentication username as "openmrs"
   b. In the driver properties, set the "allowPublicKeyRetrieval" to "true"
 3. Test the connection to confirm that it is successful
 4. Configure the Proxy SSH/Proxy to do the same on a remote server
