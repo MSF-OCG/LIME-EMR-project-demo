@@ -2,10 +2,6 @@ name: Run E2E Tests on PRs
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches: [main, dev]
-  push:
-      branches: [main, dev]
 
 jobs:
   build:
@@ -193,7 +189,7 @@ jobs:
 
       - name: Spin up an OpenMRS Instance
         run: docker-compose up -d
-        working-directory: e2e_test_support_files
+        working-directory: distro/e2e_test_support_files
 
       - name: Checkout to the Repo's Tag
         uses: actions/checkout@v4
