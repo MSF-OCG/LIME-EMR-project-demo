@@ -2,6 +2,10 @@ name: Run E2E Tests on PRs
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
 
 jobs:
   build:
