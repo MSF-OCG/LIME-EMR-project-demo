@@ -45,7 +45,7 @@ services:
       - frontend
       - backend
     ports:
-      - "80:80"
+      - "${LIME_DEMO_PROXY_PORT:-81}:80"
 
   frontend:
     image: msfocg/openmrs3-frontend:dev
@@ -54,7 +54,7 @@ services:
       API_URL: /openmrs
       SPA_CONFIG_URLS: /openmrs/spa/custom-config.json
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/"]
+      test: ["CMD", "curl", "-f", "http://localhost:${LIME_DEMO_PROXY_PORT:-81}/"]
       timeout: 5s
     depends_on:
       - backend

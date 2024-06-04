@@ -9,7 +9,7 @@ services:
       - frontend
       - backend
     ports:
-      - "80:80"
+      - "${LIME_DEMO_PROXY_PORT:-81}:80"
 
   # OpenMRS 3 Frontend
   frontend:
@@ -20,7 +20,7 @@ services:
       API_URL: /openmrs
       SPA_CONFIG_URLS: /openmrs/spa/custom-config.json
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/"]
+      test: ["CMD", "curl", "-f", "http://localhost:${LIME_DEMO_PROXY_PORT:-81}/"]
       timeout: 5s
     depends_on:
       - backend
@@ -99,7 +99,7 @@ services:
     volumes:
       - ./FHIR/dbz_event_to_fhir_config.json:/deployments/dbz_event_to_fhir_config.json
     environment:
-      - OPENMRS_URL=http://localhost/openmrs
+      - OPENMRS_URL=http://localhost:${LIME_DEMO_PROXY_PORT:-81}/openmrs
       - OPENMRS_USERNAME=admin
       - OPENMRS_PASSWORD=Admin123
       - SINK_URL=http://localhost:8081/fhir

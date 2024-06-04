@@ -4,7 +4,8 @@
 REPOSITORY_URL="https://github.com/MSF-OCG/LIME-EMR-project-demo.git"
 BRANCH_NAME="main"
 APP_NAME="emr"
-APP_URL="http://localhost/openmrs/login.htm"
+PROXY_PORT="${LIME_DEMO_PROXY_PORT:-81}"
+APP_URL="http://localhost:$PROXY_PORT/openmrs/login.htm"
 CONTAINER_NAMES="openmrs-db openmrs-frontend openmrs-backend openmrs-gateway"
 
 # List of dependencies to be installed

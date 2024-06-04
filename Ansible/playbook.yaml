@@ -4,8 +4,8 @@
   become: true
   vars:
     app_repository: https://github.com/MSF-OCG/LIME-EMR-project-demo.git
-    app_url: http://localhost
-    app_admin_url: http://localhost/openmrs/login.htm
+    app_url: http://localhost:81
+    app_admin_url: http://localhost:81/openmrs/login.htm
     git_branch: "main"
     log_dir: "/var/logs/lime/setup"
 

@@ -4,7 +4,7 @@ services:
   gateway:
     image: openmrs/openmrs-reference-application-3-gateway:${TAG:-nightly}
     ports:
-      - "80:80"
+      - "${LIME_DEMO_PROXY_PORT:-81}:80"
     networks:
       - frontend
       - backend
