@@ -10,7 +10,7 @@ services:
       - frontend
       - backend
     ports:
-      - "${LIME_DEMO_PROXY_PORT}:80"
+      - "${LIME_DEMO_PROXY_PORT:-81}:80"
 
   frontend:
     build:
@@ -23,7 +23,7 @@ services:
       SPA_CONFIG_URLS:
       SPA_DEFAULT_LOCALE:
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:${LIME_DEMO_PROXY_PORT}/" ]
+      test: [ "CMD", "curl", "-f", "http://localhost:${LIME_DEMO_PROXY_PORT:-81}/" ]
       timeout: 5s
     depends_on:
       - backend
